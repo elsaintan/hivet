@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var uName : TextView
     private lateinit var uPhoto : ImageView
     private lateinit var bLogout : ImageView
+    private lateinit var bKonsul : Button
+    private lateinit var profile : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         uName = findViewById(R.id.userName)
         uPhoto = findViewById(R.id.imageView3)
         bLogout = findViewById(R.id.imageLogout)
+        bKonsul = findViewById(R.id.bkonsultasi)
+        profile = findViewById(R.id.imageSetting)
 
         uName.text = "Id :  $uId"
 
@@ -45,6 +49,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SignInActivity::class.java))
             finish()
         }
+
+        bKonsul.setOnClickListener {
+            startActivity(Intent(this, ListDokterActivity::class.java))
+        }
+
+        profile.setOnClickListener {
+            startActivity(Intent(this, UserProfileActivity::class.java))
+        }
+
+
     }
 
     private fun setUser(id : String) {

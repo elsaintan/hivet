@@ -74,7 +74,7 @@ class SignUpActivity : AppCompatActivity() {
 
         mDbRef = FirebaseFirestore.getInstance()
 
-        val user = User(name, email, uid)
+        val user = User(name, email, uid, null)
 
 
         val usersRef = mDbRef.collection("users")

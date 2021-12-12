@@ -1,45 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserProfileActivity">
-    
-    <EditText
-        android:id="@+id/etNama"
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profileIM"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/namauTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profileIM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Name" />
+
+    <RelativeLayout
+        android:id="@+id/userRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nama"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="30dp">
 
-    <EditText
-        android:id="@+id/etNamah"
+        <TextView
+            android:id="@+id/emailTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailTV"
+            android:layout_marginTop="15dp"
+            android:text="Alamat" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/menuRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nama hewan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etNama"/>
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/userRL">
 
-    <EditText
-        android:id="@+id/etJenish"
+        <Button
+            android:id="@+id/suntinTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunting"
+            android:layout_marginStart="30dp"/>
+
+        <Button
+            android:id="@+id/gpasswordTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ganti Password"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@id/suntinTV"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mypetsRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jenis hewan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etNamah"/>
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/menuRL">
 
-    <EditText
-        android:id="@+id/etKeth"
+        <TextView
+            android:id="@+id/peliharaanTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Hewan Peliharaanku" />
+
+        <Button
+            android:id="@+id/addpetsB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah"
+            android:layout_marginStart="30dp"
+            android:layout_toEndOf="@id/peliharaanTV"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Keterangan"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etJenish"/>
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/mypetsRL">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
