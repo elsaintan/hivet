@@ -3,13 +3,13 @@ package com.seaID.hivet
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.util.Log
+import android.widget.*
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import com.seaID.hivet.models.User
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         bBooking = findViewById(R.id.bBooking)
         profile = findViewById(R.id.imageSetting)
 
-        uName.text = "Id :  $uId"
+
+        loadProfile(uId.toString())
 
         bLogout.setOnClickListener {
             mAuth.signOut()
@@ -77,6 +78,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUser(id : String) {
         
+    }
+
+    private fun loadProfile(id : String) {
+        val uidRef  = mDbRef.collection("users").document(id)
+
+        uidRef.get().addOnSuccessListener { doc ->
+            if (doc != null) {
+                val user = doc.toObject(User::class.java)
+                uName.text = user!!.name
+                if (user!!.photoProfile == ""){
+                    uPhoto.setImageResource(R.drawable.profile)
+                }else{
+                    Glide.with(this).load(user!!.photoProfile).into(uPhoto)
+                }
+                Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener { exception ->
+            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 

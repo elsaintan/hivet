@@ -55,6 +55,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         binding.saveBTN.setOnClickListener {
             uploadImage()
+            updateDataUser()
             binding.progressBar.visibility = View.VISIBLE
         }
     }
@@ -87,13 +88,6 @@ class EditProfileActivity : AppCompatActivity() {
             ref.putFile(filePath!!)
                 .addOnSuccessListener {
                     OnSuccessListener<UploadTask.TaskSnapshot>{
-                        val name = binding.nameTV.text.toString()
-                        val email = binding.emailTV.text.toString()
-                        val useredit = User(name, email, mAuth.uid, filePath.toString())
-
-                        val user = mDbRef.collection("users")
-                        user.document(mAuth.uid).set(useredit)
-
                         binding.progressBar.visibility = View.GONE
                         Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
                         binding.saveBTN.visibility = View.GONE
@@ -131,6 +125,11 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     public fun updateDataUser(){
+        val name = binding.nameTV.text.toString()
+        val email = binding.emailTV.text.toString()
+        val useredit = User(name, email, mAuth.uid, filePath.toString())
 
+        val user = mDbRef.collection("users")
+        user.document(mAuth.uid).set(useredit)
     }
 }
