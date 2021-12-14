@@ -4,14 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EBF6FF"
     tools:context=".UserProfileActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profileIM"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="153dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="570dp"
         android:src="@drawable/profile" />
 
     <TextView
@@ -33,11 +38,6 @@
 
         <TextView
             android:id="@+id/emailTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/emailTV"
@@ -50,23 +50,23 @@
         android:id="@+id/menuRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/userRL">
+        android:layout_below="@id/userRL"
+        android:layout_marginTop="30dp">
 
         <Button
             android:id="@+id/suntinTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sunting"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="30dp"
+            android:text="Sunting" />
 
         <Button
             android:id="@+id/gpasswordTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ganti Password"
             android:layout_marginStart="30dp"
-            android:layout_toEndOf="@id/suntinTV"/>
+            android:layout_toEndOf="@id/suntinTV"
+            android:text="Ganti Password" />
 
     </RelativeLayout>
 
@@ -74,8 +74,8 @@
         android:id="@+id/mypetsRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/menuRL">
+        android:layout_below="@id/menuRL"
+        android:layout_marginTop="30dp">
 
         <TextView
             android:id="@+id/peliharaanTV"
@@ -88,21 +88,21 @@
             android:id="@+id/addpetsB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tambah"
             android:layout_marginStart="30dp"
-            android:layout_toEndOf="@id/peliharaanTV"/>
+            android:layout_toEndOf="@id/peliharaanTV"
+            android:text="Tambah" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/mypetsRL">
+        android:layout_below="@id/mypetsRL"
+        android:layout_marginTop="30dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </RelativeLayout>
 
