@@ -3,45 +3,29 @@ package com.seaID.hivet
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.seaID.hivet.databinding.ActivityBookingBinding
+import com.seaID.hivet.databinding.ActivityKonsultasiBinding
 import com.seaID.hivet.models.User
-import com.seaID.hivet.databinding.ActivityUserProfileBinding
 
-class UserProfileActivity : AppCompatActivity() {
+private lateinit var binding: ActivityKonsultasiBinding
+private lateinit var mDbRef: FirebaseFirestore
 
-    //view binding
-    private lateinit var binding: ActivityUserProfileBinding
-
-    //firebase auth
-    private lateinit var mAuth: FirebaseAuth
-
-    private lateinit var mDbRef: FirebaseFirestore
-
-    //constant
-    private companion object{
-        private const val RC_SIGN_IN = 100
-        private const val TAG = "GOOGLE_SIGN_IN_TAG"
-    }
-
+class KonsultasiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUserProfileBinding.inflate(layoutInflater)
+        binding = ActivityKonsultasiBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-        //init firebasee auth
-        mAuth = FirebaseAuth.getInstance()
-        mDbRef = FirebaseFirestore.getInstance()
+        val id = intent.getStringExtra("Uid")
 
-        val currentUser = mAuth.currentUser
-
-        loadProfile(currentUser?.uid!!)
-
+        showData(id.toString())
     }
 
-    private fun loadProfile(id : String) {
+    private fun showData(id : String) {
         val uidRef  = mDbRef.collection("users").document(id)
 
         uidRef.get().addOnSuccessListener { doc ->
@@ -54,15 +38,12 @@ class UserProfileActivity : AppCompatActivity() {
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(binding.profileIM)
                 }
-                Log.d(TAG, "{$user.name}")
+                Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
             } else {
-                Log.d(TAG, "No such document")
+                Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener { exception ->
-            Log.d(TAG, "get failed with ", exception)
+            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
         }
-
     }
-
-
 }

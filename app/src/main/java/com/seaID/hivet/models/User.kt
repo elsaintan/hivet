@@ -1,4 +1,4 @@
-package com.seaID.hivet.`class`
+package com.seaID.hivet.models
 
 class User {
     var name: String? = null

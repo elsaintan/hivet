@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_booking.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_edit_profile.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_forgot_password.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_konsultasi.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_sign_in.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/user_dokter_booking.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.23229166666666667" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

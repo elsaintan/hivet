@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var uPhoto : ImageView
     private lateinit var bLogout : ImageView
     private lateinit var bKonsul : Button
+    private lateinit var bBooking : Button
     private lateinit var profile : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         uPhoto = findViewById(R.id.imageView3)
         bLogout = findViewById(R.id.imageLogout)
         bKonsul = findViewById(R.id.bkonsultasi)
+        bBooking = findViewById(R.id.bBooking)
         profile = findViewById(R.id.imageSetting)
 
         uName.text = "Id :  $uId"
@@ -51,7 +53,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         bKonsul.setOnClickListener {
-            startActivity(Intent(this, ListDokterActivity::class.java))
+            //start prifle activity
+            val intent = Intent(this, ListDokterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("type", "1")
+            startActivity(intent)
+        }
+
+        bBooking.setOnClickListener{
+            //start prifle activity
+            val intent = Intent(this, ListDokterActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("type", "0")
+            startActivity(intent)
         }
 
         profile.setOnClickListener {
