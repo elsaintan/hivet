@@ -3,10 +3,7 @@ package com.seaID.hivet
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -19,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var uName : TextView
     private lateinit var uPhoto : ImageView
     private lateinit var bLogout : ImageView
-    private lateinit var bKonsul : Button
+    private lateinit var bKonsul : ImageButton
     private lateinit var profile : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {

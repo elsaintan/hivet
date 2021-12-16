@@ -80,7 +80,7 @@ class SignInActivity : AppCompatActivity() {
 
     private fun forgotPassword() {
         //code for jumping to signup
-        tvRegister.setOnClickListener {
+        tvFPassword.setOnClickListener {
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
     }
