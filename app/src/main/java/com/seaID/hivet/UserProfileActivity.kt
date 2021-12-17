@@ -49,7 +49,7 @@ class UserProfileActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        recyclerView = findViewById(R.id.pelihahaarnRV)
+        //recyclerView = findViewById(R.id.pelihahaarnRV)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
@@ -67,13 +67,13 @@ class UserProfileActivity : AppCompatActivity() {
 
         dataPeliharaan()
 
-        binding.suntingTV.setOnClickListener {
+        /*binding.suntingTV.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("Uid", mAuth.currentUser!!.uid)
             startActivity(intent)
             finish()
-        }
+        }*/
 
     }
 
@@ -119,7 +119,7 @@ private fun loadProfile(id : String) {
                 binding.namauTV.text = user!!.name
                 binding.emailTV.text = user!!.email
                 if (user!!.photoProfile == ""){
-                    binding.profileIM.setImageResource(R.drawable.profile)
+                    //binding.profileIM.setImageResource(R.drawable.profile)
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(binding.profileIM)
                 }
