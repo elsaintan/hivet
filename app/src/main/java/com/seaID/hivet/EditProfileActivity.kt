@@ -34,6 +34,8 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var storage : FirebaseStorage
     private lateinit var storageRef : StorageReference
 
+    private var photo : String ?= null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
@@ -47,15 +49,39 @@ class EditProfileActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
         storageRef = storage.reference
 
-        showUser()
+        val uidRef  = mDbRef.collection("users").document(mAuth.uid)
+
+        uidRef.get().addOnSuccessListener { doc ->
+            if (doc != null) {
+                val user = doc.toObject(User::class.java)
+                binding.nameTV.setText(user!!.name)
+                binding.emailTV.setText(user!!.email)
+                photo = user!!.photoProfile
+                if (user!!.photoProfile == ""){
+                    binding.userImage.setImageResource(R.drawable.profile)
+                }else{
+                    Glide.with(this).load(user!!.photoProfile).into(binding.userImage)
+                }
+                Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "No such document ", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener { exception ->
+            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
+        }
 
         binding.userImage.setOnClickListener{
             chooseImage()
         }
 
         binding.saveBTN.setOnClickListener {
-            uploadImage()
-            updateDataUser()
+            if (filePath.toString() == photo){
+                updateDataUser()
+            }else{
+                //deleteImage(photo.toString())
+                uploadImage()
+                updateDataUser()
+            }
             binding.progressBar.visibility = View.VISIBLE
         }
     }
@@ -84,7 +110,7 @@ class EditProfileActivity : AppCompatActivity() {
     private fun uploadImage(){
         if(filePath != null){
 
-            var ref:StorageReference = storageRef.child("Image/"+UUID.randomUUID().toString())
+            var ref:StorageReference = storageRef.child("Image/"+mAuth.uid)
             ref.putFile(filePath!!)
                 .addOnSuccessListener {
                     OnSuccessListener<UploadTask.TaskSnapshot>{
@@ -102,29 +128,17 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
-    public fun showUser(){
-        val uidRef  = mDbRef.collection("users").document(mAuth.uid)
-
-        uidRef.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val user = doc.toObject(User::class.java)
-                binding.nameTV.setText(user!!.name)
-                binding.emailTV.setText(user!!.email)
-                if (user!!.photoProfile == ""){
-                    binding.userImage.setImageResource(R.drawable.profile)
-                }else{
-                    Glide.with(this).load(user!!.photoProfile).into(binding.userImage)
-                }
-                Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "No such document ", Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
+    private fun deleteImage(photo : String) {
+        val photoRef: StorageReference = storageRef.child("Image/"+mAuth.uid)
+        photoRef.delete().addOnSuccessListener {
+            Toast.makeText(this, "onSuccess: deleted file", Toast.LENGTH_SHORT).show()
         }
+            .addOnFailureListener {
+                Toast.makeText(this, "onFailure: did not delete file", Toast.LENGTH_SHORT).show()
+            }
     }
 
-    public fun updateDataUser(){
+    private fun updateDataUser(){
         val name = binding.nameTV.text.toString()
         val email = binding.emailTV.text.toString()
         val useredit = User(name, email, mAuth.uid, filePath.toString())

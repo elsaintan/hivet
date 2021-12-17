@@ -54,7 +54,7 @@
         android:layout_marginTop="30dp">
 
         <Button
-            android:id="@+id/suntinTV"
+            android:id="@+id/suntingTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_toEndOf="@id/suntinTV"
+            android:layout_toEndOf="@id/suntingTV"
             android:text="Ganti Password" />
 
     </RelativeLayout>
@@ -101,6 +101,7 @@
         android:layout_marginTop="30dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/pelihahaarnRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

@@ -27,11 +27,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val uId = intent.getStringExtra("Uid")
+
 
 
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseFirestore.getInstance()
+
+        val uId = mAuth.currentUser!!.uid
 
 
         //setUser(uId.toString())
@@ -85,8 +87,8 @@ class MainActivity : AppCompatActivity() {
 
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
-                val user = doc.toObject(User::class.java)
-                uName.text = user!!.name
+                val user = doc?.toObject(User::class.java)
+                uName.text = "Hai "+user!!.name+"!"
                 if (user!!.photoProfile == ""){
                     uPhoto.setImageResource(R.drawable.profile)
                 }else{

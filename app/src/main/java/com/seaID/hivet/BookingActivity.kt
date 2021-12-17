@@ -3,6 +3,7 @@ package com.seaID.hivet
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.*
 import com.seaID.hivet.adapters.drhAdapter
@@ -34,6 +35,22 @@ class BookingActivity : AppCompatActivity() {
 
         showdetailData(uId.toString())
 
+    }
+
+    private fun cekAppointment(){
+        val list = ArrayList<drh>()
+        appointment = FirebaseFirestore.getInstance()
+        appointment.collection("appointment").get()
+            .addOnSuccessListener {
+                if (it.isEmpty){
+                    Toast.makeText(this, "No drh found", Toast.LENGTH_SHORT).show()
+                    return@addOnSuccessListener
+                }
+                for (doc in it){
+                    val drh = doc.toObject(drh::class.java)
+                    list.add(drh)
+                }
+            }
     }
 
     private fun showdetailData(id : String) {
