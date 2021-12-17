@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_sign_up"
     tools:context=".SignUpActivity">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -41,7 +42,10 @@
         android:layout_width="375dp"
         android:layout_height="67dp"
         android:background="@drawable/background_input_field"
+        android:drawableLeft="@drawable/icon_nama_lengkap"
+        android:drawablePadding="10dp"
         android:hint="Masukkan Nama Lengkap"
+        android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"
@@ -56,8 +60,11 @@
         android:layout_width="375dp"
         android:layout_height="57dp"
         android:background="@drawable/background_input_field"
+        android:drawableLeft="@drawable/icon_email"
+        android:drawablePadding="10dp"
         android:hint="Masukkan Email"
         android:inputType="textEmailAddress"
+        android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,26 +78,32 @@
         android:layout_width="372dp"
         android:layout_height="59dp"
         android:background="@drawable/background_input_field"
+        android:drawableLeft="@drawable/icon_password"
+        android:drawablePadding="10dp"
         android:hint="Masukkan Kata Sandi"
         android:inputType="textPassword"
+        android:paddingLeft="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailET"
         app:layout_constraintVertical_bias="0.13" />
 
-    // Button
-
     <Button
         android:id="@+id/registerBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"
-        android:textStyle="bold"
+        android:background="@drawable/bg_button_putih"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Daftar"
+        android:textColor="@color/biru_keren"
+        app:backgroundTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordET"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordET" />
+
+    // Button
 
 </androidx.constraintlayout.widget.ConstraintLayout>

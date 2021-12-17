@@ -3,13 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_edit_profile.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_list_dokter.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/peliharaan_layout.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/update_pw_layout.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.23229166666666667" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_sign_in.xml" value="0.136" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1021316528320313" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.2253143310546875" />
       </map>
