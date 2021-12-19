@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
@@ -24,13 +25,19 @@ class ListDokterActivity : AppCompatActivity() {
     private lateinit var drhBookingAdapter: drhBookingAdapter
     private lateinit var db : FirebaseFirestore
 
-    private lateinit var coba : TextView
+    var tanggal : String ?= null
+    var daerah : String ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_dokter)
 
         val type = intent.getIntExtra("type", 0)
+        tanggal = intent.getStringExtra("tanggal")
+        daerah = intent.getStringExtra("daerah")
+
+        //Toast.makeText(this, daerah, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Date "+tanggal, Toast.LENGTH_SHORT).show()
 
         //coba = findViewById(R.id.cek)
         //coba.text = type.toString()
@@ -88,7 +95,7 @@ class ListDokterActivity : AppCompatActivity() {
                     val items = data.size
                     if (items > 0){
                         for (item in data){
-                            if (item.booking == "1"){
+                            if (item.booking.equals(tanggal) && item.alamat.equals(daerah)){
                                 drhArrayList.add(item)
                             }
                         }

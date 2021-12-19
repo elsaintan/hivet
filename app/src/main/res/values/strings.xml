@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Hivet!</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string-array name="daerah">
+        <item>DKI Jakarta</item>
+        <item>Banten</item>
+        <item>Jawa Barat</item>
+        <item>DI Yogyakarta</item>
+        <item>Jawa Tengah</item>
+        <item>Jawa Timur</item>
+    </string-array>
 </resources>

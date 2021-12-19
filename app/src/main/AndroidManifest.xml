@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hivet">
         <activity
+            android:name=".FilterBookingActivity"
+            android:exported="false" />
+        <activity
             android:name=".BookingActivity"
             android:exported="false" />
         <activity

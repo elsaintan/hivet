@@ -10,14 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
-import com.seaID.hivet.adapters.drhAdapter
-import com.seaID.hivet.adapters.drhBookingAdapter
 import com.seaID.hivet.adapters.peliharaanAdapter
 import com.seaID.hivet.models.User
 import com.seaID.hivet.databinding.ActivityUserProfileBinding
-import com.seaID.hivet.models.drh
 import com.seaID.hivet.models.peliharaan
-import android.R
 import android.app.Dialog
 import android.view.View
 
@@ -28,6 +24,8 @@ class UserProfileActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var petArrayList: ArrayList<peliharaan>
     private lateinit var peliharaanAdapter: peliharaanAdapter
+
+    private lateinit var mybinding : ActivityUserProfileBinding
 
     //firebase auth
     private lateinit var mAuth: FirebaseAuth
@@ -42,9 +40,11 @@ class UserProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout)
+        mybinding = ActivityUserProfileBinding.inflate(layoutInflater)
+        val view = mybinding.root
+        setContentView(view)
 
-        //recyclerView = findViewById(R.id.pelihahaarnRV)
+        recyclerView = mybinding.peliharaanRV
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
 
@@ -62,13 +62,13 @@ class UserProfileActivity : AppCompatActivity() {
 
         dataPeliharaan()
 
-        /*binding.suntingTV.setOnClickListener {
+        mybinding.suntingTV.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("Uid", mAuth.currentUser!!.uid)
             startActivity(intent)
             finish()
-        }*/
+        }
 
     }
 
@@ -99,11 +99,11 @@ class UserProfileActivity : AppCompatActivity() {
             })
     }
 
-    /* private fun showChangePasswordDialog(view : View){
+    private fun showChangePasswordDialog(view : View){
         val dialogBuilder = AlertDialog.Builder(this)
         val dialog = Dialog(this)
-        dialog.setContentView(R.layout.updat)
-    } */
+        //dialog.setContentView(R.layout.updat)
+    }
 
 private fun loadProfile(id : String) {
         val uidRef  = mDbRef.collection("users").document(id)
@@ -111,12 +111,12 @@ private fun loadProfile(id : String) {
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
                 val user = doc.toObject(User::class.java)
-                //binding.namauTV.text = user!!.name
-                //binding.emailTV.text = user!!.email
+                mybinding.namauTV.text = user!!.name
+                mybinding.emailTV.text = user!!.email
                 if (user!!.photoProfile == ""){
-                    //binding.profileIM.setImageResource(R.drawable.profile)
+                    mybinding.profileIM.setImageResource(R.drawable.profile)
                 }else{
-                    //Glide.with(this).load(user!!.photoProfile).into(binding.profileIM)
+                    Glide.with(this).load(user!!.photoProfile).into(mybinding.profileIM)
                 }
                 Log.d(TAG, "{$user.name}")
             } else {

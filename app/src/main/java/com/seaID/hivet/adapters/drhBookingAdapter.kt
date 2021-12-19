@@ -24,7 +24,7 @@ class drhBookingAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val drh : drh = drhList[position]
-        if (drh.booking == "1"){
+
             if (drh!!.photoProfile == ""){
                 holder.profileIM.setImageResource(R.drawable.profile)
             }else{
@@ -35,8 +35,6 @@ class drhBookingAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Ada
             holder.workexp.text = drh.tempat
             holder.price.text = drh.alamat
             holder.button.setText("Reservasi")
-
-        }
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, BookingActivity::class.java)
