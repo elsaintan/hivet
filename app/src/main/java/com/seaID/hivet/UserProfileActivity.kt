@@ -22,15 +22,12 @@ import android.app.Dialog
 import android.view.View
 
 
-private lateinit var recyclerView: RecyclerView
-private lateinit var petArrayList: ArrayList<peliharaan>
-private lateinit var peliharaanAdapter: peliharaanAdapter
-
 
 class UserProfileActivity : AppCompatActivity() {
 
-    //view binding
-    private lateinit var binding: ActivityUserProfileBinding
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var petArrayList: ArrayList<peliharaan>
+    private lateinit var peliharaanAdapter: peliharaanAdapter
 
     //firebase auth
     private lateinit var mAuth: FirebaseAuth
@@ -45,9 +42,7 @@ class UserProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUserProfileBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        //setContentView(R.layout)
 
         //recyclerView = findViewById(R.id.pelihahaarnRV)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -116,12 +111,12 @@ private fun loadProfile(id : String) {
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
                 val user = doc.toObject(User::class.java)
-                binding.namauTV.text = user!!.name
-                binding.emailTV.text = user!!.email
+                //binding.namauTV.text = user!!.name
+                //binding.emailTV.text = user!!.email
                 if (user!!.photoProfile == ""){
                     //binding.profileIM.setImageResource(R.drawable.profile)
                 }else{
-                    Glide.with(this).load(user!!.photoProfile).into(binding.profileIM)
+                    //Glide.with(this).load(user!!.photoProfile).into(binding.profileIM)
                 }
                 Log.d(TAG, "{$user.name}")
             } else {

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.seaID.hivet.BookingActivity
@@ -23,7 +24,7 @@ class drhBookingAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Ada
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val drh : drh = drhList[position]
-        if (drh.booking == 1){
+        if (drh.booking == "1"){
             if (drh!!.photoProfile == ""){
                 holder.profileIM.setImageResource(R.drawable.profile)
             }else{

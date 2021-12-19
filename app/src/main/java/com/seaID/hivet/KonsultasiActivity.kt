@@ -9,6 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.databinding.ActivityKonsultasiBinding
 import com.seaID.hivet.models.User
+import com.seaID.hivet.models.drh
 
 private lateinit var binding: ActivityKonsultasiBinding
 private lateinit var mDbRef: FirebaseFirestore
@@ -26,13 +27,15 @@ class KonsultasiActivity : AppCompatActivity() {
     }
 
     private fun showData(id : String) {
-        val uidRef  = mDbRef.collection("users").document(id)
+        mDbRef = FirebaseFirestore.getInstance()
+        val uidRef  = mDbRef.collection("drh").document(id)
 
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
-                val user = doc.toObject(User::class.java)
-                binding.namauTV.text = user!!.name
-                binding.emailTV.text = user!!.email
+                val user = doc.toObject(drh::class.java)
+                binding.namadrhTV.text = user!!.Name
+                binding.workExpTV.text = user!!.WorkExp
+                binding.hargaTV.text = user!!.harga
                 if (user!!.photoProfile == ""){
                     binding.profileIM.setImageResource(R.drawable.profile)
                 }else{
