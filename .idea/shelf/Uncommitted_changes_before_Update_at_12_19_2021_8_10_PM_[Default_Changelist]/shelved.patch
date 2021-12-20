@@ -1,0 +1,1519 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27__Default_Changelist_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27__Default_Changelist_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27__Default_Changelist_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27__Default_Changelist_.xml	(revision 94516bcb864f431dbaa8dc76368daaa3f759fee0)
++++ /dev/null	(revision 94516bcb864f431dbaa8dc76368daaa3f759fee0)
+@@ -1,134 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]" date="1639286918984" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12/12/2021 12:27 [Default Changelist]" />
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_foreground.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-hdpi/ic_launcher_round.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_round.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_foreground1.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_round1.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/ic_launcher-playstore.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher-playstore.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xxhdpi/ic_launcher.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_round2.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-hdpi/ic_launcher.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_foreground2.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xhdpi/ic_launcher.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher1.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher2.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_foreground3.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher3.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-xhdpi/ic_launcher.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-hdpi/ic_launcher.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher4.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_round3.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-mdpi/ic_launcher_round.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_round4.png" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" />
+-    <option name="AFTER_PATH" value="app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/ic_launcher_foreground4.png" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_12_12_2021_12_27_[Default_Changelist]/shelved.patch	(revision 94516bcb864f431dbaa8dc76368daaa3f759fee0)
++++ /dev/null	(revision 94516bcb864f431dbaa8dc76368daaa3f759fee0)
+@@ -1,1370 +0,0 @@
+-Index: .idea/deploymentTargetDropDown.xml
+-===================================================================
+-diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+-deleted file mode 100644
+---- a/.idea/deploymentTargetDropDown.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ /dev/null	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-@@ -1,17 +0,0 @@
+--<?xml version="1.0" encoding="UTF-8"?>
+--<project version="4">
+--  <component name="deploymentTargetDropDown">
+--    <targetSelectedWithDropDown>
+--      <Target>
+--        <type value="QUICK_BOOT_TARGET" />
+--        <deviceKey>
+--          <Key>
+--            <type value="VIRTUAL_DEVICE_PATH" />
+--            <value value="C:\Users\Elsa\.android\avd\Nexus_5_API_27.avd" />
+--          </Key>
+--        </deviceKey>
+--      </Target>
+--    </targetSelectedWithDropDown>
+--    <timeTargetWasSelectedWithDropDown value="2021-11-27T14:59:01.089456500Z" />
+--  </component>
+--</project>
+-\ No newline at end of file
+-Index: .idea/codeStyles/Project.xml
+-===================================================================
+-diff --git a/.idea/codeStyles/Project.xml b/.idea/codeStyles/Project.xml
+-deleted file mode 100644
+---- a/.idea/codeStyles/Project.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ /dev/null	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-@@ -1,122 +0,0 @@
+--<component name="ProjectCodeStyleConfiguration">
+--  <code_scheme name="Project" version="173">
+--    <JetCodeStyleSettings>
+--      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+--    </JetCodeStyleSettings>
+--    <codeStyleSettings language="XML">
+--      <indentOptions>
+--        <option name="CONTINUATION_INDENT_SIZE" value="4" />
+--      </indentOptions>
+--      <arrangement>
+--        <rules>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>xmlns:android</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>^$</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--            </rule>
+--          </section>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>xmlns:.*</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>^$</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--              <order>BY_NAME</order>
+--            </rule>
+--          </section>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>.*:id</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--            </rule>
+--          </section>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>.*:name</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--            </rule>
+--          </section>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>name</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>^$</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--            </rule>
+--          </section>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>style</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>^$</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--            </rule>
+--          </section>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>.*</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>^$</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--              <order>BY_NAME</order>
+--            </rule>
+--          </section>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>.*</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>http://schemas.android.com/apk/res/android</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--              <order>ANDROID_ATTRIBUTE_ORDER</order>
+--            </rule>
+--          </section>
+--          <section>
+--            <rule>
+--              <match>
+--                <AND>
+--                  <NAME>.*</NAME>
+--                  <XML_ATTRIBUTE />
+--                  <XML_NAMESPACE>.*</XML_NAMESPACE>
+--                </AND>
+--              </match>
+--              <order>BY_NAME</order>
+--            </rule>
+--          </section>
+--        </rules>
+--      </arrangement>
+--    </codeStyleSettings>
+--    <codeStyleSettings language="kotlin">
+--      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+--    </codeStyleSettings>
+--  </code_scheme>
+--</component>
+-\ No newline at end of file
+-Index: .idea/codeStyles/codeStyleConfig.xml
+-===================================================================
+-diff --git a/.idea/codeStyles/codeStyleConfig.xml b/.idea/codeStyles/codeStyleConfig.xml
+-deleted file mode 100644
+---- a/.idea/codeStyles/codeStyleConfig.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ /dev/null	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-@@ -1,5 +0,0 @@
+--<component name="ProjectCodeStyleConfiguration">
+--  <state>
+--    <option name="USE_PER_PROJECT_SETTINGS" value="true" />
+--  </state>
+--</component>
+-\ No newline at end of file
+-Index: .idea/.gitignore
+-===================================================================
+-diff --git a/.idea/.gitignore b/.idea/.gitignore
+-deleted file mode 100644
+---- a/.idea/.gitignore	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ /dev/null	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-@@ -1,3 +0,0 @@
+--# Default ignored files
+--/shelf/
+--/workspace.xml
+-Index: app/src/main/res/drawable/ic_launcher_background.xml
+-===================================================================
+-diff --git a/app/src/main/res/drawable/ic_launcher_background.xml b/app/src/main/res/drawable/ic_launcher_background.xml
+-deleted file mode 100644
+---- a/app/src/main/res/drawable/ic_launcher_background.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ /dev/null	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-@@ -1,170 +0,0 @@
+--<?xml version="1.0" encoding="utf-8"?>
+--<vector xmlns:android="http://schemas.android.com/apk/res/android"
+--    android:width="108dp"
+--    android:height="108dp"
+--    android:viewportWidth="108"
+--    android:viewportHeight="108">
+--    <path
+--        android:fillColor="#3DDC84"
+--        android:pathData="M0,0h108v108h-108z" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M9,0L9,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M19,0L19,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M29,0L29,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M39,0L39,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M49,0L49,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M59,0L59,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M69,0L69,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M79,0L79,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M89,0L89,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M99,0L99,108"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,9L108,9"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,19L108,19"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,29L108,29"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,39L108,39"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,49L108,49"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,59L108,59"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,69L108,69"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,79L108,79"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,89L108,89"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M0,99L108,99"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M19,29L89,29"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M19,39L89,39"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M19,49L89,49"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M19,59L89,59"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M19,69L89,69"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M19,79L89,79"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M29,19L29,89"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M39,19L39,89"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M49,19L49,89"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M59,19L59,89"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M69,19L69,89"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--    <path
+--        android:fillColor="#00000000"
+--        android:pathData="M79,19L79,89"
+--        android:strokeWidth="0.8"
+--        android:strokeColor="#33FFFFFF" />
+--</vector>
+-Index: app/src/main/java/com/seaID/hivet/UserProfileActivity.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.seaID.hivet\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\nimport com.seaID.hivet.`class`.User\r\nimport com.seaID.hivet.databinding.ActivityMainBinding\r\n\r\nclass UserProfileActivity : AppCompatActivity() {\r\n\r\n    //view binding\r\n    private lateinit var binding: ActivityMainBinding\r\n\r\n    //firebase auth\r\n    private lateinit var mAuth: FirebaseAuth\r\n\r\n    private lateinit var mDbRef: FirebaseFirestore\r\n\r\n    //constant\r\n    private companion object{\r\n        private const val RC_SIGN_IN = 100\r\n        private const val TAG = \"GOOGLE_SIGN_IN_TAG\"\r\n    }\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_user_profile)\r\n\r\n        //init firebasee auth\r\n        mAuth = FirebaseAuth.getInstance()\r\n        mDbRef = FirebaseFirestore.getInstance()\r\n\r\n        val currentUser = mAuth.currentUser\r\n\r\n        loadProfile(currentUser?.uid!!)\r\n\r\n    }\r\n\r\n    private fun loadProfile(id : String) {\r\n        val uidRef  = mDbRef.collection(\"users\").document(id)\r\n\r\n        uidRef.get().addOnSuccessListener { doc ->\r\n            if (doc != null) {\r\n                val user = doc.toObject(User::class.java)\r\n                Log.d(TAG, \"{$user.name}\")\r\n            } else {\r\n                Log.d(TAG, \"No such document\")\r\n            }\r\n        }.addOnFailureListener { exception ->\r\n            Log.d(TAG, \"get failed with \", exception)\r\n        }\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/com/seaID/hivet/UserProfileActivity.kt b/app/src/main/java/com/seaID/hivet/UserProfileActivity.kt
+---- a/app/src/main/java/com/seaID/hivet/UserProfileActivity.kt	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/java/com/seaID/hivet/UserProfileActivity.kt	(date 1639169526000)
+-@@ -3,15 +3,18 @@
+- import androidx.appcompat.app.AppCompatActivity
+- import android.os.Bundle
+- import android.util.Log
+-+import com.bumptech.glide.Glide
+- import com.google.firebase.auth.FirebaseAuth
+- import com.google.firebase.firestore.FirebaseFirestore
+- import com.seaID.hivet.`class`.User
+-+import com.seaID.hivet.databinding.ActivityEditProfileBinding
+- import com.seaID.hivet.databinding.ActivityMainBinding
+-+import com.seaID.hivet.databinding.ActivityUserProfileBinding
+- 
+- class UserProfileActivity : AppCompatActivity() {
+- 
+-     //view binding
+--    private lateinit var binding: ActivityMainBinding
+-+    private lateinit var binding: ActivityUserProfileBinding
+- 
+-     //firebase auth
+-     private lateinit var mAuth: FirebaseAuth
+-@@ -26,7 +29,9 @@
+- 
+-     override fun onCreate(savedInstanceState: Bundle?) {
+-         super.onCreate(savedInstanceState)
+--        setContentView(R.layout.activity_user_profile)
+-+        binding = ActivityUserProfileBinding.inflate(layoutInflater)
+-+        val view = binding.root
+-+        setContentView(view)
+- 
+-         //init firebasee auth
+-         mAuth = FirebaseAuth.getInstance()
+-@@ -44,6 +49,13 @@
+-         uidRef.get().addOnSuccessListener { doc ->
+-             if (doc != null) {
+-                 val user = doc.toObject(User::class.java)
+-+                binding.namauTV.text = user!!.name
+-+                binding.emailTV.text = user!!.email
+-+                if (user!!.photoProfile == ""){
+-+                    binding.profileIM.setImageResource(R.drawable.profile)
+-+                }else{
+-+                    Glide.with(this).load(user!!.photoProfile).into(binding.profileIM)
+-+                }
+-                 Log.d(TAG, "{$user.name}")
+-             } else {
+-                 Log.d(TAG, "No such document")
+-Index: app/src/main/AndroidManifest.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.seaID.hivet\">\r\n    <!--\r\n         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use\r\n         Google Maps Android API v2, but you must specify either coarse or fine\r\n         location permissions for the \"MyLocation\" functionality.\r\n    -->\r\n    <uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.Hivet\">\r\n        <activity\r\n            android:name=\".ForgotPasswordActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".PaymentActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".UserProfileActivity\"\r\n            android:exported=\"false\" />\r\n        <!--\r\n             The API key for Google Maps-based APIs is defined as a string resource.\r\n             (See the file \"res/values/google_maps_api.xml\").\r\n             Note that the API key is linked to the encryption key used to sign the APK.\r\n             You need a different API key for each encryption key, including the release key that is used to\r\n             sign the APK for publishing.\r\n             You can define the keys for the debug and release targets in src/debug/ and src/release/.\r\n        -->\r\n        <meta-data\r\n            android:name=\"com.google.android.geo.API_KEY\"\r\n            android:value=\"@string/google_maps_key\" />\r\n\r\n        <activity\r\n            android:name=\".MapsActivity\"\r\n            android:exported=\"false\"\r\n            android:label=\"@string/title_activity_maps\" />\r\n        <activity\r\n            android:name=\".ListDokterActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".SignUpActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".SignInActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+---- a/app/src/main/AndroidManifest.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/AndroidManifest.xml	(date 1639166240000)
+-@@ -6,8 +6,9 @@
+-          Google Maps Android API v2, but you must specify either coarse or fine
+-          location permissions for the "MyLocation" functionality.
+-     -->
+--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+-     <uses-permission android:name="android.permission.INTERNET" />
+-+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+-+
+- 
+-     <application
+-         android:allowBackup="true"
+-@@ -16,6 +17,9 @@
+-         android:roundIcon="@mipmap/ic_launcher_round"
+-         android:supportsRtl="true"
+-         android:theme="@style/Theme.Hivet">
+-+        <activity
+-+            android:name=".EditProfileActivity"
+-+            android:exported="false" />
+-         <activity
+-             android:name=".ForgotPasswordActivity"
+-             android:exported="false" />
+-Index: app/src/main/res/values/ic_launcher_background.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/values/ic_launcher_background.xml b/app/src/main/res/values/ic_launcher_background.xml
+-new file mode 100644
+---- /dev/null	(date 1638944216000)
+-+++ b/app/src/main/res/values/ic_launcher_background.xml	(date 1638944216000)
+-@@ -0,0 +1,4 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<resources>
+-+    <color name="ic_launcher_background">#FFFFFF</color>
+-+</resources>
+-\ No newline at end of file
+-Index: app/src/main/res/layout/activity_main.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:focusable=\"true\"\r\n    android:focusableInTouchMode=\"true\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <ScrollView\r\n        android:id=\"@+id/scrollView2\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:paddingBottom=\"90dp\">\r\n\r\n            <androidx.constraintlayout.widget.ConstraintLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\">\r\n\r\n                <androidx.recyclerview.widget.RecyclerView\r\n                    android:id=\"@+id/recyclerView2\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:clipToPadding=\"false\"\r\n                    android:paddingStart=\"22dp\"\r\n                    android:paddingEnd=\"22dp\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    app:layout_constraintHorizontal_bias=\"0.0\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/textView10\" />\r\n\r\n                <TextView\r\n                    android:id=\"@+id/textView10\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginStart=\"40dp\"\r\n                    android:layout_marginTop=\"16dp\"\r\n                    android:text=\"Penawaran Terbaik\"\r\n                    android:textColor=\"#000000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/recyclerView\" />\r\n\r\n                <TextView\r\n                    android:id=\"@+id/userName\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginStart=\"32dp\"\r\n                    android:layout_marginTop=\"32dp\"\r\n                    android:text=\"Hi, Rechard!\"\r\n                    android:textSize=\"20sp\"\r\n                    android:textStyle=\"bold\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                <TextView\r\n                    android:id=\"@+id/textView5\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"10dp\"\r\n                    android:text=\"Dapatkan kemudahan berkonsultasi dengan ahlinya\"\r\n                    android:textColor=\"#000000\"\r\n                    android:textSize=\"10sp\"\r\n                    app:layout_constraintEnd_toEndOf=\"@+id/userName\"\r\n                    app:layout_constraintHorizontal_bias=\"0.0\"\r\n                    app:layout_constraintStart_toStartOf=\"@+id/userName\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/userName\" />\r\n\r\n                <ImageView\r\n                    android:id=\"@+id/imageView3\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginEnd=\"32dp\"\r\n                    android:src=\"@drawable/profile\"\r\n                    android:layout_marginTop=\"20dp\"\r\n                    app:layout_constraintBottom_toBottomOf=\"@+id/textView5\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    app:layout_constraintTop_toTopOf=\"@+id/userName\" />\r\n\r\n                <androidx.constraintlayout.widget.ConstraintLayout\r\n                    android:id=\"@+id/constraintLayout\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"150dp\"\r\n                    android:layout_marginStart=\"32dp\"\r\n                    android:layout_marginTop=\"16dp\"\r\n                    android:layout_marginEnd=\"32dp\"\r\n                    app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    app:layout_constraintHorizontal_bias=\"0.0\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/imageView3\"\r\n                    app:layout_constraintVertical_bias=\"0.0\">\r\n\r\n\r\n                    <Button\r\n                        android:id=\"@+id/bkonsultasi\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginStart=\"48dp\"\r\n                        android:layout_marginBottom=\"48dp\"\r\n                        android:text=\"Konsultasi\"\r\n                        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginTop=\"8dp\"\r\n                        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                        tools:ignore=\"MissingConstraints\">\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <Button\r\n                        android:id=\"@+id/bBooking\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_marginStart=\"17dp\"\r\n                        android:text=\"Booking\"\r\n                        app:layout_constraintStart_toEndOf=\"@+id/bkonsultasi\"\r\n                        tools:ignore=\"MissingConstraints\"\r\n                        tools:layout_editor_absoluteY=\"54dp\" />\r\n\r\n                </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                <TextView\r\n                    android:id=\"@+id/textView9\"\r\n                    android:layout_width=\"wrap_content\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginStart=\"32dp\"\r\n                    android:layout_marginTop=\"16dp\"\r\n                    android:text=\"Artikel\"\r\n                    android:textColor=\"#000000\"\r\n                    android:textSize=\"18sp\"\r\n                    android:textStyle=\"bold\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/constraintLayout\" />\r\n\r\n                <androidx.recyclerview.widget.RecyclerView\r\n                    android:id=\"@+id/recyclerView\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_marginTop=\"8dp\"\r\n                    android:clipToPadding=\"false\"\r\n                    android:paddingStart=\"22dp\"\r\n                    android:paddingEnd=\"22dp\"\r\n                    app:layout_constraintEnd_toEndOf=\"parent\"\r\n                    app:layout_constraintStart_toStartOf=\"parent\"\r\n                    app:layout_constraintTop_toBottomOf=\"@+id/textView9\" />\r\n            </androidx.constraintlayout.widget.ConstraintLayout>\r\n        </LinearLayout>\r\n    </ScrollView>\r\n\r\n    <androidx.coordinatorlayout.widget.CoordinatorLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"100dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"@+id/scrollView2\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\">\r\n\r\n        <com.google.android.material.bottomappbar.BottomAppBar\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_gravity=\"bottom\"\r\n            android:backgroundTint=\"#f6f6f6\"\r\n            android:id=\"@+id/app_bar\"\r\n            app:fabCradleMargin=\"8dp\"\r\n            app:fabCradleRoundedCornerRadius=\"50dp\"\r\n            app:fabCradleVerticalOffset=\"6dp\">\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"match_parent\"\r\n                android:orientation=\"horizontal\">\r\n\r\n                <LinearLayout\r\n                    android:id=\"@+id/homeBtn\"\r\n                    android:layout_width=\"0dp\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <ImageView\r\n                        android:id=\"@+id/imageHome\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"1\"\r\n                        app:srcCompat=\"@drawable/bottom_btn1\" />\r\n\r\n                    <TextView\r\n                        android:id=\"@+id/textHome\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:text=\"Home\"\r\n                        android:textAlignment=\"center\"\r\n                        android:textColor=\"#676767\"\r\n                        android:textSize=\"12sp\" />\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"0dp\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <ImageView\r\n                        android:id=\"@+id/imageRiwayat\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        app:srcCompat=\"@drawable/bottom_btn2\" />\r\n\r\n                    <TextView\r\n                        android:id=\"@+id/textRiwayat\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:text=\"Riwayat\"\r\n                        android:textAlignment=\"center\"\r\n                        android:textColor=\"#676767\"\r\n                        android:textSize=\"12sp\" />\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"0dp\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <ImageView\r\n                        android:id=\"@+id/imageHistory\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        app:srcCompat=\"@drawable/bottom_btn3\" />\r\n\r\n                    <TextView\r\n                        android:id=\"@+id/textViewHistory\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:text=\"Notification\"\r\n                        android:textAlignment=\"center\"\r\n                        android:textColor=\"#676767\"\r\n                        android:textSize=\"12sp\" />\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"0dp\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <ImageView\r\n                        android:id=\"@+id/imageSetting\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        app:srcCompat=\"@drawable/bottom_btn4\" />\r\n\r\n                    <TextView\r\n                        android:id=\"@+id/textSetting\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:text=\"Profile\"\r\n                        android:textAlignment=\"center\"\r\n                        android:textColor=\"#676767\"\r\n                        android:textSize=\"12sp\" />\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"0dp\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_weight=\"0.2\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <ImageView\r\n                        android:id=\"@+id/imageLogout\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        app:srcCompat=\"@drawable/bottom_btn4\" />\r\n\r\n                    <TextView\r\n                        android:id=\"@+id/textLogout\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:text=\"Logout\"\r\n                        android:textAlignment=\"center\"\r\n                        android:textColor=\"#676767\"\r\n                        android:textSize=\"12sp\" />\r\n                </LinearLayout>\r\n\r\n            </LinearLayout>\r\n        </com.google.android.material.bottomappbar.BottomAppBar>\r\n    </androidx.coordinatorlayout.widget.CoordinatorLayout>\r\n\r\n    <!--<Button\r\n    android:id=\"@+id/logoutBt\"\r\n    android:layout_width=\"wrap_content\"\r\n    android:layout_height=\"wrap_content\"\r\n    app:layout_constraintStart_toStartOf=\"parent\"\r\n    app:layout_constraintEnd_toEndOf=\"parent\"\r\n    android:text=\"Logout\"\r\n    android:textStyle=\"bold\"\r\n    app:layout_constraintTop_toBottomOf=\"@id/text\"/>-->\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+---- a/app/src/main/res/layout/activity_main.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/res/layout/activity_main.xml	(date 1638905910000)
+-@@ -108,10 +108,10 @@
+-                         android:layout_width="wrap_content"
+-                         android:layout_height="wrap_content"
+-                         android:layout_marginStart="48dp"
+--                        android:layout_marginBottom="48dp"
+-                         android:text="Konsultasi"
+-                         app:layout_constraintBottom_toBottomOf="parent"
+--                        app:layout_constraintStart_toStartOf="parent" />
+-+                        app:layout_constraintStart_toStartOf="parent"
+-+                        app:layout_constraintTop_toTopOf="parent" />
+- 
+-                     <androidx.constraintlayout.widget.ConstraintLayout
+-                         android:layout_width="wrap_content"
+-@@ -129,9 +129,11 @@
+-                         android:layout_height="wrap_content"
+-                         android:layout_marginStart="17dp"
+-                         android:text="Booking"
+-+                        app:layout_constraintBottom_toBottomOf="parent"
+-+                        app:layout_constraintEnd_toEndOf="parent"
+-                         app:layout_constraintStart_toEndOf="@+id/bkonsultasi"
+--                        tools:ignore="MissingConstraints"
+--                        tools:layout_editor_absoluteY="54dp" />
+-+                        app:layout_constraintTop_toTopOf="parent"
+-+                        tools:ignore="MissingConstraints" />
+- 
+-                 </androidx.constraintlayout.widget.ConstraintLayout>
+- 
+-Index: app/src/main/res/layout/activity_edit_profile.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/layout/activity_edit_profile.xml b/app/src/main/res/layout/activity_edit_profile.xml
+-new file mode 100644
+---- /dev/null	(date 1639166240000)
+-+++ b/app/src/main/res/layout/activity_edit_profile.xml	(date 1639166240000)
+-@@ -0,0 +1,60 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-+    xmlns:app="http://schemas.android.com/apk/res-auto"
+-+    xmlns:tools="http://schemas.android.com/tools"
+-+    android:layout_width="match_parent"
+-+    android:layout_height="match_parent"
+-+    tools:context=".EditProfileActivity">
+-+
+-+    <de.hdodenhof.circleimageview.CircleImageView
+-+        android:id="@+id/userImage"
+-+        android:layout_width="120dp"
+-+        android:layout_height="120dp"
+-+        android:layout_centerHorizontal="true"
+-+        android:layout_marginTop="40dp"
+-+        android:src="@drawable/profile"/>
+-+
+-+    <RelativeLayout
+-+        android:id="@+id/userRL"
+-+        android:layout_width="match_parent"
+-+        android:layout_height="wrap_content"
+-+        android:layout_marginStart="30dp"
+-+        android:layout_marginTop="200dp"
+-+        android:layout_marginEnd="30dp">
+-+
+-+        <EditText
+-+            android:id="@+id/nameTV"
+-+            android:layout_width="match_parent"
+-+            android:layout_height="wrap_content"
+-+            android:text="Nama" />
+-+
+-+        <EditText
+-+            android:id="@+id/emailTV"
+-+            android:layout_width="match_parent"
+-+            android:layout_height="wrap_content"
+-+            android:text="Email"
+-+            android:layout_marginTop="15dp"
+-+            android:layout_below="@id/nameTV"/>
+-+
+-+        <Button
+-+            android:id="@+id/saveBTN"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:layout_margin="15dp"
+-+            android:layout_centerHorizontal="true"
+-+            android:text="Save"
+-+            android:visibility="gone"
+-+            android:layout_below="@id/emailTV"/>
+-+
+-+    </RelativeLayout>
+-+
+-+    <ProgressBar
+-+        android:id="@+id/progressBar"
+-+        android:layout_width="wrap_content"
+-+        android:layout_height="wrap_content"
+-+        android:layout_centerHorizontal="true"
+-+        android:layout_centerVertical="true"
+-+        android:visibility="gone"
+-+        android:indeterminateTint="@color/design_default_color_primary"/>
+-+
+-+</RelativeLayout>
+-\ No newline at end of file
+-Index: app/src/main/java/com/seaID/hivet/MainActivity.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.seaID.hivet\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.widget.Button\r\nimport android.widget.ImageView\r\nimport android.widget.LinearLayout\r\nimport android.widget.TextView\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\nimport com.google.firebase.ktx.Firebase\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n\r\n    private lateinit var mAuth : FirebaseAuth\r\n    private lateinit var mDbRef : FirebaseFirestore\r\n\r\n    private lateinit var uName : TextView\r\n    private lateinit var uPhoto : ImageView\r\n    private lateinit var bLogout : ImageView\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n\r\n        val uId = intent.getStringExtra(\"Uid\")\r\n\r\n\r\n        mAuth = FirebaseAuth.getInstance()\r\n        mDbRef = FirebaseFirestore.getInstance()\r\n\r\n\r\n        //setUser(uId.toString())\r\n\r\n        uName = findViewById(R.id.userName)\r\n        uPhoto = findViewById(R.id.imageView3)\r\n        bLogout = findViewById(R.id.imageLogout)\r\n\r\n        uName.text = \"Id :  $uId\"\r\n\r\n        bLogout.setOnClickListener {\r\n            mAuth.signOut()\r\n            //start login activity\r\n            startActivity(Intent(this, SignInActivity::class.java))\r\n            finish()\r\n        }\r\n    }\r\n\r\n    private fun setUser(id : String) {\r\n        \r\n    }\r\n\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/com/seaID/hivet/MainActivity.kt b/app/src/main/java/com/seaID/hivet/MainActivity.kt
+---- a/app/src/main/java/com/seaID/hivet/MainActivity.kt	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/java/com/seaID/hivet/MainActivity.kt	(date 1639169190000)
+-@@ -19,6 +19,8 @@
+-     private lateinit var uName : TextView
+-     private lateinit var uPhoto : ImageView
+-     private lateinit var bLogout : ImageView
+-+    private lateinit var bKonsul : Button
+-+    private lateinit var profile : ImageView
+- 
+-     override fun onCreate(savedInstanceState: Bundle?) {
+-         super.onCreate(savedInstanceState)
+-@@ -36,6 +38,8 @@
+-         uName = findViewById(R.id.userName)
+-         uPhoto = findViewById(R.id.imageView3)
+-         bLogout = findViewById(R.id.imageLogout)
+-+        bKonsul = findViewById(R.id.bkonsultasi)
+-+        profile = findViewById(R.id.imageSetting)
+- 
+-         uName.text = "Id :  $uId"
+- 
+-@@ -45,6 +49,16 @@
+-             startActivity(Intent(this, SignInActivity::class.java))
+-             finish()
+-         }
+-+
+-+        bKonsul.setOnClickListener {
+-+            startActivity(Intent(this, ListDokterActivity::class.java))
+-+        }
+-+
+-+        profile.setOnClickListener {
+-+            startActivity(Intent(this, UserProfileActivity::class.java))
+-+        }
+-+
+-+
+-     }
+- 
+-     private fun setUser(id : String) {
+-Index: app/src/main/java/com/seaID/hivet/SignUpActivity.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.seaID.hivet\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.text.Editable\r\nimport android.text.TextWatcher\r\nimport android.widget.Button\r\nimport android.widget.EditText\r\nimport android.widget.Toast\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.database.DatabaseReference\r\nimport com.google.firebase.database.FirebaseDatabase\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\nimport com.seaID.hivet.`class`.User\r\n\r\nclass SignUpActivity : AppCompatActivity() {\r\n\r\n    private lateinit var eName: EditText\r\n    private lateinit var eEmail: EditText\r\n    private lateinit var ePassword: EditText\r\n    private lateinit var bSignup: Button\r\n    private lateinit var mAuth: FirebaseAuth\r\n    private lateinit var mDbRef: FirebaseFirestore\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_sign_up)\r\n\r\n        mAuth = FirebaseAuth.getInstance()\r\n//        mDbRef = FirebaseDatabase.getInstance().getReference()\r\n\r\n        eName = findViewById(R.id.nameET)\r\n        eEmail = findViewById(R.id.emailET)\r\n        ePassword = findViewById(R.id.passwordET)\r\n        bSignup = findViewById(R.id.registerBt)\r\n\r\n        bSignup.isEnabled = false\r\n\r\n        ePassword.addTextChangedListener(textWatcher)\r\n\r\n        bSignup.setOnClickListener {\r\n            val name = eName.text.toString()\r\n            val email = eEmail.text.toString()\r\n            val password = ePassword.text.toString()\r\n\r\n            register(name, email, password)\r\n\r\n//            addUserToDatabase(name, email, \"001\")\r\n        }\r\n    }\r\n\r\n    private fun register(name: String, email: String, password: String) {\r\n\r\n//        locic of creating user\r\n        mAuth.createUserWithEmailAndPassword(email, password)\r\n            .addOnCompleteListener(this) { task ->\r\n                if (task.isSuccessful) {\r\n                    //code for jumping to home\r\n                    addUserToDatabase(name, email, mAuth.currentUser?.uid!!)\r\n                    startActivity(Intent(this, SignInActivity::class.java))\r\n                    finish()\r\n                } else {\r\n                    Toast.makeText(\r\n                        this,\r\n                        \"Some error occurred \" + task.exception,\r\n                        Toast.LENGTH_SHORT\r\n                    ).show()\r\n                }\r\n            }\r\n    }\r\n\r\n    private fun addUserToDatabase(name: String, email: String, uid: String) {\r\n\r\n        mDbRef = FirebaseFirestore.getInstance()\r\n\r\n        val user = User(name, email, uid)\r\n\r\n\r\n        val usersRef = mDbRef.collection(\"users\")\r\n        usersRef.document(uid).set(user)\r\n            .addOnCompleteListener {\r\n                Toast.makeText(this, \"OKE\", Toast.LENGTH_SHORT).show()\r\n            }\r\n            .addOnFailureListener { e ->\r\n                //stored data failed\r\n                Toast.makeText(this, \"SignUp failed due to \" + e.message, Toast.LENGTH_SHORT).show()\r\n            }\r\n\r\n    }\r\n\r\n    private val textWatcher = object : TextWatcher {\r\n\r\n        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {\r\n\r\n        }\r\n\r\n        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {\r\n            bSignup.isEnabled = true\r\n        }\r\n\r\n        override fun afterTextChanged(s: Editable?) {\r\n\r\n        }\r\n\r\n    }\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/com/seaID/hivet/SignUpActivity.kt b/app/src/main/java/com/seaID/hivet/SignUpActivity.kt
+---- a/app/src/main/java/com/seaID/hivet/SignUpActivity.kt	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/java/com/seaID/hivet/SignUpActivity.kt	(date 1639159206000)
+-@@ -74,7 +74,7 @@
+- 
+-         mDbRef = FirebaseFirestore.getInstance()
+- 
+--        val user = User(name, email, uid)
+-+        val user = User(name, email, uid, null)
+- 
+- 
+-         val usersRef = mDbRef.collection("users")
+-Index: app/src/main/res/layout/activity_user_profile.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".UserProfileActivity\">\r\n    \r\n    <EditText\r\n        android:id=\"@+id/etNama\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Nama\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"/>\r\n\r\n    <EditText\r\n        android:id=\"@+id/etNamah\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Nama hewan\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/etNama\"/>\r\n\r\n    <EditText\r\n        android:id=\"@+id/etJenish\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Jenis hewan\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/etNamah\"/>\r\n\r\n    <EditText\r\n        android:id=\"@+id/etKeth\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Keterangan\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@id/etJenish\"/>\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/layout/activity_user_profile.xml b/app/src/main/res/layout/activity_user_profile.xml
+---- a/app/src/main/res/layout/activity_user_profile.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/res/layout/activity_user_profile.xml	(date 1639167064000)
+-@@ -1,45 +1,109 @@
+- <?xml version="1.0" encoding="utf-8"?>
+--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-     xmlns:app="http://schemas.android.com/apk/res-auto"
+-     xmlns:tools="http://schemas.android.com/tools"
+-     android:layout_width="match_parent"
+-     android:layout_height="match_parent"
+-     tools:context=".UserProfileActivity">
+--    
+--    <EditText
+--        android:id="@+id/etNama"
+-+
+-+    <com.google.android.material.imageview.ShapeableImageView
+-+        android:id="@+id/profileIM"
+-+        android:layout_width="110dp"
+-+        android:layout_height="110dp"
+-+        android:layout_centerHorizontal="true"
+-+        android:layout_marginTop="40dp"
+-+        android:src="@drawable/profile" />
+-+
+-+    <TextView
+-+        android:id="@+id/namauTV"
+-+        android:layout_width="wrap_content"
+-+        android:layout_height="wrap_content"
+-+        android:layout_below="@id/profileIM"
+-+        android:layout_centerHorizontal="true"
+-+        android:layout_marginTop="15dp"
+-+        android:text="Name" />
+-+
+-+    <RelativeLayout
+-+        android:id="@+id/userRL"
+-         android:layout_width="match_parent"
+-         android:layout_height="wrap_content"
+--        android:text="Nama"
+--        app:layout_constraintStart_toStartOf="parent"
+--        app:layout_constraintEnd_toEndOf="parent"
+--        app:layout_constraintTop_toTopOf="parent"/>
+-+        android:layout_marginStart="30dp"
+-+        android:layout_marginTop="200dp"
+-+        android:layout_marginEnd="30dp">
+- 
+--    <EditText
+--        android:id="@+id/etNamah"
+--        android:layout_width="match_parent"
+--        android:layout_height="wrap_content"
+--        android:text="Nama hewan"
+--        app:layout_constraintStart_toStartOf="parent"
+--        app:layout_constraintEnd_toEndOf="parent"
+--        app:layout_constraintTop_toBottomOf="@id/etNama"/>
+-+        <TextView
+-+            android:id="@+id/emailTV"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:text="Email" />
+-+
+-+        <TextView
+-+            android:layout_width="match_parent"
+-+            android:layout_height="wrap_content"
+-+            android:layout_below="@id/emailTV"
+-+            android:layout_marginTop="15dp"
+-+            android:text="Alamat" />
+- 
+--    <EditText
+--        android:id="@+id/etJenish"
+-+    </RelativeLayout>
+-+
+-+    <RelativeLayout
+-+        android:id="@+id/menuRL"
+-         android:layout_width="match_parent"
+-         android:layout_height="wrap_content"
+--        android:text="Jenis hewan"
+--        app:layout_constraintStart_toStartOf="parent"
+--        app:layout_constraintEnd_toEndOf="parent"
+--        app:layout_constraintTop_toBottomOf="@id/etNamah"/>
+-+        android:layout_marginTop="30dp"
+-+        android:layout_below="@id/userRL">
+-+
+-+        <Button
+-+            android:id="@+id/suntinTV"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:text="Sunting"
+-+            android:layout_marginStart="30dp"/>
+- 
+--    <EditText
+--        android:id="@+id/etKeth"
+-+        <Button
+-+            android:id="@+id/gpasswordTV"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:text="Ganti Password"
+-+            android:layout_marginStart="30dp"
+-+            android:layout_toEndOf="@id/suntinTV"/>
+-+
+-+    </RelativeLayout>
+-+
+-+    <RelativeLayout
+-+        android:id="@+id/mypetsRL"
+-         android:layout_width="match_parent"
+-         android:layout_height="wrap_content"
+--        android:text="Keterangan"
+--        app:layout_constraintStart_toStartOf="parent"
+--        app:layout_constraintEnd_toEndOf="parent"
+--        app:layout_constraintTop_toBottomOf="@id/etJenish"/>
+-+        android:layout_marginTop="30dp"
+-+        android:layout_below="@id/menuRL">
+-+
+-+        <TextView
+-+            android:id="@+id/peliharaanTV"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:layout_marginStart="30dp"
+-+            android:text="Hewan Peliharaanku" />
+-+
+-+        <Button
+-+            android:id="@+id/addpetsB"
+-+            android:layout_width="wrap_content"
+-+            android:layout_height="wrap_content"
+-+            android:text="Tambah"
+-+            android:layout_marginStart="30dp"
+-+            android:layout_toEndOf="@id/peliharaanTV"/>
+-+
+-+    </RelativeLayout>
+-+
+-+    <RelativeLayout
+-+        android:layout_width="match_parent"
+-+        android:layout_height="wrap_content"
+-+        android:layout_marginTop="30dp"
+-+        android:layout_below="@id/mypetsRL">
+-+
+-+        <androidx.recyclerview.widget.RecyclerView
+-+            android:layout_width="match_parent"
+-+            android:layout_height="wrap_content"/>
+-+
+-+    </RelativeLayout>
+- 
+--</androidx.constraintlayout.widget.ConstraintLayout>
+-\ No newline at end of file
+-+</RelativeLayout>
+-\ No newline at end of file
+-Index: app/src/main/java/com/seaID/hivet/EditProfileActivity.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/com/seaID/hivet/EditProfileActivity.kt b/app/src/main/java/com/seaID/hivet/EditProfileActivity.kt
+-new file mode 100644
+---- /dev/null	(date 1639210546000)
+-+++ b/app/src/main/java/com/seaID/hivet/EditProfileActivity.kt	(date 1639210546000)
+-@@ -0,0 +1,143 @@
+-+package com.seaID.hivet
+-+
+-+import android.app.ProgressDialog
+-+import android.content.Intent
+-+import android.graphics.Bitmap
+-+import android.net.Uri
+-+import androidx.appcompat.app.AppCompatActivity
+-+import android.os.Bundle
+-+import android.provider.MediaStore
+-+import android.renderscript.ScriptGroup
+-+import android.util.Log
+-+import android.view.View
+-+import android.widget.Toast
+-+import com.bumptech.glide.Glide
+-+import com.google.android.gms.auth.api.signin.internal.Storage
+-+import com.google.android.gms.tasks.OnFailureListener
+-+import com.google.android.gms.tasks.OnSuccessListener
+-+import com.google.firebase.auth.FirebaseAuth
+-+import com.google.firebase.auth.FirebaseUser
+-+import com.google.firebase.database.DatabaseReference
+-+import com.google.firebase.database.FirebaseDatabase
+-+import com.google.firebase.firestore.FirebaseFirestore
+-+import com.google.firebase.storage.FirebaseStorage
+-+import com.google.firebase.storage.OnProgressListener
+-+import com.google.firebase.storage.StorageReference
+-+import com.google.firebase.storage.UploadTask
+-+import com.seaID.hivet.`class`.User
+-+import com.seaID.hivet.databinding.ActivityEditProfileBinding
+-+import java.io.IOException
+-+import java.util.*
+-+
+-+class EditProfileActivity : AppCompatActivity() {
+-+
+-+    private var filePath : Uri? = null
+-+    private final val PICK_IMAGE_REQUEST : Int = 2020
+-+
+-+    private lateinit var binding: ActivityEditProfileBinding
+-+
+-+    private lateinit var mAuth: FirebaseUser
+-+    private lateinit var mDbRef: FirebaseFirestore
+-+    private lateinit var storage : FirebaseStorage
+-+    private lateinit var storageRef : StorageReference
+-+
+-+    override fun onCreate(savedInstanceState: Bundle?) {
+-+        super.onCreate(savedInstanceState)
+-+        binding = ActivityEditProfileBinding.inflate(layoutInflater)
+-+        val view = binding.root
+-+        setContentView(view)
+-+
+-+        mAuth = FirebaseAuth.getInstance().currentUser!!
+-+        mDbRef = FirebaseFirestore.getInstance()
+-+
+-+
+-+        storage = FirebaseStorage.getInstance()
+-+        storageRef = storage.reference
+-+
+-+        showUser()
+-+
+-+        binding.userImage.setOnClickListener{
+-+            chooseImage()
+-+        }
+-+
+-+        binding.saveBTN.setOnClickListener {
+-+            uploadImage()
+-+            binding.progressBar.visibility = View.VISIBLE
+-+        }
+-+    }
+-+
+-+    private fun chooseImage(){
+-+        val intent: Intent = Intent()
+-+        intent.type = "image/*"
+-+        intent.action = Intent.ACTION_GET_CONTENT
+-+        startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE_REQUEST)
+-+    }
+-+
+-+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+-+        super.onActivityResult(requestCode, resultCode, data)
+-+        if (requestCode == PICK_IMAGE_REQUEST && resultCode != null){
+-+            filePath = data!!.data
+-+            try {
+-+                var bitmap:Bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
+-+                binding.userImage.setImageBitmap(bitmap)
+-+                binding.saveBTN.visibility = View.VISIBLE
+-+            }catch (e:IOException){
+-+                e.printStackTrace()
+-+            }
+-+        }
+-+    }
+-+
+-+    private fun uploadImage(){
+-+        if(filePath != null){
+-+
+-+            var ref:StorageReference = storageRef.child("Image/"+UUID.randomUUID().toString())
+-+            ref.putFile(filePath!!)
+-+                .addOnSuccessListener {
+-+                    OnSuccessListener<UploadTask.TaskSnapshot>{
+-+                        val name = binding.nameTV.text.toString()
+-+                        val email = binding.emailTV.text.toString()
+-+                        val useredit = User(name, email, mAuth.uid, filePath.toString())
+-+
+-+                        val user = mDbRef.collection("users")
+-+                        user.document(mAuth.uid).set(useredit)
+-+
+-+                        binding.progressBar.visibility = View.GONE
+-+                        Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
+-+                        binding.saveBTN.visibility = View.GONE
+-+                    }
+-+                }
+-+                .addOnFailureListener {
+-+                    OnFailureListener{
+-+                        binding.progressBar.visibility = View.GONE
+-+                        Toast.makeText(this, "Failed "+it.message, Toast.LENGTH_SHORT).show()
+-+                    }
+-+                }
+-+        }
+-+    }
+-+
+-+    public fun showUser(){
+-+        val uidRef  = mDbRef.collection("users").document(mAuth.uid)
+-+
+-+        uidRef.get().addOnSuccessListener { doc ->
+-+            if (doc != null) {
+-+                val user = doc.toObject(User::class.java)
+-+                binding.nameTV.setText(user!!.name)
+-+                binding.emailTV.setText(user!!.email)
+-+                if (user!!.photoProfile == ""){
+-+                    binding.userImage.setImageResource(R.drawable.profile)
+-+                }else{
+-+                    Glide.with(this).load(user!!.photoProfile).into(binding.userImage)
+-+                }
+-+                Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
+-+            } else {
+-+                Toast.makeText(this, "No such document ", Toast.LENGTH_SHORT).show()
+-+            }
+-+        }.addOnFailureListener { exception ->
+-+            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
+-+        }
+-+    }
+-+
+-+    public fun updateDataUser(){
+-+
+-+    }
+-+}
+-\ No newline at end of file
+-Index: app/src/main/java/com/seaID/hivet/ListDokterActivity.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.seaID.hivet\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\n\r\nclass ListDokterActivity : AppCompatActivity() {\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_list_dokter)\r\n    }\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/com/seaID/hivet/ListDokterActivity.kt b/app/src/main/java/com/seaID/hivet/ListDokterActivity.kt
+---- a/app/src/main/java/com/seaID/hivet/ListDokterActivity.kt	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/java/com/seaID/hivet/ListDokterActivity.kt	(date 1638982344000)
+-@@ -2,10 +2,60 @@
+- 
+- import androidx.appcompat.app.AppCompatActivity
+- import android.os.Bundle
+-+import android.util.Log
+-+import androidx.recyclerview.widget.LinearLayoutManager
+-+import androidx.recyclerview.widget.RecyclerView
+-+import com.google.firebase.firestore.*
+-+import com.google.firebase.firestore.EventListener
+-+import java.util.*
+-+import kotlin.collections.ArrayList
+- 
+- class ListDokterActivity : AppCompatActivity() {
+-+
+-+    private lateinit var recyclerView: RecyclerView
+-+    private lateinit var drhArrayList: ArrayList<drh>
+-+    private lateinit var drhAdapter: drhAdapter
+-+    private lateinit var db : FirebaseFirestore
+-+
+-     override fun onCreate(savedInstanceState: Bundle?) {
+-         super.onCreate(savedInstanceState)
+-         setContentView(R.layout.activity_list_dokter)
+-+
+-+        recyclerView = findViewById(R.id.recyclerView)
+-+        recyclerView.layoutManager = LinearLayoutManager(this)
+-+        recyclerView.setHasFixedSize(true)
+-+
+-+        drhArrayList = arrayListOf()
+-+
+-+        drhAdapter = drhAdapter(drhArrayList)
+-+
+-+        recyclerView.adapter = drhAdapter
+-+
+-+        EventChangeListener()
+-+
+-+
+-+    }
+-+
+-+    private fun EventChangeListener() {
+-+        db = FirebaseFirestore.getInstance()
+-+        db.collection("drh")
+-+            .addSnapshotListener(object : EventListener<QuerySnapshot>{
+-+                override fun onEvent(
+-+                    value: QuerySnapshot?,
+-+                    error: FirebaseFirestoreException?
+-+                ){
+-+                    if (error != null){
+-+                        Log.e("Error: ", error.message.toString())
+-+                        return
+-+                    }
+-+
+-+                    for (dc : DocumentChange in value?.documentChanges!!){
+-+                        if (dc.type == DocumentChange.Type.ADDED){
+-+                            drhArrayList.add(dc.document.toObject(drh::class.java))
+-+                        }
+-+                    }
+-+                    drhAdapter.notifyDataSetChanged()
+-+                }
+-+            })
+-     }
+- }
+-\ No newline at end of file
+-Index: app/src/main/res/layout/activity_list_dokter.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".ListDokterActivity\">\r\n\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        tools:listitem=\"@layout/user_dokter_layout\"/>\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/layout/activity_list_dokter.xml b/app/src/main/res/layout/activity_list_dokter.xml
+---- a/app/src/main/res/layout/activity_list_dokter.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/res/layout/activity_list_dokter.xml	(date 1638981326000)
+-@@ -8,11 +8,11 @@
+- 
+- 
+-     <androidx.recyclerview.widget.RecyclerView
+-+        android:id="@+id/recyclerView"
+-         android:layout_width="match_parent"
+-         android:layout_height="match_parent"
+-         app:layout_constraintBottom_toBottomOf="parent"
+-         app:layout_constraintEnd_toEndOf="parent"
+-         app:layout_constraintStart_toStartOf="parent"
+--        app:layout_constraintTop_toTopOf="parent"
+--        tools:listitem="@layout/user_dokter_layout"/>
+-+        app:layout_constraintTop_toTopOf="parent"/>
+- </androidx.constraintlayout.widget.ConstraintLayout>
+-\ No newline at end of file
+-Index: app/build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>plugins {\r\n    id 'com.android.application'\r\n    id 'kotlin-android'\r\n}\r\n\r\nandroid {\r\n    compileSdk 31\r\n\r\n    defaultConfig {\r\n        applicationId \"com.seaID.hivet\"\r\n        minSdk 21\r\n        targetSdk 31\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = '1.8'\r\n    }\r\n\r\n    //enable view binding\r\n    buildFeatures {\r\n        viewBinding = true\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation 'androidx.core:core-ktx:1.7.0'\r\n    implementation 'androidx.appcompat:appcompat:1.3.1'\r\n    implementation 'com.google.android.material:material:1.3.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'\r\n    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'\r\n    implementation 'com.google.firebase:firebase-database-ktx:20.0.2'\r\n    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'\r\n    implementation 'com.google.android.gms:play-services-maps:18.0.0'\r\n    testImplementation 'junit:junit:4.+'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.3'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'\r\n\r\n    implementation platform('com.google.firebase:firebase-bom:29.0.0')\r\n    implementation 'com.google.firebase:firebase-analytics-ktx'\r\n\r\n    implementation 'com.google.android.gms:play-services-auth:19.2.0'\r\n}\r\n\r\napply plugin: 'com.android.application'\r\napply plugin: 'com.google.gms.google-services'
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/build.gradle b/app/build.gradle
+---- a/app/build.gradle	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/build.gradle	(date 1639167288000)
+-@@ -46,6 +46,7 @@
+-     implementation 'com.google.firebase:firebase-database-ktx:20.0.2'
+-     implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
+-     implementation 'com.google.android.gms:play-services-maps:18.0.0'
+-+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
+-     testImplementation 'junit:junit:4.+'
+-     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+-     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+-@@ -53,6 +54,11 @@
+-     implementation platform('com.google.firebase:firebase-bom:29.0.0')
+-     implementation 'com.google.firebase:firebase-analytics-ktx'
+- 
+-+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+-+
+-+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+-+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+-+
+-     implementation 'com.google.android.gms:play-services-auth:19.2.0'
+- }
+- 
+-Index: app/src/main/res/layout/user_dokter_layout.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"wrap_content\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/txt_nama_dokter\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"drh. Maulana\"\r\n            android:textSize=\"30sp\"\r\n            android:layout_marginLeft=\"10dp\"\r\n            android:layout_marginTop=\"10dp\"\r\n            android:layout_marginBottom=\"10dp\"/>\r\n\r\n</RelativeLayout>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/layout/user_dokter_layout.xml b/app/src/main/res/layout/user_dokter_layout.xml
+---- a/app/src/main/res/layout/user_dokter_layout.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/res/layout/user_dokter_layout.xml	(date 1638979978000)
+-@@ -1,16 +1,78 @@
+- <?xml version="1.0" encoding="utf-8"?>
+--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+-     android:layout_width="match_parent"
+--    android:layout_height="wrap_content">
+-+    android:layout_height="wrap_content"
+-+    xmlns:app="http://schemas.android.com/apk/res-auto"
+-+    app:cardElevation="8dp"
+-+    app:cardCornerRadius="8dp"
+-+    android:layout_margin="16dp">
+-+
+-+       <LinearLayout
+-+           android:layout_width="wrap_content"
+-+           android:layout_height="wrap_content"
+-+           android:layout_marginStart="16dp"
+-+           android:layout_marginVertical="6dp"
+-+           android:orientation="vertical">
+-+
+-+               <LinearLayout
+-+                   android:layout_width="wrap_content"
+-+                   android:layout_height="wrap_content"
+-+                   android:layout_gravity="center_vertical"
+-+                   android:orientation="horizontal">
+- 
+--        <TextView
+--            android:id="@+id/txt_nama_dokter"
+--            android:layout_width="match_parent"
+--            android:layout_height="wrap_content"
+--            android:text="drh. Maulana"
+--            android:textSize="30sp"
+--            android:layout_marginLeft="10dp"
+--            android:layout_marginTop="10dp"
+--            android:layout_marginBottom="10dp"/>
+-+                       <TextView
+-+                           android:id="@+id/namedrhTV"
+-+                           android:layout_width="wrap_content"
+-+                           android:layout_height="wrap_content"
+-+                           android:text="Nama Dokter"
+-+                           android:textSize="26sp"/>
+-+
+-+               </LinearLayout>
+-+
+-+               <LinearLayout
+-+                   android:layout_width="wrap_content"
+-+                   android:layout_height="wrap_content"
+-+                   android:layout_gravity="center_vertical"
+-+                   android:orientation="horizontal">
+-+
+-+                       <TextView
+-+                           android:id="@+id/workexpTV"
+-+                           android:layout_width="wrap_content"
+-+                           android:layout_height="wrap_content"
+-+                           android:text="Pengalaman"
+-+                           android:textSize="20sp" />
+-+
+-+               </LinearLayout>
+-+
+-+               <LinearLayout
+-+                   android:layout_width="wrap_content"
+-+                   android:layout_height="wrap_content"
+-+                   android:layout_gravity="center_vertical"
+-+                   android:orientation="horizontal">
+-+
+-+                       <TextView
+-+                           android:id="@+id/priceTV"
+-+                           android:layout_width="wrap_content"
+-+                           android:layout_height="wrap_content"
+-+                           android:text="Harga"
+-+                           android:textSize="20sp"/>
+-+
+-+               </LinearLayout>
+-+
+-+               <LinearLayout
+-+                   android:layout_width="wrap_content"
+-+                   android:layout_height="wrap_content"
+-+                   android:layout_gravity="center_vertical"
+-+                   android:orientation="horizontal">
+-+
+-+                       <Button
+-+                           android:id="@+id/konsulbt"
+-+                           android:layout_width="wrap_content"
+-+                           android:layout_height="wrap_content"
+-+                           android:text="Konsultasi"/>
+-+
+-+               </LinearLayout>
+-+
+-+       </LinearLayout>
+- 
+--</RelativeLayout>
+-\ No newline at end of file
+-+</androidx.cardview.widget.CardView>
+-\ No newline at end of file
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"GRADLE\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+---- a/.idea/gradle.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/.idea/gradle.xml	(date 1639286799839)
+-@@ -1,12 +1,12 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+--  <component name="GradleMigrationSettings" migrationVersion="1" />
+-   <component name="GradleSettings">
+-     <option name="linkedExternalProjectsSettings">
+-       <GradleProjectSettings>
+-         <option name="testRunner" value="GRADLE" />
+-         <option name="distributionType" value="DEFAULT_WRAPPED" />
+-         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-+        <option name="gradleJvm" value="1.8" />
+-         <option name="modules">
+-           <set>
+-             <option value="$PROJECT_DIR$" />
+-Index: .idea/misc.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.2484375\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.2484375\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/drawable/light_orange_back.xml\" value=\"0.2484375\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/drawable/search_back.xml\" value=\"0.2484375\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_forgot_password.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_list_dokter.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_main.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_sign_in.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_sign_up.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_user_profile.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/SMT 7/TA/hivet/app/src/main/res/layout/user_dokter_layout.xml\" value=\"0.23229166666666667\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/misc.xml b/.idea/misc.xml
+---- a/.idea/misc.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/.idea/misc.xml	(date 1639286799743)
+-@@ -1,26 +1,5 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+--  <component name="DesignSurface">
+--    <option name="filePathToZoomLevelMap">
+--      <map>
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2484375" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2484375" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/drawable/light_orange_back.xml" value="0.2484375" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/drawable/search_back.xml" value="0.2484375" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_forgot_password.xml" value="0.23229166666666667" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_list_dokter.xml" value="0.23229166666666667" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_sign_in.xml" value="0.2" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_sign_up.xml" value="0.23229166666666667" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.23229166666666667" />
+--        <entry key="..\:/SMT 7/TA/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.23229166666666667" />
+--      </map>
+--    </option>
+--  </component>
+--  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+--    <output url="file://$PROJECT_DIR$/build/classes" />
+--  </component>
+--  <component name="ProjectType">
+--    <option name="id" value="Android" />
+--  </component>
+-+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+-+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
+- </project>
+-\ No newline at end of file
+-Index: .idea/vcs.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"VcsDirectoryMappings\">\r\n    <mapping directory=\"$PROJECT_DIR$\" vcs=\"Git\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+---- a/.idea/vcs.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/.idea/vcs.xml	(date 1639286799791)
+-@@ -1,6 +1,6 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-   <component name="VcsDirectoryMappings">
+--    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-+    <mapping directory="" vcs="Git" />
+-   </component>
+- </project>
+-\ No newline at end of file
+-Index: app/src/main/java/com/seaID/hivet/drhAdapter.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/com/seaID/hivet/drhAdapter.kt b/app/src/main/java/com/seaID/hivet/drhAdapter.kt
+-new file mode 100644
+---- /dev/null	(date 1638981094000)
+-+++ b/app/src/main/java/com/seaID/hivet/drhAdapter.kt	(date 1638981094000)
+-@@ -0,0 +1,34 @@
+-+package com.seaID.hivet
+-+
+-+import android.view.LayoutInflater
+-+import android.view.View
+-+import android.view.ViewGroup
+-+import android.widget.TextView
+-+import androidx.appcompat.view.menu.ActionMenuItemView
+-+import androidx.recyclerview.widget.RecyclerView
+-+
+-+class drhAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Adapter<drhAdapter.MyViewHolder>() {
+-+
+-+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): drhAdapter.MyViewHolder {
+-+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.user_dokter_layout, parent, false)
+-+        return MyViewHolder(itemView)
+-+    }
+-+
+-+    override fun onBindViewHolder(holder: drhAdapter.MyViewHolder, position: Int) {
+-+        val drh : drh = drhList[position]
+-+        holder.name.text = drh.Name
+-+        holder.workexp.text = drh.WorkExp + " Tahun"
+-+        holder.price.text = "Rp. 35000"
+-+    }
+-+
+-+    override fun getItemCount(): Int {
+-+        return drhList.size
+-+    }
+-+
+-+    public class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+-+
+-+        val name : TextView = itemView.findViewById(R.id.namedrhTV)
+-+        val workexp : TextView = itemView.findViewById(R.id.workexpTV)
+-+        val price : TextView = itemView.findViewById(R.id.priceTV)
+-+    }
+-+}
+-\ No newline at end of file
+-Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<adaptive-icon xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <background android:drawable=\"@drawable/ic_launcher_background\" />\r\n    <foreground android:drawable=\"@drawable/ic_launcher_foreground\" />\r\n</adaptive-icon>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+---- a/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(date 1638944216000)
+-@@ -1,5 +1,5 @@
+- <?xml version="1.0" encoding="utf-8"?>
+- <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+--    <background android:drawable="@drawable/ic_launcher_background" />
+--    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-+    <background android:drawable="@color/ic_launcher_background"/>
+-+    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+- </adaptive-icon>
+-\ No newline at end of file
+-Index: app/src/main/java/com/seaID/hivet/class/User.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.seaID.hivet.`class`\r\n\r\nclass User {\r\n    var name: String? = null\r\n    var email: String? = null\r\n    var uid: String? = null\r\n\r\n    constructor(){}\r\n\r\n    constructor(name: String?, email: String?, uid: String?) {\r\n        this.name = name\r\n        this.email = email\r\n        this.uid = uid\r\n    }\r\n\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/com/seaID/hivet/class/User.kt b/app/src/main/java/com/seaID/hivet/class/User.kt
+---- a/app/src/main/java/com/seaID/hivet/class/User.kt	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/java/com/seaID/hivet/class/User.kt	(date 1639151550000)
+-@@ -4,13 +4,15 @@
+-     var name: String? = null
+-     var email: String? = null
+-     var uid: String? = null
+-+    var photoProfile : String? = null
+- 
+-     constructor(){}
+- 
+--    constructor(name: String?, email: String?, uid: String?) {
+-+    constructor(name: String?, email: String?, uid: String?, photoProfile: String?) {
+-         this.name = name
+-         this.email = email
+-         this.uid = uid
+-+        this.photoProfile = photoProfile
+-     }
+- 
+- }
+-\ No newline at end of file
+-Index: app/src/main/java/com/seaID/hivet/drh.kt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/java/com/seaID/hivet/drh.kt b/app/src/main/java/com/seaID/hivet/drh.kt
+-new file mode 100644
+---- /dev/null	(date 1638980314000)
+-+++ b/app/src/main/java/com/seaID/hivet/drh.kt	(date 1638980314000)
+-@@ -0,0 +1,3 @@
+-+package com.seaID.hivet
+-+
+-+data class drh(var Name : String ?= null, var WorkExp : String ?= null)
+-Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<adaptive-icon xmlns:android=\"http://schemas.android.com/apk/res/android\">\r\n    <background android:drawable=\"@drawable/ic_launcher_background\" />\r\n    <foreground android:drawable=\"@drawable/ic_launcher_foreground\" />\r\n</adaptive-icon>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+---- a/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(revision 411de9dcfea579ba107f5116403a78d820fbf7ee)
+-+++ b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(date 1638944216000)
+-@@ -1,5 +1,5 @@
+- <?xml version="1.0" encoding="utf-8"?>
+- <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+--    <background android:drawable="@drawable/ic_launcher_background" />
+--    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+-+    <background android:drawable="@color/ic_launcher_background"/>
+-+    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+- </adaptive-icon>
+-\ No newline at end of file
