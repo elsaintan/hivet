@@ -17,6 +17,7 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
     var daerah : String ?= null
     private var formatDate = SimpleDateFormat("dd MMMM yyyy", Locale.US)
     var date : String ?= null
+    var counter : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,14 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
             intent.putExtra("tanggal", date)
             intent.putExtra("daerah", daerah)
             startActivity(intent)
+        }
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        counter++
+        if (counter == 1){
+            super.onBackPressed()
         }
     }
 

@@ -19,15 +19,6 @@
         android:layout_marginBottom="570dp"
         android:src="@drawable/profile" />
 
-    <TextView
-        android:id="@+id/namauTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profileIM"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Name" />
-
     <RelativeLayout
         android:id="@+id/userRL"
         android:layout_width="match_parent"
@@ -37,10 +28,18 @@
         android:layout_marginEnd="30dp">
 
         <TextView
+            android:id="@+id/namauTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:text="Name" />
+
+        <TextView
             android:id="@+id/emailTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/emailTV"
+            android:layout_below="@id/namauTV"
             android:layout_marginTop="15dp"
             android:text="Alamat" />
 
@@ -65,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_toEndOf="@id/suntinTV"
+            android:layout_toEndOf="@id/suntingTV"
             android:text="Ganti Password" />
 
     </RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PeliharaanActivity">
+
+    <TextView
+        android:id="@+id/namahTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Nama Hewan Peliharaan"/>
+
+    <EditText
+        android:id="@+id/namaHET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nama"
+        android:layout_below="@id/namahTV"/>
+
+    <TextView
+        android:id="@+id/jenisTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Jenis Hewan Peliharaan"
+        android:layout_below="@id/namaHET"/>
+
+    <EditText
+        android:id="@+id/jenisET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Jenis"
+        android:layout_below="@id/jenisTV"/>
+
+    <TextView
+        android:id="@+id/ketTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Keterangan tambahan"
+        android:layout_below="@+id/jenisET"/>
+
+    <EditText
+        android:id="@+id/ketET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Keterangan"
+        android:layout_below="@id/ketTV"/>
+
+    <Button
+        android:id="@+id/saveBT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ketET"
+        android:text="Save"/>
+
+
+</RelativeLayout>

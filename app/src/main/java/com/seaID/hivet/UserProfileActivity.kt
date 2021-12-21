@@ -32,6 +32,8 @@ class UserProfileActivity : AppCompatActivity() {
 
     private lateinit var mDbRef: FirebaseFirestore
 
+    var counter : Int = 0
+
     //constant
     private companion object{
         private const val RC_SIGN_IN = 100
@@ -56,9 +58,7 @@ class UserProfileActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseFirestore.getInstance()
 
-        val currentUser = mAuth.currentUser
-
-        loadProfile(currentUser?.uid!!)
+        loadProfile(mAuth.currentUser!!.uid)
 
         dataPeliharaan()
 
@@ -70,6 +70,18 @@ class UserProfileActivity : AppCompatActivity() {
             finish()
         }
 
+        mybinding.addpetsB.setOnClickListener {
+            startActivity(Intent(this, PeliharaanActivity::class.java))
+        }
+
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        counter++
+        if (counter == 1){
+            super.onBackPressed()
+        }
     }
 
     private fun dataPeliharaan() {
@@ -114,7 +126,7 @@ private fun loadProfile(id : String) {
                 mybinding.namauTV.text = user!!.name
                 mybinding.emailTV.text = user!!.email
                 if (user!!.photoProfile == ""){
-                    mybinding.profileIM.setImageResource(R.drawable.profile)
+                    mybinding.profileIM.setImageResource(R.drawable.gambar_akun_sign_in)
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(mybinding.profileIM)
                 }

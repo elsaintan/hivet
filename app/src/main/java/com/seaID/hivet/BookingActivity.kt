@@ -23,6 +23,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     private lateinit var db : FirebaseFirestore
     val pets = ArrayList<String>()
     var text: String ?= null
+    var counter : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,14 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
         showdetailData(uId.toString())
 
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        counter++
+        if (counter == 1){
+            super.onBackPressed()
+        }
     }
 
     private fun showdetailData(id : String) {
