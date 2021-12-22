@@ -4,59 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/biru_lebih_keren"
+    android:backgroundTint="@color/biru_lebih_keren"
     tools:context=".PeliharaanActivity">
 
     <TextView
         android:id="@+id/namahTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Nama Hewan Peliharaan"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Nama Hewan Peliharaan" />
 
     <EditText
         android:id="@+id/namaHET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/namahTV"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_input_field"
         android:hint="Nama"
-        android:layout_below="@id/namahTV"/>
+        android:padding="16dp" />
 
     <TextView
         android:id="@+id/jenisTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Jenis Hewan Peliharaan"
-        android:layout_below="@id/namaHET"/>
+        android:layout_below="@id/namaHET"
+        android:layout_marginLeft="16dp"
+        android:text="Jenis Hewan Peliharaan" />
 
     <EditText
         android:id="@+id/jenisET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/jenisTV"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_input_field"
         android:hint="Jenis"
-        android:layout_below="@id/jenisTV"/>
+        android:padding="16dp" />
 
     <TextView
         android:id="@+id/ketTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Keterangan tambahan"
-        android:layout_below="@+id/jenisET"/>
+        android:layout_below="@+id/jenisET"
+        android:layout_marginLeft="16dp"
+        android:text="Keterangan tambahan" />
 
     <EditText
         android:id="@+id/ketET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ketTV"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_input_field"
         android:hint="Keterangan"
-        android:layout_below="@id/ketTV"/>
+        android:padding="16dp" />
 
     <Button
         android:id="@+id/saveBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/ketET"
-        android:text="Save"/>
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Simpan"
+        android:textColor="@color/biru_keren" />
 
 
 </RelativeLayout>

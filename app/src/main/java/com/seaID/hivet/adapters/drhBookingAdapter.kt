@@ -7,11 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.seaID.hivet.BookingActivity
-import com.seaID.hivet.KonsultasiActivity
 import com.seaID.hivet.R
 import com.seaID.hivet.models.drh
 

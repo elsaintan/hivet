@@ -3,19 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_booking.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_edit_profile.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_filter_booking.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_forgot_password.xml" value="0.11354166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_konsultasi.xml" value="0.4" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_list_dokter.xml" value="0.2085201793721973" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_peliharaan.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_sign_in.xml" value="0.11354166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/peliharaan_layout.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/update_pw_layout.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.23229166666666667" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_booking.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_edit_profile.xml" value="0.11979166666666667" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_forgot_password.xml" value="0.2" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_konsultasi.xml" value="0.11979166666666667" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_list_dokter.xml" value="0.11979166666666667" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_maps.xml" value="0.11979166666666667" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_payment.xml" value="0.11979166666666667" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_peliharaan.xml" value="0.264" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_sign_in.xml" value="0.2" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_sign_up.xml" value="0.136" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.2" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/peliharaan_layout.xml" value="0.2" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/update_pw_layout.xml" value="0.2" />
+        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.176" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1021316528320313" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.2253143310546875" />
       </map>
