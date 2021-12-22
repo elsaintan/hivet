@@ -37,11 +37,11 @@
         android:layout_below="@id/tanggal"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
-        android:text="Selanjutnya"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/biru_keren"
+        android:backgroundTint="@color/green_terang"
         android:fontFamily="@font/roboto_bold"
+        android:text="Selanjutnya"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="267dp" />
 </RelativeLayout>

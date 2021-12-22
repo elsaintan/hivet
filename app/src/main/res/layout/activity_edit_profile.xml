@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/biru_lebih_keren"
     tools:context=".EditProfileActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -26,6 +27,7 @@
             android:id="@+id/nameTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_input_field"
             android:hint="Nama" />
 
         <EditText
@@ -33,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
+            android:background="@drawable/background_input_field"
             android:layout_marginTop="15dp"
             android:layout_below="@id/nameTV"/>
 
