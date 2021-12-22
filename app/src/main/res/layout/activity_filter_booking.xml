@@ -4,34 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/biru_lebih_keren"
     tools:context=".FilterBookingActivity">
 
     <Spinner
         android:id="@+id/daerahS"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/background_input_field"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="134dp"
-        android:layout_marginTop="30dp"/>
+        android:padding="16dp"
+        tools:layout_editor_absoluteY="134dp" />
 
     <EditText
         android:id="@+id/tanggal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/daerahS"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/background_input_field"
         android:ems="10"
-        android:text="Pick Date"
+        android:padding="16dp"
+        android:text="Pilih Tanggal"
         tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="187dp"
-        android:layout_below="@id/daerahS"/>
+        tools:layout_editor_absoluteY="187dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="267dp"
+        android:layout_below="@id/tanggal"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tanggal"/>
+        android:layout_marginTop="27dp"
+        android:text="Selanjutnya"
+        android:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/biru_keren"
+        android:fontFamily="@font/roboto_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="267dp" />
 </RelativeLayout>
