@@ -7,97 +7,125 @@
     android:background="#EBF6FF"
     tools:context=".UserProfileActivity">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/profileIM"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="153dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="570dp"
-        android:src="@drawable/profile" />
-
-    <RelativeLayout
-        android:id="@+id/userRL"
+    <LinearLayout
+        android:id="@+id/linear_layout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="30dp">
+        android:layout_height="150dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/kotak_profil">
 
-        <TextView
-            android:id="@+id/namauTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="13dp"
-            android:text="Name" />
-
-        <TextView
-            android:id="@+id/emailTV"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/namauTV"
-            android:layout_marginTop="15dp"
-            android:text="Alamat" />
+            android:layout_height="match_parent">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/namauTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Name"
+                android:textColor="#000000"
+                app:layout_constraintStart_toEndOf="@+id/profileIM"
+                app:layout_constraintTop_toTopOf="@+id/profileIM" />
 
-    <RelativeLayout
-        android:id="@+id/menuRL"
+            <TextView
+                android:id="@+id/emailTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Alamat"
+                app:layout_constraintStart_toStartOf="@+id/namauTV"
+                app:layout_constraintTop_toBottomOf="@+id/namauTV" />
+
+            <Button
+                android:id="@+id/suntingTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Sunting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/profileIM"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/userRL"
-        android:layout_marginTop="30dp">
+        android:layout_below="@+id/linear_layout1"
+        android:layout_alignParentEnd="true">
 
-        <Button
-            android:id="@+id/suntingTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:text="Sunting" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/gpasswordTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_toEndOf="@id/suntingTV"
-            android:text="Ganti Password" />
+            <Button
+                android:id="@+id/gpasswordTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ganti Password"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/linear_layout2"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/peliharaanTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Hewan Peliharaan"
+                android:textColor="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/addpetsB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/putih_agak"
+                android:drawableLeft="@drawable/icon_plus"
+                android:text="Tambah hewan peliharaan"
+                android:textColor="@color/biru_keren"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/peliharaanTV"
+                app:layout_constraintTop_toBottomOf="@+id/peliharaanTV" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/mypetsRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/menuRL"
-        android:layout_marginTop="30dp">
-
-        <TextView
-            android:id="@+id/peliharaanTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:text="Hewan Peliharaanku" />
-
-        <Button
-            android:id="@+id/addpetsB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_toEndOf="@id/peliharaanTV"
-            android:text="Tambah" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mypetsRL"
-        android:layout_marginTop="30dp">
+        android:layout_below="@id/linear_layout3">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/peliharaanRV"
