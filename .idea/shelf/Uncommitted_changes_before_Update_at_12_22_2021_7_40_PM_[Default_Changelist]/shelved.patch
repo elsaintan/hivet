@@ -1,0 +1,19 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_booking.xml\" value=\"0.25\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_edit_profile.xml\" value=\"0.11979166666666667\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_filter_booking.xml\" value=\"0.1234375\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_forgot_password.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_konsultasi.xml\" value=\"0.11979166666666667\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_list_dokter.xml\" value=\"0.176\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_main.xml\" value=\"0.152\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_maps.xml\" value=\"0.11979166666666667\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_payment.xml\" value=\"0.11979166666666667\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_peliharaan.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_sign_in.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_sign_up.xml\" value=\"0.136\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_user_profile.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/peliharaan_layout.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/update_pw_layout.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/user_dokter_layout.xml\" value=\"0.2\" />\r\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.1021316528320313\" />\r\n        <entry key=\"app/src/main/res/layout/activity_sign_in.xml\" value=\"0.2253143310546875\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"11\" project-jdk-type=\"JavaSDK\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 85e94abfb0e1dbfd527274ac2dbb72a49ecc22bb)
++++ b/.idea/misc.xml	(date 1640151577125)
+@@ -18,7 +18,7 @@
+         <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.2" />
+         <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/peliharaan_layout.xml" value="0.2" />
+         <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/update_pw_layout.xml" value="0.2" />
+-        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.2" />
++        <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.10400000000000001" />
+         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1021316528320313" />
+         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.2253143310546875" />
+       </map>
