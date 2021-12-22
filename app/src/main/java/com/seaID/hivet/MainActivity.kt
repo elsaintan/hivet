@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(uPhoto)
                 }
-                Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
             }

@@ -12,7 +12,7 @@ import java.util.*
 class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     lateinit var spinner: Spinner
-    lateinit var tanggal : Button
+    lateinit var tanggal : EditText
     lateinit var ok : Button
     var daerah : String ?= null
     private var formatDate = SimpleDateFormat("dd MMMM yyyy", Locale.US)
@@ -44,10 +44,14 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
                     selectDate.set(Calendar.MONTH, i2)
                     selectDate.set(Calendar.DAY_OF_MONTH, i3)
                     date = formatDate.format(selectDate.time)
-                    Toast.makeText(this, "Date "+date, Toast.LENGTH_SHORT).show()
+                    tanggal.setText(date)
+                    //Toast.makeText(this, "Date "+date, Toast.LENGTH_SHORT).show()
                 }, getData.get(Calendar.YEAR), getData.get(Calendar.MONTH), getData.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
+
         }
+
+
 
         ok.setOnClickListener {
             val intent = Intent(this, ListDokterActivity::class.java)
@@ -63,7 +67,7 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         //super.onBackPressed()
         counter++
         if (counter == 1){
-            super.onBackPressed()
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 

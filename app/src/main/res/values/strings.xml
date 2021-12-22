@@ -9,4 +9,12 @@
         <item>Jawa Tengah</item>
         <item>Jawa Timur</item>
     </string-array>
+    <string-array name="jenis_hewan">
+        <item>Kucing</item>
+        <item>Anjing</item>
+        <item>Jawa Barat</item>
+        <item>DI Yogyakarta</item>
+        <item>Jawa Tengah</item>
+        <item>Jawa Timur</item>
+    </string-array>
 </resources>
