@@ -35,6 +35,8 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var storageRef : StorageReference
 
     private var photo : String ?= null
+    var counter : Int = 0
+    var type : Int ?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,8 +51,38 @@ class EditProfileActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
         storageRef = storage.reference
 
-        val uidRef  = mDbRef.collection("users").document(mAuth.uid)
+        var type = intent.getIntExtra("type", 0)
 
+        if (type == 2){
+            showDataUser()
+        }
+
+
+        binding.userImage.setOnClickListener{
+            chooseImage()
+        }
+
+        binding.saveBTN.setOnClickListener {
+            if (filePath.toString() == photo){
+                updateDataUser()
+            }else{
+                deleteImage(photo.toString())
+                uploadImage()
+                updateDataUser()
+            }
+            binding.progressBar.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onBackPressed() {
+        counter ++
+        if (counter == 1){
+            startActivity(Intent(this, UserProfileActivity::class.java))
+        }
+    }
+
+    private fun showDataUser(){
+        val uidRef  = mDbRef.collection("users").document(mAuth.uid)
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
                 val user = doc.toObject(User::class.java)
@@ -68,21 +100,6 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }.addOnFailureListener { exception ->
             Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
-        }
-
-        binding.userImage.setOnClickListener{
-            chooseImage()
-        }
-
-        binding.saveBTN.setOnClickListener {
-            if (filePath.toString() == photo){
-                updateDataUser()
-            }else{
-                //deleteImage(photo.toString())
-                uploadImage()
-                updateDataUser()
-            }
-            binding.progressBar.visibility = View.VISIBLE
         }
     }
 

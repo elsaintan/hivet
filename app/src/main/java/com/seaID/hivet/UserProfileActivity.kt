@@ -16,7 +16,8 @@ import com.seaID.hivet.databinding.ActivityUserProfileBinding
 import com.seaID.hivet.models.peliharaan
 import android.app.Dialog
 import android.view.View
-
+import com.seaID.hivet.adapters.drhBookingAdapter
+import com.seaID.hivet.models.drh
 
 
 class UserProfileActivity : AppCompatActivity() {
@@ -65,7 +66,7 @@ class UserProfileActivity : AppCompatActivity() {
         mybinding.suntingTV.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            intent.putExtra("Uid", mAuth.currentUser!!.uid)
+            intent.putExtra("type", 2)
             startActivity(intent)
             finish()
         }
@@ -81,34 +82,27 @@ class UserProfileActivity : AppCompatActivity() {
         counter++
         if (counter == 1){
             super.onBackPressed()
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
     private fun dataPeliharaan() {
         mDbRef = FirebaseFirestore.getInstance()
         mDbRef.collection("peliharaan")
-            .addSnapshotListener(object : EventListener<QuerySnapshot> {
-                override fun onEvent(
-                    value: QuerySnapshot?,
-                    error: FirebaseFirestoreException?
-                ){
-                    if (error != null){
-                        Log.e("Error: ", error.message.toString())
-                        return
-                    }
-
-                    for (dc : DocumentChange in value?.documentChanges!!){
-                        if (dc.type == DocumentChange.Type.ADDED){
-                            petArrayList.add(dc.document.toObject(peliharaan::class.java))
+            .get()
+            .addOnSuccessListener {
+                val data = it.toObjects(peliharaan::class.java)
+                val items = data.size
+                if (items > 0){
+                    for (item in data){
+                        if (item.pemilik.equals(mAuth.currentUser!!.uid)){
+                            petArrayList.add(item)
                         }
-
                     }
-
                     recyclerView.adapter = peliharaanAdapter
                     peliharaanAdapter.notifyDataSetChanged()
-
-                    }
-            })
+                }
+            }
     }
 
     private fun showChangePasswordDialog(view : View){
