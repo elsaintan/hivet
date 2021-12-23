@@ -126,7 +126,7 @@ class SignInActivity : AppCompatActivity() {
                     Log.d(TAG, "Account created")
                     Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
                     //start prifle activity
-                    val intent = Intent(this, UserProfileActivity::class.java)
+                    val intent = Intent(this, EditProfileActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     intent.putExtra("Uid", uid)
                     intent.putExtra("type", 1)

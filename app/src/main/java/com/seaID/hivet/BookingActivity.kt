@@ -6,9 +6,12 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.firestore.*
 import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.models.User
@@ -38,10 +41,6 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
         myPets()
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, pets)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.mypetS.adapter = adapter
-        binding.mypetS.onItemSelectedListener = this
 
 
         showdetailData(uId.toString())
@@ -80,7 +79,6 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     }
 
     private fun myPets(){
-
         db.collection("peliharaan")
             .get()
             .addOnSuccessListener {
@@ -93,6 +91,10 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                         }
                     }
                 }
+                val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pets)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                binding.mypetS.adapter = adapter
+                binding.mypetS.onItemSelectedListener = this
             }
     }
 

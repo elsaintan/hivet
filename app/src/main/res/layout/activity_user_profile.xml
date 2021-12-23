@@ -25,7 +25,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Name"
                 android:textColor="#000000"
                 app:layout_constraintStart_toEndOf="@+id/profileIM"
                 app:layout_constraintTop_toTopOf="@+id/profileIM" />
@@ -35,7 +34,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Alamat"
                 app:layout_constraintStart_toStartOf="@+id/namauTV"
                 app:layout_constraintTop_toBottomOf="@+id/namauTV" />
 
@@ -48,12 +46,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.imageview.ShapeableImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileIM"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/profile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

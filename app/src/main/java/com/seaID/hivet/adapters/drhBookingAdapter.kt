@@ -34,7 +34,7 @@ class drhBookingAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Ada
             holder.price.text = drh.alamat
             holder.button.setText("Reservasi")
 
-        holder.itemView.setOnClickListener {
+        holder.button.setOnClickListener {
             val intent = Intent(holder.itemView.context, BookingActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("Uid", drh.id)

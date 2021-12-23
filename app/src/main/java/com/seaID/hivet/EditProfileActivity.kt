@@ -1,6 +1,8 @@
 package com.seaID.hivet
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +10,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
@@ -26,6 +30,11 @@ class EditProfileActivity : AppCompatActivity() {
 
     private var filePath : Uri? = null
     private final val PICK_IMAGE_REQUEST : Int = 2020
+
+    companion object {
+        private const val CAMERA_PERMISSION_CODE = 100
+        private const val STORAGE_PERMISSION_CODE = 101
+    }
 
     private lateinit var binding: ActivityEditProfileBinding
 
@@ -58,6 +67,7 @@ class EditProfileActivity : AppCompatActivity() {
         }
 
 
+
         binding.userImage.setOnClickListener{
             chooseImage()
         }
@@ -66,7 +76,6 @@ class EditProfileActivity : AppCompatActivity() {
             if (filePath.toString() == photo){
                 updateDataUser()
             }else{
-                deleteImage(photo.toString())
                 uploadImage()
                 updateDataUser()
             }
@@ -81,7 +90,44 @@ class EditProfileActivity : AppCompatActivity() {
         }
     }
 
+    // Function to check and request permission.
+    private fun checkPermission(permission: String, requestCode: Int) {
+        if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
+
+            // Requesting the permission
+            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+        } else {
+            Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    // This function is called when the user accepts or decline the permission.
+    // Request Code is used to check which permission called this function.
+    // This request code is provided when the user is prompt for permission.
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>,
+                                            grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == EditProfileActivity.CAMERA_PERMISSION_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Camera Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Camera Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        } else if (requestCode == EditProfileActivity.STORAGE_PERMISSION_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Storage Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun showDataUser(){
+        checkPermission(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            EditProfileActivity.STORAGE_PERMISSION_CODE
+        )
         val uidRef  = mDbRef.collection("users").document(mAuth.uid)
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
@@ -89,7 +135,7 @@ class EditProfileActivity : AppCompatActivity() {
                 binding.nameTV.setText(user!!.name)
                 binding.emailTV.setText(user!!.email)
                 photo = user!!.photoProfile
-                if (user!!.photoProfile == ""){
+                if (user!!.photoProfile == "" || user!!.photoProfile == null){
                     binding.userImage.setImageResource(R.drawable.profile)
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(binding.userImage)
@@ -130,11 +176,9 @@ class EditProfileActivity : AppCompatActivity() {
             var ref:StorageReference = storageRef.child("Image/"+mAuth.uid)
             ref.putFile(filePath!!)
                 .addOnSuccessListener {
-                    OnSuccessListener<UploadTask.TaskSnapshot>{
                         binding.progressBar.visibility = View.GONE
                         Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
                         binding.saveBTN.visibility = View.GONE
-                    }
                 }
                 .addOnFailureListener {
                     OnFailureListener{
@@ -162,5 +206,6 @@ class EditProfileActivity : AppCompatActivity() {
 
         val user = mDbRef.collection("users")
         user.document(mAuth.uid).set(useredit)
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

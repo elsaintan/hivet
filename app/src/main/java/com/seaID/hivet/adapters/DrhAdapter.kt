@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -42,7 +43,7 @@ class drhAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Adapter<dr
         }
 
 
-        /** holder.name.setOnClickListener{
+        /** holder.button.setOnClickListener{
             topic = "topic/${drh.id}"
             PushNotifKonsul(NotificationKonsulData(drh!!.Name!!, "Anda mendapatkan satu permintaan konsultasi baru"),
             topic).also {
@@ -50,7 +51,7 @@ class drhAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Adapter<dr
             }
         } **/
 
-        holder.itemView.setOnClickListener {
+        holder.button.setOnClickListener {
             val intent = Intent(holder.itemView.context, KonsultasiActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("Uid", drh.id)
@@ -69,6 +70,7 @@ class drhAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Adapter<dr
         val workexp : TextView = itemView.findViewById(R.id.workexpTV)
         val price : TextView = itemView.findViewById(R.id.priceTV)
         val profileIM : ImageView = itemView.findViewById(R.id.photodrh)
+        val button : Button = itemView.findViewById(R.id.konsulbt)
 
         init {
             itemView.setOnClickListener(this)

@@ -119,8 +119,8 @@ private fun loadProfile(id : String) {
                 val user = doc.toObject(User::class.java)
                 mybinding.namauTV.text = user!!.name
                 mybinding.emailTV.text = user!!.email
-                if (user!!.photoProfile == ""){
-                    mybinding.profileIM.setImageResource(R.drawable.gambar_akun_sign_in)
+                if (user!!.photoProfile == "" || user.photoProfile == null){
+                    mybinding.profileIM.setImageResource(R.drawable.profile)
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(mybinding.profileIM)
                 }

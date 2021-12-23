@@ -12,7 +12,7 @@ import java.util.*
 class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     lateinit var spinner: Spinner
-    lateinit var tanggal : EditText
+    lateinit var tanggal : TextView
     lateinit var ok : Button
     var daerah : String ?= null
     private var formatDate = SimpleDateFormat("dd MMMM yyyy", Locale.US)
