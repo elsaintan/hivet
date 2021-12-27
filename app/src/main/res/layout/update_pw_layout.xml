@@ -4,13 +4,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@color/biru_lebih_keren"
     android:padding="20dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Update Password"
-        android:textSize="16sp"
+        android:text="Perbarui Kata Sandi"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:textAlignment="center"/>
 
@@ -26,7 +29,9 @@
             android:id="@+id/oldpwET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Current Password"/>
+            android:background="@drawable/background_input_field"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Kata sandi saat ini" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,17 +46,22 @@
             android:id="@+id/newpwET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Password"/>
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/background_input_field"
+            android:text="Kata sandi baru"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Button Update Password -->
     <Button
         android:id="@+id/updatepwBT"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Update"
+        android:backgroundTint="@color/green_terang"
+        android:text="Simpan"
+        android:textColor="@color/black"
         android:layout_gravity="center"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
