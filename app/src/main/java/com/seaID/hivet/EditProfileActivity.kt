@@ -128,6 +128,7 @@ class EditProfileActivity : AppCompatActivity() {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             EditProfileActivity.STORAGE_PERMISSION_CODE
         )
+        binding.saveBTN.visibility = View.VISIBLE
         val uidRef  = mDbRef.collection("users").document(mAuth.uid)
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
@@ -163,7 +164,6 @@ class EditProfileActivity : AppCompatActivity() {
             try {
                 var bitmap:Bitmap = MediaStore.Images.Media.getBitmap(contentResolver, filePath)
                 binding.userImage.setImageBitmap(bitmap)
-                binding.saveBTN.visibility = View.VISIBLE
             }catch (e:IOException){
                 e.printStackTrace()
             }

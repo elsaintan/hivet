@@ -3,18 +3,27 @@ package com.seaID.hivet
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
+import com.seaID.hivet.adapters.peliharaanAdapter
 import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.databinding.ActivityKonsultasiBinding
 import com.seaID.hivet.models.User
 import com.seaID.hivet.models.drh
+import com.seaID.hivet.models.peliharaan
 
-private lateinit var binding: ActivityKonsultasiBinding
-private lateinit var mDbRef: FirebaseFirestore
+class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
-class KonsultasiActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityKonsultasiBinding
+    private lateinit var mDbRef: FirebaseFirestore
+    val pets = ArrayList<String>()
+    var text: String ?= null
+    var counter : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityKonsultasiBinding.inflate(layoutInflater)
@@ -24,7 +33,37 @@ class KonsultasiActivity : AppCompatActivity() {
         val id = intent.getStringExtra("Uid")
 
         showData(id.toString())
+        dataPeliharaan(id.toString())
     }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        counter++
+        if (counter == 1){
+            super.onBackPressed()
+        }
+    }
+
+    private fun dataPeliharaan(id : String) {
+        mDbRef.collection("peliharaan")
+            .get()
+            .addOnSuccessListener {
+                val data = it.toObjects(peliharaan::class.java)
+                val items = data.size
+                if (items > 0){
+                    for (item in data){
+                        if (item.pemilik == id){
+                            pets.add(item.nama!!)
+                        }
+                    }
+                }
+                val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pets)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                binding.peliharaanSP.adapter = adapter
+                binding.peliharaanSP.onItemSelectedListener = this
+            }
+    }
+
 
     private fun showData(id : String) {
         mDbRef = FirebaseFirestore.getInstance()
@@ -48,5 +87,13 @@ class KonsultasiActivity : AppCompatActivity() {
         }.addOnFailureListener { exception ->
             Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        text= parent?.getItemAtPosition(position).toString()
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }

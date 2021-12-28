@@ -75,6 +75,10 @@ class UserProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, PeliharaanActivity::class.java))
         }
 
+        mybinding.gpasswordTV.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
+        }
+
     }
 
     override fun onBackPressed() {
