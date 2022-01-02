@@ -255,7 +255,7 @@
                         android:layout_height="wrap_content"
                         android:backgroundTint="#FFFFFF"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Kungjungi"
+                        android:text="Kunjungi"
                         android:textColor="@color/biru_keren"
                         app:layout_constraintEnd_toEndOf="@+id/text_penawaran_terbaik"
                         app:layout_constraintStart_toStartOf="@+id/text_penawaran_terbaik"

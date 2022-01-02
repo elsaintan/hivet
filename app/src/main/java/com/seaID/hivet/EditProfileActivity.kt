@@ -63,6 +63,7 @@ class EditProfileActivity : AppCompatActivity() {
         var type = intent.getIntExtra("type", 0)
 
         if (type == 2){
+            binding.saveBTN.visibility = View.VISIBLE
             showDataUser()
         }
 
@@ -128,7 +129,7 @@ class EditProfileActivity : AppCompatActivity() {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             EditProfileActivity.STORAGE_PERMISSION_CODE
         )
-        binding.saveBTN.visibility = View.VISIBLE
+
         val uidRef  = mDbRef.collection("users").document(mAuth.uid)
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {

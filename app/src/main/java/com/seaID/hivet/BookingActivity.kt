@@ -1,5 +1,7 @@
 package com.seaID.hivet
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,11 +10,17 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.firestore.*
+import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback
+import com.midtrans.sdk.corekit.core.MidtransSDK
+import com.midtrans.sdk.corekit.core.TransactionRequest
+import com.midtrans.sdk.corekit.core.themes.CustomColorTheme
+import com.midtrans.sdk.corekit.models.snap.TransactionResult
+import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.models.User
 import com.seaID.hivet.models.drh
@@ -27,6 +35,8 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     val pets = ArrayList<String>()
     var text: String ?= null
     var counter : Int = 0
+    private var transactionResult = TransactionResult()
+    private var totalProduct: Int = 123456;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +47,64 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val uId = intent.getStringExtra("Uid")
         db = FirebaseFirestore.getInstance()
         mAuth = FirebaseAuth.getInstance()
-
-
         myPets()
-
-
-
         showdetailData(uId.toString())
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                arrayOf(Manifest.permission.READ_PHONE_STATE), 101)
+        }
+
+        SdkUIFlowBuilder.init().setClientKey(Constant.CLIENT_KEY_MIDTRANS).setContext(applicationContext)
+            .setTransactionFinishedCallback(
+                TransactionFinishedCallback {
+                    if (TransactionResult.STATUS_SUCCESS == "success") {
+                        Toast.makeText(this, "Success transaction", Toast.LENGTH_LONG).show()
+                    } else if (TransactionResult.STATUS_PENDING == "pending") {
+                        Toast.makeText(this, "Pending transaction", Toast.LENGTH_LONG).show()
+                    } else if (TransactionResult.STATUS_FAILED == "failed") {
+                        Toast.makeText(
+                            this,
+                            "Failed ${it.response.statusMessage}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    } else if (it.status.equals(
+                            TransactionResult.STATUS_INVALID,
+                            true
+                        )
+                    ) {
+                        Toast.makeText(this, "Invalid transaction", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(this, "Failure transaction", Toast.LENGTH_LONG).show()
+                    }
+                }).setMerchantBaseUrl(Constant.BASE_URL_MIDTRANS).enableLog(true).setColorTheme(
+                CustomColorTheme("#FFE51255", "#B61548", "#FFE51255")
+            ).setLanguage("id").buildSDK()
+
+        binding.reservasiBt.setOnClickListener {
+            Toast.makeText(this, "Open transaction", Toast.LENGTH_LONG).show()
+
+
+            val transactionRequest = TransactionRequest(
+                "Payment-Midtrans" + System.currentTimeMillis().toString(), //transaction id
+                totalProduct.toDouble() //jumlah total transaksi
+            )
+            val detail = com.midtrans.sdk.corekit.models.ItemDetails(
+                "NamaItemId", //item id
+                totalProduct.toDouble(), //harga item
+                5, //jumlah item
+                "Reservasi (Nama)" //nama item
+            )
+            val itemDetails = ArrayList<com.midtrans.sdk.corekit.models.ItemDetails>()
+
+            itemDetails.add(detail)
+            //uiKitDetails(transactionRequest)
+            transactionRequest.itemDetails = itemDetails
+            MidtransSDK.getInstance().transactionRequest = transactionRequest
+            MidtransSDK.getInstance().startPaymentUiFlow(this)
+
+            TransactionResult.STATUS_SUCCESS
+        }
 
     }
 
