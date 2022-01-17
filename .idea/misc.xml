@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/activity_booking.xml" value="0.1" />
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/activity_edit_profile.xml" value="0.1" />
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/activity_konsultasi.xml" value="0.22" />
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/activity_list_dokter.xml" value="0.1" />
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/activity_main.xml" value="0.15184049079754602" />
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/activity_peliharaan.xml" value="0.1" />
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/peliharaan_layout.xml" value="0.22" />
+        <entry key="..\:/Android Studio/Hivet-user/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.1" />
         <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_booking.xml" value="0.25" />
         <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_edit_profile.xml" value="0.11979166666666667" />
         <entry key="..\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_filter_booking.xml" value="0.1234375" />
