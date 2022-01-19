@@ -1,12 +1,16 @@
 package com.seaID.hivet.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.seaID.hivet.KonsultasiActivity
+import com.seaID.hivet.PeliharaanActivity
 import com.seaID.hivet.R
+import com.seaID.hivet.models.drh
 import com.seaID.hivet.models.peliharaan
 
 private lateinit var mAuth: FirebaseAuth
@@ -24,6 +28,16 @@ class peliharaanAdapter(private val petList : ArrayList<peliharaan>) : RecyclerV
         if (pet.pemilik == mAuth.currentUser!!.uid){
             holder.name.text = pet.nama
             holder.jenis.text = pet.jenis
+        }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, PeliharaanActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("id", pet.pemilik)
+            intent.putExtra("nama", pet.nama)
+            intent.putExtra("jenis", pet.jenis)
+            intent.putExtra("ket", pet.keterangan)
+            intent.putExtra("type", 2)
+            holder.itemView.context.startActivity(intent)
         }
 
     }

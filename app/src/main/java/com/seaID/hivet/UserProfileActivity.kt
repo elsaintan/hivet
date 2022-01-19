@@ -68,7 +68,6 @@ class UserProfileActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("type", 2)
             startActivity(intent)
-            finish()
         }
 
         mybinding.addpetsB.setOnClickListener {

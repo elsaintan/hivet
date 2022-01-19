@@ -111,7 +111,7 @@ class ListDokterActivity : AppCompatActivity() {
                     val items = data.size
                     if (items > 0){
                         for (item in data){
-                            if (item.booking.equals(tanggal) && item.alamat.equals(daerah)){
+                            if (item.booking.equals("21 December 2021") && item.alamat.equals("Jawa Barat")){
                                 drhArrayList.add(item)
                             }
                         }

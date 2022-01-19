@@ -1,0 +1,296 @@
+Index: app/src/main/java/com/seaID/hivet/KonsultasiActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.seaID.hivet\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.view.View\r\nimport android.widget.AdapterView\r\nimport android.widget.ArrayAdapter\r\nimport android.widget.Toast\r\nimport com.bumptech.glide.Glide\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\nimport com.seaID.hivet.adapters.peliharaanAdapter\r\nimport com.seaID.hivet.databinding.ActivityBookingBinding\r\nimport com.seaID.hivet.databinding.ActivityKonsultasiBinding\r\nimport com.seaID.hivet.models.User\r\nimport com.seaID.hivet.models.drh\r\nimport com.seaID.hivet.models.peliharaan\r\n\r\nclass KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {\r\n\r\n    private lateinit var binding: ActivityKonsultasiBinding\r\n    private lateinit var mDbRef: FirebaseFirestore\r\n    val pets = ArrayList<String>()\r\n    var text: String ?= null\r\n    var counter : Int = 0\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        binding = ActivityKonsultasiBinding.inflate(layoutInflater)\r\n        val view = binding.root\r\n        setContentView(view)\r\n\r\n        val id = intent.getStringExtra(\"Uid\")\r\n\r\n        showData(id.toString())\r\n        dataPeliharaan(id.toString())\r\n    }\r\n\r\n    override fun onBackPressed() {\r\n        //super.onBackPressed()\r\n        counter++\r\n        if (counter == 1){\r\n            super.onBackPressed()\r\n        }\r\n    }\r\n\r\n    private fun dataPeliharaan(id : String) {\r\n        mDbRef.collection(\"peliharaan\")\r\n            .get()\r\n            .addOnSuccessListener {\r\n                val data = it.toObjects(peliharaan::class.java)\r\n                val items = data.size\r\n                if (items > 0){\r\n                    for (item in data){\r\n                        if (item.pemilik == id){\r\n                            pets.add(item.nama!!)\r\n                        }\r\n                    }\r\n                }\r\n                val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pets)\r\n                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)\r\n                binding.peliharaanSP.adapter = adapter\r\n                binding.peliharaanSP.onItemSelectedListener = this\r\n            }\r\n    }\r\n\r\n\r\n    private fun showData(id : String) {\r\n        mDbRef = FirebaseFirestore.getInstance()\r\n        val uidRef  = mDbRef.collection(\"drh\").document(id)\r\n\r\n        uidRef.get().addOnSuccessListener { doc ->\r\n            if (doc != null) {\r\n                val user = doc.toObject(drh::class.java)\r\n                binding.namadrhTV.text = user!!.Name\r\n                binding.workExpTV.text = user!!.WorkExp\r\n                binding.hargaTV.text = user!!.harga\r\n                if (user!!.photoProfile == \"\"){\r\n                    binding.profileIM.setImageResource(R.drawable.profile)\r\n                }else{\r\n                    Glide.with(this).load(user!!.photoProfile).into(binding.profileIM)\r\n                }\r\n                Toast.makeText(this, \"{$user.name}\", Toast.LENGTH_SHORT).show()\r\n            } else {\r\n                Toast.makeText(this, \"No such document\", Toast.LENGTH_SHORT).show()\r\n            }\r\n        }.addOnFailureListener { exception ->\r\n            Toast.makeText(this, \"get failed with \"+exception, Toast.LENGTH_SHORT).show()\r\n        }\r\n    }\r\n\r\n    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {\r\n        text= parent?.getItemAtPosition(position).toString()\r\n    }\r\n\r\n    override fun onNothingSelected(parent: AdapterView<*>?) {\r\n        TODO(\"Not yet implemented\")\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/seaID/hivet/KonsultasiActivity.kt b/app/src/main/java/com/seaID/hivet/KonsultasiActivity.kt
+--- a/app/src/main/java/com/seaID/hivet/KonsultasiActivity.kt	(revision 7c6830d5635b930c365a1eb3d417c183e8cebaaa)
++++ b/app/src/main/java/com/seaID/hivet/KonsultasiActivity.kt	(date 1642386109599)
+@@ -8,6 +8,7 @@
+ import android.widget.ArrayAdapter
+ import android.widget.Toast
+ import com.bumptech.glide.Glide
++import com.google.firebase.auth.FirebaseAuth
+ import com.google.firebase.firestore.FirebaseFirestore
+ import com.seaID.hivet.adapters.peliharaanAdapter
+ import com.seaID.hivet.databinding.ActivityBookingBinding
+@@ -20,6 +21,7 @@
+ 
+     private lateinit var binding: ActivityKonsultasiBinding
+     private lateinit var mDbRef: FirebaseFirestore
++    private lateinit var mAuth : FirebaseAuth
+     val pets = ArrayList<String>()
+     var text: String ?= null
+     var counter : Int = 0
+@@ -31,9 +33,10 @@
+         setContentView(view)
+ 
+         val id = intent.getStringExtra("Uid")
++        mAuth = FirebaseAuth.getInstance()
+ 
+         showData(id.toString())
+-        dataPeliharaan(id.toString())
++        dataPeliharaan()
+     }
+ 
+     override fun onBackPressed() {
+@@ -44,7 +47,7 @@
+         }
+     }
+ 
+-    private fun dataPeliharaan(id : String) {
++    private fun dataPeliharaan() {
+         mDbRef.collection("peliharaan")
+             .get()
+             .addOnSuccessListener {
+@@ -52,7 +55,7 @@
+                 val items = data.size
+                 if (items > 0){
+                     for (item in data){
+-                        if (item.pemilik == id){
++                        if (item.pemilik == mAuth.uid){
+                             pets.add(item.nama!!)
+                         }
+                     }
+Index: app/src/main/res/layout/activity_konsultasi.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".KonsultasiActivity\">\r\n\r\n    <com.google.android.material.imageview.ShapeableImageView\r\n        android:id=\"@+id/profileIM\"\r\n        android:layout_width=\"110dp\"\r\n        android:layout_height=\"110dp\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_marginTop=\"40dp\"\r\n        android:src=\"@drawable/profile\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/namadrhTV\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_below=\"@id/profileIM\"\r\n        android:layout_centerHorizontal=\"true\"\r\n        android:layout_marginTop=\"15dp\"\r\n        android:text=\"Name\" />\r\n\r\n    <RelativeLayout\r\n        android:id=\"@+id/userRL\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"30dp\"\r\n        android:layout_marginTop=\"200dp\"\r\n        android:layout_marginEnd=\"30dp\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/workExpTV\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Email\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/hargaTV\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_below=\"@id/workExpTV\"\r\n            android:layout_marginTop=\"15dp\"\r\n            android:text=\"Alamat\" />\r\n\r\n    </RelativeLayout>\r\n\r\n    <RelativeLayout\r\n        android:id=\"@+id/mypetsRL\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_below=\"@id/userRL\">\r\n\r\n        <Spinner\r\n            android:id=\"@+id/peliharaanSP\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"30dp\"\r\n            android:text=\"Pilih Hewan Peliharaanku\" />\r\n\r\n    </RelativeLayout>\r\n\r\n    <RelativeLayout\r\n        android:id=\"@+id/menuRL\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_below=\"@id/mypetsRL\">\r\n\r\n        <Button\r\n            android:id=\"@+id/suntinTV\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:text=\"Konsultasi\"\r\n            android:layout_centerHorizontal=\"true\"\r\n            android:layout_marginStart=\"30dp\"/>\r\n\r\n    </RelativeLayout>\r\n\r\n\r\n\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_konsultasi.xml b/app/src/main/res/layout/activity_konsultasi.xml
+--- a/app/src/main/res/layout/activity_konsultasi.xml	(revision 7c6830d5635b930c365a1eb3d417c183e8cebaaa)
++++ b/app/src/main/res/layout/activity_konsultasi.xml	(date 1642386457940)
+@@ -23,19 +23,36 @@
+         android:layout_marginTop="15dp"
+         android:text="Name" />
+ 
++    <RelativeLayout
++        android:id="@+id/mypetsRL"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:layout_below="@id/namadrhTV"
++        android:layout_marginTop="30dp">
++
++        <Spinner
++            android:id="@+id/peliharaanSP"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginStart="30dp"
++            android:text="Pilih Hewan Peliharaanku" />
++
++    </RelativeLayout>
++
+     <RelativeLayout
+         android:id="@+id/userRL"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="30dp"
+-        android:layout_marginTop="200dp"
+-        android:layout_marginEnd="30dp">
++        android:layout_marginTop="30dp"
++        android:layout_marginEnd="30dp"
++        android:layout_below="@id/mypetsRL">
+ 
+         <TextView
+             android:id="@+id/workExpTV"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+-            android:text="Email" />
++            android:text="Harga Total" />
+ 
+         <TextView
+             android:id="@+id/hargaTV"
+@@ -43,23 +60,7 @@
+             android:layout_height="wrap_content"
+             android:layout_below="@id/workExpTV"
+             android:layout_marginTop="15dp"
+-            android:text="Alamat" />
+-
+-    </RelativeLayout>
+-
+-    <RelativeLayout
+-        android:id="@+id/mypetsRL"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginTop="30dp"
+-        android:layout_below="@id/userRL">
+-
+-        <Spinner
+-            android:id="@+id/peliharaanSP"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginStart="30dp"
+-            android:text="Pilih Hewan Peliharaanku" />
++            android:text="Total Biaya" />
+ 
+     </RelativeLayout>
+ 
+@@ -68,7 +69,7 @@
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="30dp"
+-        android:layout_below="@id/mypetsRL">
++        android:layout_below="@id/userRL">
+ 
+         <Button
+             android:id="@+id/suntinTV"
+Index: app/src/main/java/com/seaID/hivet/Constant.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.seaID.hivet\r\n\r\nobject Constant {\r\n\r\n    const val MERCHAT_ID_MIDTRANS = \"\"\r\n    const val CLIENT_KEY_MIDTRANS = \"SB-Mid-client-07Qq89uALVmumNMe\"\r\n    const val SERVER_KEY_MIDTRANS = \"SSB-Mid-server-zorqUOWGTM4-_ohjYf7W7Y-f\"\r\n    const val BASE_URL_MIDTRANS = \"\"\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/seaID/hivet/Constant.kt b/app/src/main/java/com/seaID/hivet/Constant.kt
+--- a/app/src/main/java/com/seaID/hivet/Constant.kt	(revision 7c6830d5635b930c365a1eb3d417c183e8cebaaa)
++++ b/app/src/main/java/com/seaID/hivet/Constant.kt	(date 1641270436874)
+@@ -5,6 +5,6 @@
+     const val MERCHAT_ID_MIDTRANS = ""
+     const val CLIENT_KEY_MIDTRANS = "SB-Mid-client-07Qq89uALVmumNMe"
+     const val SERVER_KEY_MIDTRANS = "SSB-Mid-server-zorqUOWGTM4-_ohjYf7W7Y-f"
+-    const val BASE_URL_MIDTRANS = ""
++    const val BASE_URL_MIDTRANS = "https://hivetsea.herokuapp.com/index.php/"
+ 
+ }
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'com.android.application'\r\n    id 'kotlin-android'\r\n}\r\n\r\nandroid {\r\n    compileSdk 31\r\n\r\n    defaultConfig {\r\n        applicationId \"com.seaID.hivet\"\r\n        minSdk 21\r\n        targetSdk 31\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = '1.8'\r\n    }\r\n\r\n    //enable view binding\r\n    buildFeatures {\r\n        viewBinding = true\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation 'androidx.core:core-ktx:1.7.0'\r\n    implementation 'androidx.appcompat:appcompat:1.3.1'\r\n    implementation 'com.google.android.material:material:1.3.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'\r\n    implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'\r\n    implementation 'com.google.firebase:firebase-database-ktx:20.0.2'\r\n    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'\r\n    implementation 'com.google.android.gms:play-services-maps:18.0.0'\r\n    implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'\r\n    implementation 'com.google.firebase:firebase-messaging-ktx:23.0.0'\r\n    implementation 'com.squareup.retrofit2:retrofit:2.9.0'\r\n    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'\r\n    testImplementation 'junit:junit:4.+'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.3'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'\r\n\r\n    implementation platform('com.google.firebase:firebase-bom:29.0.0')\r\n    implementation 'com.google.firebase:firebase-analytics-ktx'\r\n\r\n    implementation 'de.hdodenhof:circleimageview:3.1.0'\r\n\r\n    implementation 'com.github.bumptech.glide:glide:4.12.0'\r\n    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'\r\n\r\n    implementation 'com.google.android.gms:play-services-auth:19.2.0'\r\n\r\n    implementation(\"org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9\")\r\n\r\n    implementation 'com.midtrans:uikit:1.28.0-SANDBOX' // payment gateway\r\n    implementation 'com.midtrans:uikit:1.28.0'\r\n\r\n\r\n\r\n}\r\n\r\napply plugin: 'com.android.application'\r\napply plugin: 'com.google.gms.google-services'
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 7c6830d5635b930c365a1eb3d417c183e8cebaaa)
++++ b/app/build.gradle	(date 1641263933888)
+@@ -68,10 +68,12 @@
+ 
+     implementation 'com.midtrans:uikit:1.28.0-SANDBOX' // payment gateway
+     implementation 'com.midtrans:uikit:1.28.0'
+-
++    implementation "androidx.core:core-ktx:+"
++    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+ 
+ 
+ }
+ 
+ apply plugin: 'com.android.application'
+-apply plugin: 'com.google.gms.google-services'
+\ No newline at end of file
++apply plugin: 'kotlin-android'
++apply plugin: 'com.google.gms.google-services'
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.seaID.hivet\">\r\n    <!--\r\n         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use\r\n         Google Maps Android API v2, but you must specify either coarse or fine\r\n         location permissions for the \"MyLocation\" functionality.\r\n    -->\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n    <uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />\r\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />\r\n    <uses-permission android:name=\"android.permission.MANAGE_EXTERNAL_STORAGE\" />\r\n    <uses-permission android:name=\"android.permission.CAMERA\" />\r\n\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.Hivet\">\r\n        <activity\r\n            android:name=\".payments.PaymentsMidtrans\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".ChangePassworbActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".PeliharaanActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".FilterBookingActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".BookingActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".KonsultasiActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".EditProfileActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".ForgotPasswordActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".PaymentActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".UserProfileActivity\"\r\n            android:exported=\"false\" />\r\n        <!--\r\n             The API key for Google Maps-based APIs is defined as a string resource.\r\n             (See the file \"res/values/google_maps_api.xml\").\r\n             Note that the API key is linked to the encryption key used to sign the APK.\r\n             You need a different API key for each encryption key, including the release key that is used to\r\n             sign the APK for publishing.\r\n             You can define the keys for the debug and release targets in src/debug/ and src/release/.\r\n        -->\r\n        <meta-data\r\n            android:name=\"com.google.android.geo.API_KEY\"\r\n            android:value=\"@string/google_maps_key\" />\r\n        <meta-data\r\n            android:name=\"preloaded_fonts\"\r\n            android:resource=\"@array/preloaded_fonts\" />\r\n\r\n        <activity\r\n            android:name=\".MapsActivity\"\r\n            android:exported=\"false\"\r\n            android:label=\"@string/title_activity_maps\" />\r\n        <activity\r\n            android:name=\".ListDokterActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".SignUpActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".SignInActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 7c6830d5635b930c365a1eb3d417c183e8cebaaa)
++++ b/app/src/main/AndroidManifest.xml	(date 1641270590148)
+@@ -13,7 +13,8 @@
+     <uses-permission android:name="android.permission.CAMERA" />
+ 
+ 
+-    <application
++    <application xmlns:tools="http://schemas.android.com/tools"
++        tools:replace="android:allowBackup"
+         android:allowBackup="true"
+         android:icon="@mipmap/ic_launcher"
+         android:label="@string/app_name"
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_booking.xml\" value=\"0.25\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_edit_profile.xml\" value=\"0.11979166666666667\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_filter_booking.xml\" value=\"0.1234375\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_forgot_password.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_konsultasi.xml\" value=\"0.11979166666666667\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_list_dokter.xml\" value=\"0.176\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_main.xml\" value=\"0.152\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_maps.xml\" value=\"0.11979166666666667\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_payment.xml\" value=\"0.11979166666666667\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_peliharaan.xml\" value=\"0.264\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_sign_in.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_sign_up.xml\" value=\"0.136\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/activity_user_profile.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/peliharaan_layout.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/update_pw_layout.xml\" value=\"0.2\" />\r\n        <entry key=\"..\\:/Android Studio/Hivet/hivet/app/src/main/res/layout/user_dokter_layout.xml\" value=\"0.1\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_booking.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_change_passworb.xml\" value=\"0.21822916666666667\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_edit_profile.xml\" value=\"0.121875\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_forgot_password.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_konsultasi.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_main.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_payments_midtrans.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_peliharaan.xml\" value=\"0.121875\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/activity_user_profile.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"..\\:/backup/hivet/app/src/main/res/layout/peliharaan_layout.xml\" value=\"0.23229166666666667\" />\r\n        <entry key=\"app/src/main/res/layout/activity_booking.xml\" value=\"0.15520833333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_edit_profile.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/activity_filter_booking.xml\" value=\"0.15520833333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_forgot_password.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/activity_konsultasi.xml\" value=\"0.15520833333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_list_dokter.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.1021316528320313\" />\r\n        <entry key=\"app/src/main/res/layout/activity_maps.xml\" value=\"0.15520833333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_payment.xml\" value=\"0.15520833333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_peliharaan.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/activity_sign_in.xml\" value=\"0.2253143310546875\" />\r\n        <entry key=\"app/src/main/res/layout/activity_sign_up.xml\" value=\"0.15520833333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_user_profile.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/peliharaan_layout.xml\" value=\"0.15520833333333334\" />\r\n        <entry key=\"app/src/main/res/layout/update_pw_layout.xml\" value=\"0.2926208651399491\" />\r\n        <entry key=\"app/src/main/res/layout/user_dokter_layout.xml\" value=\"0.15520833333333334\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"11\" project-jdk-type=\"JavaSDK\" />\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 7c6830d5635b930c365a1eb3d417c183e8cebaaa)
++++ b/.idea/misc.xml	(date 1642268264449)
+@@ -29,6 +29,8 @@
+         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_peliharaan.xml" value="0.121875" />
+         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.23229166666666667" />
+         <entry key="..\:/backup/hivet/app/src/main/res/layout/peliharaan_layout.xml" value="0.23229166666666667" />
++        <entry key="..\:/backup/hivet/app/src/main/res/layout/update_pw_layout.xml" value="0.23229166666666667" />
++        <entry key="..\:/backup/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.23229166666666667" />
+         <entry key="app/src/main/res/layout/activity_booking.xml" value="0.15520833333333334" />
+         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.1" />
+         <entry key="app/src/main/res/layout/activity_filter_booking.xml" value="0.15520833333333334" />
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+--- /dev/null	(date 1642279741361)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1642279741361)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <targetSelectedWithDropDown>
++      <Target>
++        <type value="QUICK_BOOT_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\Elsa\.android\avd\Pixel_2_API_27.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </targetSelectedWithDropDown>
++    <timeTargetWasSelectedWithDropDown value="2022-01-15T20:48:56.461395700Z" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/java/com/seaID/hivet/ListDokterActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.seaID.hivet\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.widget.TextView\r\nimport android.widget.Toast\r\nimport androidx.recyclerview.widget.LinearLayoutManager\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport com.google.firebase.firestore.*\r\nimport com.google.firebase.firestore.EventListener\r\nimport com.seaID.hivet.adapters.drhAdapter\r\nimport com.seaID.hivet.adapters.drhBookingAdapter\r\nimport com.seaID.hivet.models.drh\r\nimport kotlinx.coroutines.Dispatchers\r\nimport kotlinx.coroutines.launch\r\nimport kotlin.collections.ArrayList\r\nimport kotlin.coroutines.CoroutineContext\r\n\r\nclass ListDokterActivity : AppCompatActivity() {\r\n\r\n    private lateinit var recyclerView: RecyclerView\r\n    private lateinit var drhArrayList: ArrayList<drh>\r\n    private lateinit var drhAdapter: drhAdapter\r\n    private lateinit var drhBookingAdapter: drhBookingAdapter\r\n    private lateinit var db : FirebaseFirestore\r\n\r\n    var tanggal : String ?= null\r\n    var daerah : String ?= null\r\n    var counter : Int = 0\r\n    var type : Int ?= null\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_list_dokter)\r\n\r\n        type = intent.getIntExtra(\"type\", 0)\r\n        tanggal = intent.getStringExtra(\"tanggal\")\r\n        daerah = intent.getStringExtra(\"daerah\")\r\n\r\n        //Toast.makeText(this, daerah, Toast.LENGTH_SHORT).show()\r\n        //Toast.makeText(this, \"Date \"+tanggal, Toast.LENGTH_SHORT).show()\r\n\r\n        //coba = findViewById(R.id.cek)\r\n        //coba.text = type.toString()\r\n\r\n        recyclerView = findViewById(R.id.recyclerView)\r\n        recyclerView.layoutManager = LinearLayoutManager(this)\r\n        recyclerView.setHasFixedSize(true)\r\n\r\n        drhArrayList = arrayListOf()\r\n\r\n        drhAdapter = drhAdapter(drhArrayList)\r\n        drhBookingAdapter = drhBookingAdapter(drhArrayList)\r\n\r\n        if (type == 1){\r\n            EventChangeListener()\r\n        }else if (type == 2){\r\n            doctorRetrieveData()\r\n        }\r\n\r\n\r\n    }\r\n\r\n    override fun onBackPressed() {\r\n        //super.onBackPressed()\r\n        counter++\r\n        if (counter == 1){\r\n            if(type == 1){\r\n                startActivity(Intent(this, MainActivity::class.java))\r\n            }else if (type == 2){\r\n                startActivity(Intent(this, FilterBookingActivity::class.java))\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n    private fun EventChangeListener() {\r\n        db = FirebaseFirestore.getInstance()\r\n        db.collection(\"drh\")\r\n            .addSnapshotListener(object : EventListener<QuerySnapshot>{\r\n                override fun onEvent(\r\n                    value: QuerySnapshot?,\r\n                    error: FirebaseFirestoreException?\r\n                ){\r\n                    if (error != null){\r\n                        Log.e(\"Error: \", error.message.toString())\r\n                        return\r\n                    }\r\n\r\n                    var listdrh = ArrayList<drh>()\r\n                    for (dc : DocumentChange in value?.documentChanges!!){\r\n                        if (dc.type == DocumentChange.Type.ADDED){\r\n                            val vet: drh = dc.document.toObject(drh::class.java)\r\n                            drhArrayList.add(dc.document.toObject(drh::class.java))\r\n                        }\r\n                    }\r\n                    recyclerView.adapter = drhAdapter\r\n                    drhAdapter.notifyDataSetChanged()\r\n                }\r\n            })\r\n    }\r\n\r\n    private fun doctorRetrieveData() {\r\n        db = FirebaseFirestore.getInstance()\r\n            db.collection(\"drh\")\r\n                .get()\r\n                .addOnSuccessListener {\r\n                    val data = it.toObjects(drh::class.java)\r\n                    val items = data.size\r\n                    if (items > 0){\r\n                        for (item in data){\r\n                            if (item.booking.equals(tanggal) && item.alamat.equals(daerah)){\r\n                                drhArrayList.add(item)\r\n                            }\r\n                        }\r\n                        recyclerView.adapter = drhBookingAdapter\r\n                        drhBookingAdapter.notifyDataSetChanged()\r\n                    }\r\n                }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/seaID/hivet/ListDokterActivity.kt b/app/src/main/java/com/seaID/hivet/ListDokterActivity.kt
+--- a/app/src/main/java/com/seaID/hivet/ListDokterActivity.kt	(revision 7c6830d5635b930c365a1eb3d417c183e8cebaaa)
++++ b/app/src/main/java/com/seaID/hivet/ListDokterActivity.kt	(date 1641271857032)
+@@ -111,7 +111,7 @@
+                     val items = data.size
+                     if (items > 0){
+                         for (item in data){
+-                            if (item.booking.equals(tanggal) && item.alamat.equals(daerah)){
++                            if (item.booking.equals("21 December 2021") && item.alamat.equals("Jawa Barat")){
+                                 drhArrayList.add(item)
+                             }
+                         }
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\nbuildscript {\r\n    repositories {\r\n        google()\r\n        mavenCentral()\r\n    }\r\n    dependencies {\r\n        classpath 'com.android.tools.build:gradle:7.0.4'\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20\"\r\n        classpath 'com.google.gms:google-services:4.3.10'\r\n\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	(revision 7c6830d5635b930c365a1eb3d417c183e8cebaaa)
++++ b/build.gradle	(date 1641263904693)
+@@ -1,5 +1,6 @@
+ // Top-level build file where you can add configuration options common to all sub-projects/modules.
+ buildscript {
++    ext.kotlin_version = '1.6.10'
+     repositories {
+         google()
+         mavenCentral()
+@@ -8,6 +9,7 @@
+         classpath 'com.android.tools.build:gradle:7.0.4'
+         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
+         classpath 'com.google.gms:google-services:4.3.10'
++        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+ 
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files

@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.adapters.peliharaanAdapter
 import com.seaID.hivet.databinding.ActivityBookingBinding
@@ -20,6 +21,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
     private lateinit var binding: ActivityKonsultasiBinding
     private lateinit var mDbRef: FirebaseFirestore
+    private lateinit var mAuth : FirebaseAuth
     val pets = ArrayList<String>()
     var text: String ?= null
     var counter : Int = 0
@@ -31,9 +33,10 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         setContentView(view)
 
         val id = intent.getStringExtra("Uid")
+        mAuth = FirebaseAuth.getInstance()
 
         showData(id.toString())
-        dataPeliharaan(id.toString())
+        dataPeliharaan()
     }
 
     override fun onBackPressed() {
@@ -44,7 +47,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
     }
 
-    private fun dataPeliharaan(id : String) {
+    private fun dataPeliharaan() {
         mDbRef.collection("peliharaan")
             .get()
             .addOnSuccessListener {
@@ -52,7 +55,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 val items = data.size
                 if (items > 0){
                     for (item in data){
-                        if (item.pemilik == id){
+                        if (item.pemilik == mAuth.uid){
                             pets.add(item.nama!!)
                         }
                     }

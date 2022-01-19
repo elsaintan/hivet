@@ -24,35 +24,11 @@
         android:text="Name" />
 
     <RelativeLayout
-        android:id="@+id/userRL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="30dp">
-
-        <TextView
-            android:id="@+id/workExpTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email" />
-
-        <TextView
-            android:id="@+id/hargaTV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/workExpTV"
-            android:layout_marginTop="15dp"
-            android:text="Alamat" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
         android:id="@+id/mypetsRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/userRL">
+        android:layout_below="@id/namadrhTV"
+        android:layout_marginTop="30dp">
 
         <Spinner
             android:id="@+id/peliharaanSP"
@@ -64,11 +40,36 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/userRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@id/mypetsRL">
+
+        <TextView
+            android:id="@+id/workExpTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harga Total" />
+
+        <TextView
+            android:id="@+id/hargaTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/workExpTV"
+            android:layout_marginTop="15dp"
+            android:text="Total Biaya" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/menuRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:layout_below="@id/mypetsRL">
+        android:layout_below="@id/userRL">
 
         <Button
             android:id="@+id/suntinTV"
