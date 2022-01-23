@@ -1,6 +1,7 @@
 package com.seaID.hivet
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -68,10 +69,16 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
                 arrayOf(Manifest.permission.READ_PHONE_STATE), 101)
         }
 
-        initMidtransSdk()
+        //initMidtransSdk()
         binding.reservasiBt.setOnClickListener {
-            MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
-            MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.GO_PAY)
+            val intent = Intent(this, BookingPaymentActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("userid", mAuth.currentUser!!.uid)
+            intent.putExtra("pet", binding.mypetS.selectedItem.toString())
+            intent.putExtra("drh", uId)
+            intent.putExtra("tanggal", binding.tanggalap.toString())
+            intent.putExtra("slot", "")
+            startActivity(intent)
         }
     }
 

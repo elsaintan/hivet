@@ -11,7 +11,7 @@
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:src="@drawable/profile" />
 
     <TextView
@@ -61,6 +61,13 @@
             android:layout_below="@id/workExpTV"
             android:layout_marginTop="15dp"
             android:text="Total Biaya" />
+
+        <TextView
+            android:text="Bintang 5 (ini nanti ada gambar bintangnya tp nanti dulu aku mager)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/hargaTV"/>
 
     </RelativeLayout>
 
