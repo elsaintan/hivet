@@ -37,6 +37,14 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         showData(id.toString())
         dataPeliharaan()
+
+        binding.konsulBT.setOnClickListener {
+            saveData()
+        }
+    }
+
+    private fun saveData() {
+        TODO("Not yet implemented")
     }
 
     override fun onBackPressed() {

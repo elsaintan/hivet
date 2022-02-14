@@ -63,11 +63,28 @@
             android:text="Total Biaya" />
 
         <TextView
-            android:text="Bintang 5 (ini nanti ada gambar bintangnya tp nanti dulu aku mager)"
+            android:id="@+id/exp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/hargaTV"
             android:layout_marginTop="15dp"
-            android:layout_below="@id/hargaTV"/>
+            android:text="Pengalaman" />
+
+        <TextView
+            android:id="@+id/tempat_praktik"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exp"
+            android:layout_marginTop="15dp"
+            android:text="Tempat Praktik" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tempat_praktik"
+            android:layout_marginTop="15dp"
+            android:text="No STR" />
+
 
     </RelativeLayout>
 
@@ -79,12 +96,12 @@
         android:layout_below="@id/userRL">
 
         <Button
-            android:id="@+id/suntinTV"
+            android:id="@+id/konsulBT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/green_lumut"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="30dp"
+            android:backgroundTint="@color/green_lumut"
             android:text="Konsultasi" />
 
     </RelativeLayout>

@@ -62,6 +62,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ListDokterActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("type", 1)
+            intent.putExtra("username", uName.getText().toString())
+
             startActivity(intent)
         }
 

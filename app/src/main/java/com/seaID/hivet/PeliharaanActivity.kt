@@ -47,9 +47,10 @@ class PeliharaanActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveData(id : String, name : String, jenis : String, keterangan : String) {
-        val peliharaan = peliharaan(id, name, jenis, keterangan)
+    private fun saveData(idp : String, name : String, jenis : String, keterangan : String) {
+
         val id: String = mDbRef.collection("peliharaan").document().getId()
+        val peliharaan = peliharaan(id, idp, name, jenis, keterangan)
         mDbRef.collection("peliharaan").document(id).set(peliharaan)
             .addOnCompleteListener {
                 Toast.makeText(this, "OKE", Toast.LENGTH_SHORT).show()

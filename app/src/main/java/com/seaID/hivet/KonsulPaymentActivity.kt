@@ -1,6 +1,5 @@
 package com.seaID.hivet
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -17,39 +16,39 @@ import com.midtrans.sdk.corekit.models.snap.Gopay
 import com.midtrans.sdk.corekit.models.snap.Shopeepay
 import com.midtrans.sdk.corekit.models.snap.TransactionResult
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder
-import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.databinding.ActivityBookingPaymentBinding
-import com.seaID.hivet.models.booking
-import com.seaID.hivet.models.peliharaan
+import com.seaID.hivet.databinding.ActivityKonsulPaymentBinding
 
-class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
+class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
-    private lateinit var bbinding: ActivityBookingPaymentBinding
+    private lateinit var kbinding : ActivityKonsulPaymentBinding
     private lateinit var mAuth : FirebaseAuth
     private lateinit var mDbRef: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bbinding = ActivityBookingPaymentBinding.inflate(layoutInflater)
-        val view = bbinding.root
+        kbinding = ActivityKonsulPaymentBinding.inflate(layoutInflater)
+        val view = kbinding.root
         setContentView(view)
 
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseFirestore.getInstance()
+
         initMidtransSdk()
 
-        bbinding.gopayBt.setOnClickListener {
+        kbinding.gopayBt.setOnClickListener {
             MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.GO_PAY)
         }
-        bbinding.spayBt.setOnClickListener {
+        kbinding.spayBt.setOnClickListener {
             MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.SHOPEEPAY)
         }
-        bbinding.akulakuBt.setOnClickListener {
+        kbinding.akulakuBt.setOnClickListener {
             MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.AKULAKU)
         }
+
 
     }
 
@@ -70,8 +69,8 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         if (result.response != null) {
             when (result.status) {
                 TransactionResult.STATUS_SUCCESS ->
-                    //Toast.makeText(this, "Transaction Finished. ID: " + result.response.transactionId, Toast.LENGTH_LONG).show()
-                    saveAppointment(result.response.transactionId)
+                    Toast.makeText(this, "Transaction Finished. ID: " + result.response.transactionId, Toast.LENGTH_LONG).show()
+                    //saveAppointment(result.response.transactionId)
                 TransactionResult.STATUS_PENDING ->
                     Toast.makeText(this, "Transaction Pending. ID: " + result.response.transactionId, Toast.LENGTH_LONG).show()
                 TransactionResult.STATUS_FAILED ->
@@ -89,35 +88,6 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         }
     }
 
-    private fun saveAppointment(transaction_id : String) {
-
-        //val id: String = mDbRef.collection("booking_appointments").document().getId()
-        val length = 8
-        val id : String = getRandomString(length)
-
-        val booking = booking(id, transaction_id, mAuth.currentUser!!.uid, intent.getStringExtra("pet"), intent.getStringExtra("drh"), intent.getStringExtra("slot"),intent.getStringExtra("tanggal"),"Berhasil Reservasi")
-
-        mDbRef.collection("booking_appointments").document(id).set(booking)
-            .addOnCompleteListener {
-                Toast.makeText(this, "OKE", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, BookingBerhasilActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                intent.putExtra("kode_booking", id)
-                startActivity(intent)
-            }
-            .addOnFailureListener { e ->
-                //stored data failed
-                Toast.makeText(this, "Action failed due to " + e.message, Toast.LENGTH_SHORT).show()
-            }
-    }
-
-    fun getRandomString(length: Int) : String {
-        val charset = ('a'..'z') + ('A'..'Z') + ('0'..'9')
-        return (1..length)
-            .map { charset.random() }
-            .joinToString("")
-    }
-
     private fun uiKitCustomSetting(): UIKitCustomSetting {
         val uIKitCustomSetting = UIKitCustomSetting()
         uIKitCustomSetting.isSkipCustomerDetailsPages = true
@@ -127,7 +97,7 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
 
     private fun initTransactionRequest(): TransactionRequest {
         // Create new Transaction Request
-        val transactionRequestNew = TransactionRequest(System.currentTimeMillis().toString() + "", 5000.0)
+        val transactionRequestNew = TransactionRequest(System.currentTimeMillis().toString() + "", 30000.0)
         transactionRequestNew.customerDetails = initCustomerDetails()
         transactionRequestNew.gopay = Gopay("mysamplesdk:://midtrans")
         transactionRequestNew.shopeepay = Shopeepay("mysamplesdk:://midtrans")
