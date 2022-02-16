@@ -59,6 +59,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         setContentView(view)
 
         val uId = intent.getStringExtra("Uid")
+        val nama = intent.getStringExtra("Name")
         db = FirebaseFirestore.getInstance()
         mAuth = FirebaseAuth.getInstance()
         myPets()
@@ -76,6 +77,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             intent.putExtra("userid", mAuth.currentUser!!.uid)
             intent.putExtra("pet", binding.mypetS.selectedItem.toString())
             intent.putExtra("drh", uId)
+            intent.putExtra("name", nama)
             intent.putExtra("tanggal", binding.tanggalap.toString())
             intent.putExtra("slot", "")
             startActivity(intent)

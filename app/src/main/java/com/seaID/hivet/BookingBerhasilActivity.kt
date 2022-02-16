@@ -10,6 +10,7 @@ import com.seaID.hivet.databinding.ActivityBookingBerhasilBinding
 import com.seaID.hivet.databinding.ActivityUserProfileBinding
 import com.seaID.hivet.models.User
 import com.seaID.hivet.models.booking
+import com.seaID.hivet.models.drh
 
 class BookingBerhasilActivity : AppCompatActivity() {
 
@@ -37,17 +38,39 @@ class BookingBerhasilActivity : AppCompatActivity() {
                 val data = doc.toObject(booking::class.java)
                 //mybinding.namauTV.text = user!!.name
                 //mybinding.emailTV.text = user!!.email
+                showdrh(data!!.drh_id)
                 bBinding.kodeBooking.text = data!!.kode_booking
                 bBinding.waktukonsul.text = data!!.waktu
                 bBinding.tanggalap.text = data!!.tanggal
                 //Log.d(UserProfileActivity.TAG, "{$user.name}")
             } else {
-                //Log.d(UserProfileActivity.TAG, "No such document")
+                Toast.makeText(this,"No such document",  Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener { exception ->
             Toast.makeText(this,"get failed with "+ exception,  Toast.LENGTH_SHORT).show()
             //Log.d(UserProfileActivity.TAG, "get failed with " +exception,)
         }
 
+    }
+
+    private fun showdrh(drhId: String?) {
+        val appp  = mDbRef.collection("drh").document(drhId.toString())
+
+        appp.get().addOnSuccessListener { doc ->
+            if (doc != null) {
+                val data = doc.toObject(drh::class.java)
+
+                bBinding.namedrhTV.text = data!!.Name
+                bBinding.tempatPraktikTV.text = data!!.tempat
+
+                //Log.d(UserProfileActivity.TAG, "{$user.name}")
+            } else {
+                //Log.d(UserProfileActivity.TAG, "No such document")
+                Toast.makeText(this,"No such document",  Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener { exception ->
+            Toast.makeText(this,"get failed with "+ exception,  Toast.LENGTH_SHORT).show()
+            //Log.d(UserProfileActivity.TAG, "get failed with " +exception,)
+        }
     }
 }

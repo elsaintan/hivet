@@ -38,6 +38,9 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         mDbRef = FirebaseFirestore.getInstance()
         initMidtransSdk()
 
+        bbinding.namedrhTV.text = intent.getStringExtra("name")
+        //bbinding.tanggalap.text = intent.getStringExtra("name")
+
         bbinding.gopayBt.setOnClickListener {
             MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.GO_PAY)

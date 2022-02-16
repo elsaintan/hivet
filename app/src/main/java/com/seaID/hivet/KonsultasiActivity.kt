@@ -1,5 +1,6 @@
 package com.seaID.hivet
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -40,6 +41,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         binding.konsulBT.setOnClickListener {
             saveData()
+            startActivity(Intent(this, KonsulPaymentActivity::class.java))
         }
     }
 
