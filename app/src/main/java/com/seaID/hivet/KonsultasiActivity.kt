@@ -41,12 +41,16 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         binding.konsulBT.setOnClickListener {
             saveData()
-            startActivity(Intent(this, KonsulPaymentActivity::class.java))
+            val intent = Intent(this, KonsulPaymentActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("nama_drh", binding.namadrhTV.text)
+            intent.putExtra("harga", binding.hargaTV.text)
+            startActivity(intent)
         }
     }
 
     private fun saveData() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onBackPressed() {

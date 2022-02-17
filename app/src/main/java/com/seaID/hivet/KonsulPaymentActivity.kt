@@ -34,6 +34,11 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseFirestore.getInstance()
 
+        kbinding.namedrhTV.text = intent.getStringExtra("nama_drh")
+        kbinding.tanggalap.text = intent.getStringExtra("harga")
+        kbinding.hargatot.text = intent.getStringExtra("harga")
+
+
         initMidtransSdk()
 
         kbinding.gopayBt.setOnClickListener {
@@ -97,7 +102,7 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
     private fun initTransactionRequest(): TransactionRequest {
         // Create new Transaction Request
-        val transactionRequestNew = TransactionRequest(System.currentTimeMillis().toString() + "", 30000.0)
+        val transactionRequestNew = TransactionRequest(System.currentTimeMillis().toString() + "", intent.getStringExtra("harga")!!.toDouble())
         transactionRequestNew.customerDetails = initCustomerDetails()
         transactionRequestNew.gopay = Gopay("mysamplesdk:://midtrans")
         transactionRequestNew.shopeepay = Shopeepay("mysamplesdk:://midtrans")
