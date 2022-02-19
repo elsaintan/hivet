@@ -9,6 +9,7 @@
     tools:context=".ChatActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageBack"
         android:layout_width="@dimen/thirtytwo_dp"
         android:layout_height="@dimen/thirtytwo_dp"
         android:layout_marginStart="@dimen/sixteen_dp"
@@ -16,6 +17,57 @@
         android:layout_marginTop="@dimen/twelve_dp"
         android:padding="@dimen/five_dp"
         android:src="@drawable/ic_outline_arrow_back_ios_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageInfo"
+        android:layout_width="@dimen/thirtytwo_dp"
+        android:layout_height="@dimen/thirtytwo_dp"
+        android:layout_marginEnd="@dimen/sixteen_dp"
+        android:layout_marginRight="@dimen/sixteen_dp"
+        android:layout_marginTop="@dimen/twelve_dp"
+        android:padding="@dimen/four_dp"
+        android:src="@drawable/ic_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/eight_dp"
+        android:layout_marginEnd="@dimen/eight_dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/indigo.primary_dark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageBack"
+        app:layout_constraintEnd_toStartOf="@id/imageInfo"
+        app:layout_constraintStart_toEndOf="@id/imageBack"
+        app:layout_constraintTop_toTopOf="@id/imageBack"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chats"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        android:padding="@dimen/twenty_dp"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/send"
+        app:layout_constraintTop_toBottomOf="@id/imageBack"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/twenty_four_dp"
+        android:layout_height="@dimen/twenty_four_dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -41,6 +93,7 @@
     </FrameLayout>
 
     <EditText
+        android:id="@+id/send"
         android:layout_width="0dp"
         android:layout_height="@dimen/forty_dp"
         android:layout_marginStart="@dimen/sixteen_dp"

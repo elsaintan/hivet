@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/four_dp">
+
+    <com.midtrans.sdk.uikit.widgets.RoundedImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="@dimen/twenty_four_dp"
+        android:layout_height="@dimen/twenty_four_dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/textMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/four_dp"
+        android:layout_marginLeft="@dimen/four_dp"
+        android:background="@drawable/bg_received_message"
+        android:padding="@dimen/twelve_dp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/imageProfile"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.75"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/four_dp"
+        android:textColor="@color/navy_blue.secondary"
+        app:layout_constraintStart_toStartOf="@id/textMessage"
+        app:layout_constraintTop_toBottomOf="@id/textMessage"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

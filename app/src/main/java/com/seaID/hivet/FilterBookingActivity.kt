@@ -60,6 +60,8 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
             intent.putExtra("tanggal", date)
             intent.putExtra("daerah", daerah)
             startActivity(intent)
+
+            //Toast.makeText(this,"Tanggal "+daerah, Toast.LENGTH_SHORT).show()
         }
     }
 

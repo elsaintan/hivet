@@ -78,7 +78,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             intent.putExtra("pet", binding.mypetS.selectedItem.toString())
             intent.putExtra("drh", uId)
             intent.putExtra("name", nama)
-            intent.putExtra("tanggal", binding.tanggalap.toString())
+            intent.putExtra("tanggal", binding.tanggalap.text)
             intent.putExtra("slot", "")
             startActivity(intent)
         }
