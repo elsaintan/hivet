@@ -49,9 +49,9 @@ class PeliharaanActivity : AppCompatActivity() {
 
     private fun saveData(idp : String, name : String, jenis : String, keterangan : String) {
 
-        val id: String = mDbRef.collection("peliharaan").document().getId()
-        val peliharaan = peliharaan(id, idp, name, jenis, keterangan)
-        mDbRef.collection("peliharaan").document(id).set(peliharaan)
+        var id = intent.getStringExtra("petid")
+        val peliharaan = peliharaan(id.toString(), idp, name, jenis, keterangan)
+        mDbRef.collection("peliharaan").document(id.toString()).set(peliharaan)
             .addOnCompleteListener {
                 Toast.makeText(this, "OKE", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, UserProfileActivity::class.java))

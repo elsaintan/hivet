@@ -32,6 +32,7 @@ class peliharaanAdapter(private val petList : ArrayList<peliharaan>) : RecyclerV
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, PeliharaanActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            intent.putExtra("petid", pet.id)
             intent.putExtra("id", pet.pemilik)
             intent.putExtra("nama", pet.nama)
             intent.putExtra("jenis", pet.jenis)

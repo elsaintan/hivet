@@ -40,12 +40,13 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         dataPeliharaan()
 
         binding.konsulBT.setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java))
             saveData()
-            val intent = Intent(this, KonsulPaymentActivity::class.java)
+            /**val intent = Intent(this, KonsulPaymentActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("nama_drh", binding.namadrhTV.text)
             intent.putExtra("harga", binding.hargaTV.text)
-            startActivity(intent)
+            startActivity(intent) **/
         }
     }
 
