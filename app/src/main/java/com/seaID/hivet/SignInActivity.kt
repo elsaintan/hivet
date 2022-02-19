@@ -177,7 +177,7 @@ class SignInActivity : AppCompatActivity() {
                     //jumping to Home
                     toHome(uid)
                 } else {
-                    Toast.makeText(this, "User doesn't exist", Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, "User doesn't exist", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { e->
