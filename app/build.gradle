@@ -70,6 +70,10 @@ dependencies {
     implementation 'com.midtrans:uikit:1.28.0-SANDBOX' // payment gateway
     //implementation 'com.midtrans:uikit:1.28.0'
 
+    //groupie
+    implementation 'com.xwray:groupie:2.0.3'
+    implementation 'com.xwray:groupie-kotlin-android-extensions:2.0.3'
+
     implementation "androidx.core:core-ktx:+"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 

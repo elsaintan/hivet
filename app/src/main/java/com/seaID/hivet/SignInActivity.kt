@@ -33,6 +33,7 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var tvFPassword : TextView
     private lateinit var mAuth: FirebaseAuth
 
+
     //constant
     private companion object{
         private const val RC_SIGN_IN = 100
