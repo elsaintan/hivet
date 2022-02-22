@@ -109,9 +109,9 @@
                 android:id="@+id/tnggalll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/waktull"
                 android:layout_alignParentStart="true"
                 android:layout_gravity="center_vertical"
-                android:layout_below="@id/waktull"
                 android:layout_marginStart="0dp"
                 android:orientation="horizontal">
 
