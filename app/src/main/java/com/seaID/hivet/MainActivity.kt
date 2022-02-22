@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity() {
 
         profile.setOnClickListener {
             startActivity(Intent(this, UserProfileActivity::class.java))
-
         }
 
 

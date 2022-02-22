@@ -10,37 +10,99 @@
     tools:context=".ChatActivity">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageBack"
-        android:layout_width="@dimen/thirtytwo_dp"
-        android:layout_height="@dimen/thirtytwo_dp"
-        android:layout_marginStart="@dimen/sixteen_dp"
-        android:layout_marginTop="28dp"
-        android:padding="@dimen/five_dp"
-        android:src="@drawable/ic_outline_arrow_back_ios_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/fotoProfile"
-        android:layout_width="63dp"
-        android:layout_height="58dp"
-        android:layout_margin="@dimen/twelve_dp"
-        android:src="@drawable/profile"
-        app:layout_constraintStart_toEndOf="@id/imageBack"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageInfo"
-        android:layout_width="@dimen/thirtytwo_dp"
-        android:layout_height="@dimen/thirtytwo_dp"
-        android:layout_marginEnd="@dimen/sixteen_dp"
-        android:layout_marginRight="@dimen/sixteen_dp"
-        android:layout_marginTop="@dimen/twelve_dp"
-        android:padding="@dimen/four_dp"
-        android:src="@drawable/ic_info"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/biru_keren"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageBack"
+            android:layout_width="@dimen/thirtytwo_dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:padding="@dimen/five_dp"
+            android:src="@drawable/ic_outline_arrow_back_ios_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fotoProfile"
+            android:layout_width="63dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageInfo"
+            android:layout_width="@dimen/thirtytwo_dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:padding="@dimen/four_dp"
+            android:src="@drawable/ic_info"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tanggal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:text="21 Feb 2022"
+        android:textColor="#BFBCBC"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top" />
+
+    <TextView
+        android:id="@+id/konsul"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="KD-123456"
+        android:textColor="#BFBCBC"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top"
+        app:layout_constraintVertical_bias="0.060000002" />
 
 
     <!-- <RelativeLayout
@@ -70,75 +132,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/> -->
 
-    <TextView
-        android:id="@+id/textName"
-        android:layout_width="181dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/eight_dp"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:maxLines="1"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/imageBack"
-        app:layout_constraintEnd_toStartOf="@+id/imageInfo"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/fotoProfile"
-        app:layout_constraintTop_toTopOf="@id/imageBack"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/konsul"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text="KD-123456"
-        android:textSize="13dp"
-        android:textColor="#BFBCBC"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageBack" />
-
-    <TextView
-        android:id="@+id/tanggal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="12dp"
-        android:text="21 Feb 2022"
-        android:textSize="13dp"
-        android:textColor="#BFBCBC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageInfo" />
-
-    <RelativeLayout
-        android:id="@+id/garis"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginLeft="@dimen/twelve_dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="@dimen/twelve_dp"
-        android:background="#000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/konsul" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chats"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:clipToPadding="false"
         android:orientation="vertical"
         android:overScrollMode="never"
-        android:padding="@dimen/twenty_dp"
+        android:padding="@dimen/twelve_dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/bottom_chat"
-        app:layout_constraintTop_toBottomOf="@+id/garis"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2"
+        app:layout_constraintVertical_bias="0.0">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <FrameLayout
         android:id="@+id/layoutSend"
