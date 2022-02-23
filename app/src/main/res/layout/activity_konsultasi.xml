@@ -112,6 +112,13 @@
             android:layout_marginTop="15dp"
             android:text="Total Biaya" />
 
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/hargaTV"
+            android:background="?android:attr/listDivider" />
+
     </RelativeLayout>
 
     <RelativeLayout
