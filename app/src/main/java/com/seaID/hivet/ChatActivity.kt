@@ -100,6 +100,7 @@ class ChatActivity : AppCompatActivity() {
         SeenMessage(userid.toString())
 
         showDataVet(userid)
+        //showDataVet(userid)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)

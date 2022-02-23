@@ -1,9 +1,11 @@
 package com.seaID.hivet
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback
 import com.midtrans.sdk.corekit.core.MidtransSDK
@@ -18,6 +20,10 @@ import com.midtrans.sdk.corekit.models.snap.TransactionResult
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import com.seaID.hivet.databinding.ActivityBookingPaymentBinding
 import com.seaID.hivet.databinding.ActivityKonsulPaymentBinding
+import com.seaID.hivet.models.konsultasi
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
@@ -74,8 +80,8 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         if (result.response != null) {
             when (result.status) {
                 TransactionResult.STATUS_SUCCESS ->
-                    Toast.makeText(this, "Transaction Finished. ID: " + result.response.transactionId, Toast.LENGTH_LONG).show()
-                    //saveAppointment(result.response.transactionId)
+                    //Toast.makeText(this, "Transaction Finished. ID: " + result.response.transactionId, Toast.LENGTH_LONG).show()
+                    saveKonusl(result.response.transactionId)
                 TransactionResult.STATUS_PENDING ->
                     Toast.makeText(this, "Transaction Pending. ID: " + result.response.transactionId, Toast.LENGTH_LONG).show()
                 TransactionResult.STATUS_FAILED ->
@@ -91,6 +97,23 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
                 Toast.makeText(this, "Transaction Finished with failure.", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    private fun saveKonusl(transactionId: String?){
+        val id = intent.getStringExtra("id")
+        val id_drh = intent.getStringExtra("Uid")
+        val id_pet = intent.getStringExtra("id_pet")
+        val tanggal = intent.getStringExtra("tanggal")
+        val konsultasi = konsultasi(id, id_drh, mAuth.uid, id_pet,tanggal,"Telah Bayar")
+        mDbRef.collection("konsultasi").document(id.toString()).set(konsultasi)
+            .addOnSuccessListener {
+                val intent = Intent(this, ChatActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.putExtra("Uid", id_drh)
+                startActivity(intent)
+            }.addOnFailureListener {
+
+            }
     }
 
     private fun uiKitCustomSetting(): UIKitCustomSetting {
