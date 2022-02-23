@@ -4,97 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/biru_lebih_keren"
+    android:background="@color/white"
     tools:context=".KonsultasiActivity">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/profileIM"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/profile" />
-
-    <TextView
-        android:id="@+id/namadrhTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profileIM"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="Name" />
-
     <RelativeLayout
-        android:id="@+id/mypetsRL"
+        android:id="@+id/kotakan1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/namadrhTV"
-        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/white">
+        android:layout_marginRight="30dp"
+        android:background="@drawable/kotak_profil_kecil">
 
-        <Spinner
-            android:id="@+id/peliharaanSP"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profileIM"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/namadrhTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_toRightOf="@id/profileIM"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/tempat_praktik"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pilih Hewan Peliharaanku" />
+            android:layout_below="@id/namadrhTV"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profileIM"
+            android:text="Tempat Praktik" />
+
+        <TextView
+            android:id="@+id/exp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tempat_praktik"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/profileIM"
+            android:text="Pengalaman" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/userRL"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/mypetsRL"
+        android:layout_height="120dp"
+        android:layout_below="@id/kotakan1"
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/kotak_profil_kecil">
 
         <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:text="No STR" />
+
+        <Spinner
+            android:id="@+id/peliharaanSP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:text="Pilih Hewan Peliharaanku" />
+
+        <TextView
             android:id="@+id/workExpTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_below="@id/peliharaanSP"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:text="Harga Total" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/mypetsRL"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/userRL"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/biru_lebih_keren">
 
         <TextView
             android:id="@+id/hargaTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/workExpTV"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="15dp"
             android:text="Total Biaya" />
-
-        <TextView
-            android:id="@+id/exp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/hargaTV"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="15dp"
-            android:text="Pengalaman" />
-
-        <TextView
-            android:id="@+id/tempat_praktik"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/exp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="15dp"
-            android:text="Tempat Praktik" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tempat_praktik"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="15dp"
-            android:text="No STR" />
-
 
     </RelativeLayout>
 
@@ -102,7 +118,7 @@
         android:id="@+id/menuRL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/userRL"
+        android:layout_below="@id/mypetsRL"
         android:layout_marginTop="30dp">
 
         <Button
