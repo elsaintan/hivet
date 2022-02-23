@@ -1,6 +1,7 @@
 package com.seaID.hivet
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,7 +18,11 @@ import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.databinding.ActivityKonsultasiBinding
 import com.seaID.hivet.models.User
 import com.seaID.hivet.models.drh
+import com.seaID.hivet.models.konsultasi
 import com.seaID.hivet.models.peliharaan
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -27,6 +33,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     var text: String ?= null
     var counter : Int = 0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityKonsultasiBinding.inflate(layoutInflater)
@@ -41,18 +48,61 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         binding.konsulBT.setOnClickListener {
             //startActivity(Intent(this, ChatActivity::class.java))
-            //saveData()
-            val intent = Intent(this, ChatActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            intent.putExtra("nama_drh", binding.namadrhTV.text)
-            intent.putExtra("harga", binding.hargaTV.text)
-            intent.putExtra("Uid", id)
-            startActivity(intent)
+            saveData()
+
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun saveData() {
+        val id_drh = intent.getStringExtra("Uid")
+        val id_user = mAuth.currentUser!!.uid
+        val length = 8
+        val id : String = getRandomString(length)
+        val current = LocalDateTime.now()
+        val simpleDateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+        val formatted = current.format(simpleDateFormat)
+        val konsultasi = konsultasi(id, id_drh, id_user, binding.peliharaanSP.selectedItem.toString(), formatted, "Menunggu Konfirmasi")
+        mDbRef.collection("konsultasi").document(id).set(konsultasi)
+            .addOnCompleteListener {
 
+            }
+            .addOnFailureListener { e ->
+                //stored data failed
+                Toast.makeText(this, "Action failed due to " + e.message, Toast.LENGTH_SHORT).show()
+            }
+    }
+    override fun onResume() {
+        super.onResume()
+        mDbRef.collection("konsultasi")
+            .get()
+            .addOnSuccessListener {
+                val data = it.toObjects(konsultasi::class.java)
+                val items = data.size
+                if (items > 0) {
+                    for (item in data) {
+                        if (item.status == "Diterima") {
+                            val intent = Intent(this, PaymentActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            intent.putExtra("nama_drh", binding.namadrhTV.text)
+                            intent.putExtra("harga", binding.hargaTV.text)
+                            intent.putExtra("Uid", item.id_drh)
+                            intent.putExtra("id", item.id)
+                            intent.putExtra("id_pet", item.id_pet)
+                            intent.putExtra("tanggal", item.tanggal)
+                            startActivity(intent)
+                        }
+                    }
+                }
+            }
+    }
+
+
+    private fun getRandomString(length: Int): String {
+        val charset = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+        return (1..length)
+            .map { charset.random() }
+            .joinToString("")
     }
 
     override fun onBackPressed() {
