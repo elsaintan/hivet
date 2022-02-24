@@ -11,10 +11,27 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/photodrh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/checked" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Reservasi Berhasil!"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
         <RelativeLayout
             android:id="@+id/first"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="250dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
@@ -23,67 +40,37 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/namedrhTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="6dp"
-                android:layout_marginStart="16dp"
-                android:orientation="vertical">
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
+                android:text="Nama Dokter"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/photodrh"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/checked" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/namedrhTV"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nama Dokter"
-                        android:textSize="26sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/second"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/first"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/kotak_profil_biru"
-            android:paddingStart="16dp"
-            android:paddingTop="24dp"
-            app:cardElevation="0dp">
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_below="@id/namedrhTV"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="18dp"
+                android:background="?android:attr/listDivider"
+                android:backgroundTint="@color/black"
+                android:backgroundTintMode="src_over" />
 
             <LinearLayout
                 android:id="@+id/waktull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+                android:layout_below="@id/divider5"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="0dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -110,9 +97,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/waktull"
-                android:layout_alignParentStart="true"
                 android:layout_gravity="center_vertical"
-                android:layout_marginStart="0dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -140,6 +127,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tnggalll"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -166,6 +155,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/statusll"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
                 android:orientation="horizontal">
 
                 <TextView
