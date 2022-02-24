@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -30,8 +31,9 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     private lateinit var mDbRef: FirebaseFirestore
     private lateinit var mAuth : FirebaseAuth
     val pets = ArrayList<String>()
-    var text: String ?= null
+    var text: String ? = null
     var counter : Int = 0
+    var idk: String ? =null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,20 +61,75 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         val id_user = mAuth.currentUser!!.uid
         val length = 8
         val id : String = getRandomString(length)
+        idk = id;
         val current = LocalDateTime.now()
         val simpleDateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val formatted = current.format(simpleDateFormat)
-        val konsultasi = konsultasi(id, id_drh, id_user, binding.peliharaanSP.selectedItem.toString(), formatted, "Menunggu Konfirmasi")
+        val konsultasi = konsultasi(id, id_drh, id_user, binding.peliharaanSP.selectedItem.toString(), formatted, "1")
         mDbRef.collection("konsultasi").document(id).set(konsultasi)
             .addOnCompleteListener {
-
+                timer.start()
             }
             .addOnFailureListener { e ->
                 //stored data failed
                 Toast.makeText(this, "Action failed due to " + e.message, Toast.LENGTH_SHORT).show()
             }
     }
-    override fun onResume() {
+
+    val timer = object: CountDownTimer(120000, 5000) {
+        override fun onTick(millisUntilFinished: Long) {
+            cekStatus()
+        }
+
+        override fun onFinish() {
+            //Toast.makeText(applicationContext, idk, Toast.LENGTH_SHORT).show()
+            changeStatus()
+        }
+    }
+
+    private fun changeStatus() {
+        Toast.makeText(applicationContext, "Permintaan Konsultasi Dibatalkan", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun cekStatus() {
+        val data = mDbRef.collection("konsultasi").document(idk.toString())
+                data.get().addOnSuccessListener {
+                    val data = it.toObject(konsultasi::class.java)
+                    if (data != null) {
+                        if (data.id == idk && data.status == "2"){
+                            toPayment(data.id_drh, data.id, data.id_pet, data.tanggal)
+                        }else if(data.id == idk && data.status == "5"){
+                            Toast.makeText(applicationContext, "Permintaan Konsultasi Ditolak", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                //val data =
+                //val data = it.toObjects(konsultasi::class.java)
+                //val items = data.size
+                //if (items > 0) {
+                //    for (item in data) {
+                //        if (item.id == idk && item.status == "Diterima") {
+                //            toPayment(item.id_drh, item.id, item.id_pet, item.tanggal)
+                //        }
+                //    }
+                //}
+
+    }
+
+    private fun toPayment(idDrh: String?, id: String?, idPet: String?, tanggal: String?) {
+        val intent = Intent(this, PaymentActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra("nama_drh", binding.namadrhTV.text)
+        intent.putExtra("harga", binding.hargaTV.text)
+        intent.putExtra("Uid", idDrh)
+        intent.putExtra("id", id)
+        intent.putExtra("id_pet", idPet)
+        intent.putExtra("tanggal", tanggal)
+        startActivity(intent)
+    }
+
+    /**override fun onResume() {
         super.onResume()
         mDbRef.collection("konsultasi")
             .get()
@@ -95,7 +152,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                     }
                 }
             }
-    }
+    }**/
 
 
     private fun getRandomString(length: Int): String {
