@@ -64,6 +64,7 @@ class ChatActivity : AppCompatActivity() {
 
 
         val userid = intent.getStringExtra("Uid")
+        val idKonsul = intent.getStringExtra("id")
 
         mAuth = FirebaseAuth.getInstance().currentUser
         reference = FirebaseDatabase.getInstance().getReference("drh").child(userid.toString())
@@ -77,7 +78,7 @@ class ChatActivity : AppCompatActivity() {
             //Toast.makeText(this, userid, Toast.LENGTH_SHORT).show()
             val msg = userMessageInput.getText().toString()
             if (!msg.isEmpty()) {
-                SendMessage(mAuth!!.uid, userid.toString(), msg)
+                SendMessage(mAuth!!.uid, userid.toString(), msg, idKonsul.toString())
             } else {
                 Toast.makeText(
                     this@ChatActivity,
@@ -91,8 +92,7 @@ class ChatActivity : AppCompatActivity() {
         reference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val user: drh? = dataSnapshot.getValue(drh::class.java)
-
-                ReadMessage(mAuth!!.uid, userid)
+                ReadMessage(mAuth!!.uid, userid, idKonsul.toString())
             }
 
             override fun onCancelled(databaseError: DatabaseError) {}
@@ -152,17 +152,18 @@ class ChatActivity : AppCompatActivity() {
         })
     }
 
-    private fun SendMessage(sender: String, receiver: String, message: String) {
+    private fun SendMessage(sender: String, receiver: String, message: String, id_konsul: String) {
         val reference = FirebaseDatabase.getInstance().reference
         val hashMap = HashMap<String, Any>()
         hashMap["sender"] = sender
         hashMap["receiver"] = receiver
         hashMap["message"] = message
+        hashMap["id_konsul"] = id_konsul
         hashMap["isseen"] = false
         reference.child("Chats").push().setValue(hashMap)
     }
 
-    fun ReadMessage(myid: String?, userid: String?) {
+    fun ReadMessage(myid: String?, userid: String?, id_konsul: String) {
         val mchat = ArrayList<Chat>()
         val reference = FirebaseDatabase.getInstance().getReference("Chats")
         reference.addValueEventListener(object : ValueEventListener {
@@ -170,7 +171,7 @@ class ChatActivity : AppCompatActivity() {
                 mchat.clear()
                 for (snapshot in dataSnapshot.children) {
                     val chat: Chat? = snapshot.getValue(Chat::class.java)
-                    if (chat?.getReceiver().equals(userid) && chat?.getSender().equals(mAuth!!.uid)){
+                    if (chat?.getReceiver().equals(userid) && chat?.getSender().equals(mAuth!!.uid) && chat?.getIdKonsul().equals(id_konsul)){
                         mchat.add(chat!!)
                     }
                     messageAdapter = MessageAdapter(applicationContext, mchat)
