@@ -34,6 +34,8 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     var text: String ? = null
     var counter : Int = 0
     var idk: String ? =null
+    var isRunning: Boolean = false;
+    lateinit var countdown_timer: CountDownTimer
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,14 +63,13 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         val id_user = mAuth.currentUser!!.uid
         val length = 8
         val id : String = getRandomString(length)
-        idk = id;
         val current = LocalDateTime.now()
         val simpleDateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val formatted = current.format(simpleDateFormat)
         val konsultasi = konsultasi(id, id_drh, id_user, binding.peliharaanSP.selectedItem.toString(), formatted, "1")
         mDbRef.collection("konsultasi").document(id).set(konsultasi)
             .addOnCompleteListener {
-                timer.start()
+                startTimer(120000, id)
             }
             .addOnFailureListener { e ->
                 //stored data failed
@@ -76,33 +77,46 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             }
     }
 
-    val timer = object: CountDownTimer(120000, 5000) {
-        override fun onTick(millisUntilFinished: Long) {
-            cekStatus()
-        }
+    private fun startTimer(time_in_seconds: Long, id : String) {
+        countdown_timer = object: CountDownTimer(time_in_seconds, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                cekStatus(id)
+            }
 
-        override fun onFinish() {
-            //Toast.makeText(applicationContext, idk, Toast.LENGTH_SHORT).show()
-            changeStatus()
+            override fun onFinish() {
+
+            }
         }
+        countdown_timer.start()
+
+        isRunning = true
     }
+
+
 
     private fun changeStatus() {
         Toast.makeText(applicationContext, "Permintaan Konsultasi Dibatalkan", Toast.LENGTH_SHORT).show()
     }
 
-    private fun cekStatus() {
-        val data = mDbRef.collection("konsultasi").document(idk.toString())
-                data.get().addOnSuccessListener {
-                    val data = it.toObject(konsultasi::class.java)
-                    if (data != null) {
-                        if (data.id == idk && data.status == "2"){
-                            toPayment(data.id_drh, data.id, data.id_pet, data.tanggal)
-                        }else if(data.id == idk && data.status == "5"){
-                            Toast.makeText(applicationContext, "Permintaan Konsultasi Ditolak", Toast.LENGTH_SHORT).show()
-                        }
+    private fun cekStatus(id: String) {
+
+            val data = mDbRef.collection("konsultasi").document(id)
+            data.get().addOnSuccessListener {
+                val data = it.toObject(konsultasi::class.java)
+                if (data != null) {
+                    if (data.id == id && data.status == "2"){
+                        toPayment(data.id_drh, data.id, data.id_pet, data.tanggal)
+                        countdown_timer.cancel()
+                        isRunning = false
+                    }else if(data.id == idk && data.status == "5"){
+                        Toast.makeText(applicationContext, "Permintaan Konsultasi Ditolak", Toast.LENGTH_SHORT).show()
+                        countdown_timer.cancel()
+                        isRunning = false
+
                     }
+
                 }
+            }
 
                 //val data =
                 //val data = it.toObjects(konsultasi::class.java)
@@ -118,7 +132,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     private fun toPayment(idDrh: String?, id: String?, idPet: String?, tanggal: String?) {
-        val intent = Intent(this, PaymentActivity::class.java)
+        val intent = Intent(this, KonsulPaymentActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         intent.putExtra("nama_drh", binding.namadrhTV.text)
         intent.putExtra("harga", binding.hargaTV.text)

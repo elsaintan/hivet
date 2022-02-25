@@ -104,12 +104,14 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         val id_drh = intent.getStringExtra("Uid")
         val id_pet = intent.getStringExtra("id_pet")
         val tanggal = intent.getStringExtra("tanggal")
+
         val konsultasi = konsultasi(id, id_drh, mAuth.uid, id_pet,tanggal,"3")
         mDbRef.collection("konsultasi").document(id.toString()).set(konsultasi)
             .addOnSuccessListener {
                 val intent = Intent(this, ChatActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("Uid", id_drh)
+                intent.putExtra("id", id)
                 startActivity(intent)
             }.addOnFailureListener {
 

@@ -64,6 +64,7 @@ class ChatActivity : AppCompatActivity() {
 
 
         val userid = intent.getStringExtra("Uid")
+
         mAuth = FirebaseAuth.getInstance().currentUser
         reference = FirebaseDatabase.getInstance().getReference("drh").child(userid.toString())
 
@@ -110,6 +111,7 @@ class ChatActivity : AppCompatActivity() {
         val simpleDateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val formatted = current.format(simpleDateFormat)
         tanggal.text = formatted
+        konsul.text = intent.getStringExtra("id")
 
         mDbRef = FirebaseFirestore.getInstance()
         val uidRef  = mDbRef.collection("drh").document(userid.toString())
