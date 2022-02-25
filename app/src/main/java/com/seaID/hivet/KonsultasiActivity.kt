@@ -1,12 +1,16 @@
 package com.seaID.hivet
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
+import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -81,6 +85,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         countdown_timer = object: CountDownTimer(time_in_seconds, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 cekStatus(id)
+                showDialog()
             }
 
             override fun onFinish() {
@@ -90,8 +95,19 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         countdown_timer.start()
 
         isRunning = true
+
     }
 
+    private fun showDialog() {
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.setContentView(R.layout.popup_notif_konsul)
+        if(isRunning == false){
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
 
 
     private fun changeStatus() {
