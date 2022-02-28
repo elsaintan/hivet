@@ -104,8 +104,9 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         val id_drh = intent.getStringExtra("Uid")
         val id_pet = intent.getStringExtra("id_pet")
         val tanggal = intent.getStringExtra("tanggal")
+        val harga = intent.getStringExtra("harga")
 
-        val konsultasi = konsultasi(id, id_drh, mAuth.uid, id_pet,tanggal,"3")
+        val konsultasi = konsultasi(id, id_drh, mAuth.uid, id_pet,tanggal,"3", transactionId, harga?.toDouble())
         mDbRef.collection("konsultasi").document(id.toString()).set(konsultasi)
             .addOnSuccessListener {
                 val intent = Intent(this, ChatActivity::class.java)
@@ -116,6 +117,11 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
             }.addOnFailureListener {
 
             }
+    }
+
+    private fun test(){
+        val id = intent.getStringExtra("id")
+        Toast.makeText(this, "Ini " +id, Toast.LENGTH_SHORT).show()
     }
 
     private fun uiKitCustomSetting(): UIKitCustomSetting {

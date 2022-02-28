@@ -22,6 +22,9 @@
         android:theme="@style/Theme.Hivet"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".RatingActivity"
+            android:exported="false" />
+        <activity
             android:name=".RiwayatLayoutActivity"
             android:exported="false" />
         <activity

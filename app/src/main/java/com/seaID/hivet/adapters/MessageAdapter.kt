@@ -28,9 +28,10 @@ class MessageAdapter(private val mContext: Context, mChat: List<Chat>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        fuser = FirebaseAuth.getInstance().currentUser
         val chat: Chat = mChat[position]
         holder.show_message.setText(chat.getMessage())
-        if (position == mChat.size - 1) {
+        if (mChat[position].getSender().equals(fuser!!.uid)) {
             if (chat.isIsseen()) {
                 holder.txt_seen.text = "Seen"
             } else {

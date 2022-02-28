@@ -35,9 +35,9 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     private lateinit var mDbRef: FirebaseFirestore
     private lateinit var mAuth : FirebaseAuth
     val pets = ArrayList<String>()
+    val idpets = ArrayList<String>()
     var text: String ? = null
     var counter : Int = 0
-    var idk: String ? =null
     var isRunning: Boolean = false;
     lateinit var countdown_timer: CountDownTimer
 
@@ -70,7 +70,10 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         val current = LocalDateTime.now()
         val simpleDateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val formatted = current.format(simpleDateFormat)
-        val konsultasi = konsultasi(id, id_drh, id_user, binding.peliharaanSP.selectedItem.toString(), formatted, "1")
+        val idpet = idpets.get(binding.peliharaanSP.selectedItemId.toInt())
+        val harga = binding.hargaTV.text.toString()
+        //Toast.makeText(this, "Ini " +idpet, Toast.LENGTH_SHORT).show()
+        val konsultasi = konsultasi(id, id_drh, id_user, idpet, formatted, "1", "", harga.toDouble())
         mDbRef.collection("konsultasi").document(id).set(konsultasi)
             .addOnCompleteListener {
                 startTimer(120000, id)
@@ -121,10 +124,10 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 val data = it.toObject(konsultasi::class.java)
                 if (data != null) {
                     if (data.id == id && data.status == "2"){
-                        toPayment(data.id_drh, data.id, data.id_pet, data.tanggal)
+                        toPayment(data.id_drh, data.id, data.id_pet, data.tanggal, data.harga)
                         countdown_timer.cancel()
                         isRunning = false
-                    }else if(data.id == idk && data.status == "5"){
+                    }else if(data.id == id && data.status == "5"){
                         Toast.makeText(applicationContext, "Permintaan Konsultasi Ditolak", Toast.LENGTH_SHORT).show()
                         countdown_timer.cancel()
                         isRunning = false
@@ -147,7 +150,8 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
     }
 
-    private fun toPayment(idDrh: String?, id: String?, idPet: String?, tanggal: String?) {
+    private fun toPayment(idDrh: String?, id: String?, idPet: String?, tanggal: String?, harga: Double?) {
+        //Toast.makeText(this, "ini "+id, Toast.LENGTH_SHORT).show()
         val intent = Intent(this, KonsulPaymentActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         intent.putExtra("nama_drh", binding.namadrhTV.text)
@@ -156,6 +160,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         intent.putExtra("id", id)
         intent.putExtra("id_pet", idPet)
         intent.putExtra("tanggal", tanggal)
+        intent.putExtra("harga", harga)
         startActivity(intent)
     }
 
@@ -209,6 +214,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 if (items > 0){
                     for (item in data){
                         if (item.pemilik == mAuth.uid){
+                            idpets.add(item.id!!)
                             pets.add(item.nama!!)
                         }
                     }
@@ -246,7 +252,8 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        text= parent?.getItemAtPosition(position).toString()
+        //text= parent?.getItemAtPosition(position).toString()
+        text = idpets.get(position)
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {

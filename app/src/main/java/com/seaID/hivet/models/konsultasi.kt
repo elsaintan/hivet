@@ -7,6 +7,8 @@ class konsultasi {
         var id_pet : String?=null
         var tanggal : String?=null
         var status : String?=null
+        var id_transaction : String?=null
+        var harga : Double?=null
 
     constructor()
     constructor(
@@ -15,7 +17,9 @@ class konsultasi {
         id_user: String?,
         id_pet: String?,
         tanggal: String?,
-        status: String?
+        status: String?,
+        id_transaction: String?,
+        harga: Double?
     ) {
         this.id = id
         this.id_drh = id_drh
@@ -23,6 +27,8 @@ class konsultasi {
         this.id_pet = id_pet
         this.tanggal = tanggal
         this.status = status
+        this.id_transaction = id_transaction
+        this.harga = harga
     }
 
 

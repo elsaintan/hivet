@@ -158,8 +158,8 @@ class ChatActivity : AppCompatActivity() {
         hashMap["sender"] = sender
         hashMap["receiver"] = receiver
         hashMap["message"] = message
-        hashMap["id_konsul"] = id_konsul
         hashMap["isseen"] = false
+        hashMap["idkonsul"] = id_konsul
         reference.child("Chats").push().setValue(hashMap)
     }
 
@@ -171,8 +171,12 @@ class ChatActivity : AppCompatActivity() {
                 mchat.clear()
                 for (snapshot in dataSnapshot.children) {
                     val chat: Chat? = snapshot.getValue(Chat::class.java)
-                    if (chat?.getReceiver().equals(userid) && chat?.getSender().equals(mAuth!!.uid) && chat?.getIdKonsul().equals(id_konsul)){
-                        mchat.add(chat!!)
+                    if (chat?.getIdkonsul().equals(id_konsul)){
+                        if (chat?.getReceiver().equals(userid) && chat?.getSender().equals(mAuth!!.uid)){
+                            mchat.add(chat!!)
+                        }else if (chat?.getReceiver().equals(mAuth!!.uid) && chat?.getSender().equals(userid)){
+                            mchat.add(chat!!)
+                        }
                     }
                     messageAdapter = MessageAdapter(applicationContext, mchat)
                     messageAdapter.notifyDataSetChanged()
