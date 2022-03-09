@@ -12,7 +12,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="220dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="30dp"
@@ -29,6 +29,54 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="Konsultasi dengan"
                 android:textSize="16sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/foto"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/text_judul"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/profile" />
+
+            <TextView
+                android:id="@+id/text_nama_dokter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="35dp"
+                android:layout_toRightOf="@id/foto"
+                android:text="Nama dokterx" />
+
+            <TextView
+                android:id="@+id/text_jenis_hewan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_nama_dokter"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/foto"
+                android:text="Jenis Hewan" />
+
+            <TextView
+                android:id="@+id/text_nama_hewan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_jenis_hewan"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@id/foto"
+                android:text="Nama Hewan" />
+
+            <Button
+                android:id="@+id/tombol"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_nama_hewan"
+                android:layout_marginTop="30dp"
+                android:layout_toRightOf="@id/text_nama_hewan"
+                android:backgroundTint="@color/green_terang"
+                android:text="Chat"
+                android:textColor="#000000" />
         </RelativeLayout>
     </LinearLayout>
 </FrameLayout>

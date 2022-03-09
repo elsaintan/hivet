@@ -65,7 +65,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/userName" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/foto"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_marginTop="20dp"
@@ -85,7 +85,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/foto"
                     app:layout_constraintVertical_bias="0.014">
 
 

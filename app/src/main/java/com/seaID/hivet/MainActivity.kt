@@ -5,14 +5,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.seaID.hivet.models.User
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -46,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         setUser(uId)
 
         uName = findViewById(R.id.userName)
-        uPhoto = findViewById(R.id.imageView3)
+        uPhoto = findViewById(R.id.foto)
         bLogout = findViewById(R.id.imageLogout)
         bKonsul = findViewById(R.id.bkonsultasi)
         bBooking = findViewById(R.id.bBooking)
@@ -74,7 +72,8 @@ class MainActivity : AppCompatActivity() {
 
 
         profile.setOnClickListener {
-            startActivity(Intent(this, UserProfileActivity::class.java))
+            //startActivity(Intent(this, UserProfileActivity::class.java))
+            startActivity(Intent(this, RiwayatLayoutActivity::class.java))
         }
 
 

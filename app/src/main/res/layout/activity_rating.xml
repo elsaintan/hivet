@@ -16,7 +16,7 @@
         android:background="@drawable/kotak_profil_kecil">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/foto"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginLeft="20dp"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="30dp"
-            android:layout_toRightOf="@id/imageView3"
+            android:layout_toRightOf="@id/foto"
             android:fontFamily="@font/roboto_bold"
             android:text="TextView"
             android:textSize="24sp" />
