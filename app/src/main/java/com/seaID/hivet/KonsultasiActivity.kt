@@ -17,29 +17,30 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.adapters.peliharaanAdapter
 import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.databinding.ActivityKonsultasiBinding
-import com.seaID.hivet.models.User
-import com.seaID.hivet.models.drh
-import com.seaID.hivet.models.konsultasi
-import com.seaID.hivet.models.peliharaan
+import com.seaID.hivet.models.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.util.*
 
 class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: ActivityKonsultasiBinding
     private lateinit var mDbRef: FirebaseFirestore
     private lateinit var mAuth : FirebaseAuth
+    var reference: DatabaseReference? = null
     val pets = ArrayList<String>()
     val idpets = ArrayList<String>()
     var text: String ? = null
     var counter : Int = 0
     var isRunning: Boolean = false;
     lateinit var countdown_timer: CountDownTimer
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +74,27 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         val idpet = idpets.get(binding.peliharaanSP.selectedItemId.toInt())
         val harga = binding.hargaTV.text.toString()
         //Toast.makeText(this, "Ini " +idpet, Toast.LENGTH_SHORT).show()
-        val konsultasi = konsultasi(id, id_drh, id_user, idpet, formatted, "1", "", harga.toDouble())
+
+        val reference = FirebaseDatabase.getInstance().getReference()
+        //val konsultasi = konsultasi(id, id_drh, id_user, idpet, formatted, "1", "", harga.toDouble())
+        val hashMap = HashMap<String, Any>()
+        hashMap["id"] = id
+        hashMap["id_drh"] = id_drh.toString()
+        hashMap["id_user"] = id_user
+        hashMap["id_pet"] = idpet
+        hashMap["tanggal"] = formatted
+        hashMap["status"] = "1"
+        hashMap["id_transaction"] = ""
+        hashMap["harga"] = harga
+        reference.child("konsultasi").child(id).setValue(hashMap)
+            .addOnSuccessListener {
+                startTimer(120000, id)
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, " "+it, Toast.LENGTH_SHORT).show()
+            }
+
+        /**val konsultasi = konsultasi(id, id_drh, id_user, idpet, formatted, "1", "", harga.toDouble())
         mDbRef.collection("konsultasi").document(id).set(konsultasi)
             .addOnCompleteListener {
                 startTimer(120000, id)
@@ -81,7 +102,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             .addOnFailureListener { e ->
                 //stored data failed
                 Toast.makeText(this, "Action failed due to " + e.message, Toast.LENGTH_SHORT).show()
-            }
+            } **/
     }
 
     private fun startTimer(time_in_seconds: Long, id : String) {
@@ -92,7 +113,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             }
 
             override fun onFinish() {
-
+                changeStatus(id)
             }
         }
         countdown_timer.start()
@@ -113,40 +134,39 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
 
-    private fun changeStatus() {
-        Toast.makeText(applicationContext, "Permintaan Konsultasi Dibatalkan", Toast.LENGTH_SHORT).show()
+    private fun changeStatus(id : String) {
+        //val id = intent.getStringExtra("Uid")
+        val reference = FirebaseDatabase.getInstance().getReference("konsultasi")
+            reference.child(id).child("status").setValue("6")
     }
 
     private fun cekStatus(id: String) {
 
-            val data = mDbRef.collection("konsultasi").document(id)
-            data.get().addOnSuccessListener {
-                val data = it.toObject(konsultasi::class.java)
-                if (data != null) {
-                    if (data.id == id && data.status == "2"){
-                        toPayment(data.id_drh, data.id, data.id_pet, data.tanggal, data.harga)
-                        countdown_timer.cancel()
-                        isRunning = false
-                    }else if(data.id == id && data.status == "5"){
-                        Toast.makeText(applicationContext, "Permintaan Konsultasi Ditolak", Toast.LENGTH_SHORT).show()
-                        countdown_timer.cancel()
-                        isRunning = false
+        //val data = mDbRef.collection("konsultasi").document(id)
+        FirebaseDatabase.getInstance().getReference("konsultasi").child(id)
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val data: konsultasi? = snapshot.getValue(konsultasi::class.java)
+                    if (data != null) {
+                        if (data.id == id && data.status == "2"){
+                            toPayment(data.id_drh, data.id, data.id_pet, data.tanggal, data.harga!!.toDouble())
+                            countdown_timer.cancel()
+                            isRunning = false
+                        }else if(data.id == id && data.status == "5"){
+                            Toast.makeText(applicationContext, "Permintaan Konsultasi Ditolak", Toast.LENGTH_SHORT).show()
+                            countdown_timer.cancel()
+                            isRunning = false
+
+                        }
 
                     }
-
                 }
-            }
 
-                //val data =
-                //val data = it.toObjects(konsultasi::class.java)
-                //val items = data.size
-                //if (items > 0) {
-                //    for (item in data) {
-                //        if (item.id == idk && item.status == "Diterima") {
-                //            toPayment(item.id_drh, item.id, item.id_pet, item.tanggal)
-                //        }
-                //    }
-                //}
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
 
     }
 
@@ -163,31 +183,6 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         intent.putExtra("harga", harga)
         startActivity(intent)
     }
-
-    /**override fun onResume() {
-        super.onResume()
-        mDbRef.collection("konsultasi")
-            .get()
-            .addOnSuccessListener {
-                val data = it.toObjects(konsultasi::class.java)
-                val items = data.size
-                if (items > 0) {
-                    for (item in data) {
-                        if (item.status == "Diterima") {
-                            val intent = Intent(this, PaymentActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            intent.putExtra("nama_drh", binding.namadrhTV.text)
-                            intent.putExtra("harga", binding.hargaTV.text)
-                            intent.putExtra("Uid", item.id_drh)
-                            intent.putExtra("id", item.id)
-                            intent.putExtra("id_pet", item.id_pet)
-                            intent.putExtra("tanggal", item.tanggal)
-                            startActivity(intent)
-                        }
-                    }
-                }
-            }
-    }**/
 
 
     private fun getRandomString(length: Int): String {

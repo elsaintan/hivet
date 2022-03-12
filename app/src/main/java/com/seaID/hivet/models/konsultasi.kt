@@ -8,7 +8,7 @@ class konsultasi {
         var tanggal : String?=null
         var status : String?=null
         var id_transaction : String?=null
-        var harga : Double?=null
+        var harga : String?=null
 
     constructor()
     constructor(
@@ -19,7 +19,7 @@ class konsultasi {
         tanggal: String?,
         status: String?,
         id_transaction: String?,
-        harga: Double?
+        harga: String?
     ) {
         this.id = id
         this.id_drh = id_drh

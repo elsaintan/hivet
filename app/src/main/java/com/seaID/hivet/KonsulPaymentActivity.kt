@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback
@@ -30,6 +31,7 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
     private lateinit var kbinding : ActivityKonsulPaymentBinding
     private lateinit var mAuth : FirebaseAuth
     private lateinit var mDbRef: FirebaseFirestore
+    private lateinit var reference: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +42,11 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseFirestore.getInstance()
 
-        kbinding.namedrhTV.text = intent.getStringExtra("nama_drh")
-        kbinding.tanggalap.text = intent.getStringExtra("harga")
-        kbinding.hargatot.text = intent.getStringExtra("harga")
+        retriveData()
+
+        //kbinding.namedrhTV.text = intent.getStringExtra("nama_drh")
+        //kbinding.tanggalap.text = intent.getStringExtra("harga")
+        //kbinding.hargatot.text = intent.getStringExtra("harga")
 
 
         initMidtransSdk()
@@ -52,6 +56,7 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.GO_PAY)
         }
         kbinding.spayBt.setOnClickListener {
+            //Toast.makeText(this, kbinding.hargatot.text, Toast.LENGTH_SHORT).show()
             MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.SHOPEEPAY)
         }
@@ -60,6 +65,19 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.AKULAKU)
         }
 
+
+    }
+
+    private fun retriveData() {
+        val id = intent.getStringExtra("id")
+        val db = mDbRef.collection("konsultasi").document(id.toString())
+        db.get().addOnSuccessListener { doc ->
+            if (doc != null){
+                val konsul = doc.toObject(konsultasi::class.java)
+                kbinding.tanggalap.text = konsul!!.harga.toString()
+                kbinding.hargatot.text = konsul.harga.toString()
+            }
+        }
 
     }
 
@@ -102,11 +120,21 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
     private fun saveKonusl(transactionId: String?){
         val id = intent.getStringExtra("id")
         val id_drh = intent.getStringExtra("Uid")
-        val id_pet = intent.getStringExtra("id_pet")
-        val tanggal = intent.getStringExtra("tanggal")
-        val harga = intent.getStringExtra("harga")
 
-        val konsultasi = konsultasi(id, id_drh, mAuth.uid, id_pet,tanggal,"3", transactionId, harga?.toDouble())
+        reference = FirebaseDatabase.getInstance().getReference("konsultasi")
+        reference!!.child(id.toString()).child("id_transaction").setValue(transactionId)
+            .addOnSuccessListener {
+                val intent = Intent(this, ChatActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.putExtra("Uid", id_drh)
+                intent.putExtra("id", id)
+                startActivity(intent)
+            }
+            .addOnFailureListener {
+                throw it
+            }
+
+        /**val konsultasi = konsultasi(id, id_drh, mAuth.uid, id_pet,tanggal,"3", transactionId, harga)
         mDbRef.collection("konsultasi").document(id.toString()).set(konsultasi)
             .addOnSuccessListener {
                 val intent = Intent(this, ChatActivity::class.java)
@@ -116,7 +144,7 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
                 startActivity(intent)
             }.addOnFailureListener {
 
-            }
+            } **/
     }
 
     private fun test(){
@@ -133,7 +161,8 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
     private fun initTransactionRequest(): TransactionRequest {
         // Create new Transaction Request
-        val transactionRequestNew = TransactionRequest(System.currentTimeMillis().toString() + "", intent.getStringExtra("harga")!!.toDouble())
+        val harga = kbinding.hargatot.text.toString()
+        val transactionRequestNew = TransactionRequest(System.currentTimeMillis().toString() + "", harga!!.toDouble())
         transactionRequestNew.customerDetails = initCustomerDetails()
         transactionRequestNew.gopay = Gopay("mysamplesdk:://midtrans")
         transactionRequestNew.shopeepay = Shopeepay("mysamplesdk:://midtrans")
