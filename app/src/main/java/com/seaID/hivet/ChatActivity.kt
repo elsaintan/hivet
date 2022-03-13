@@ -1,5 +1,6 @@
 package com.seaID.hivet
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,12 +21,14 @@ import com.seaID.hivet.adapters.MessageAdapter
 import com.seaID.hivet.models.Chat
 import com.seaID.hivet.models.User
 import com.seaID.hivet.models.drh
+import com.seaID.hivet.models.konsultasi
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
+
 
 
 class ChatActivity : AppCompatActivity() {
@@ -102,6 +105,32 @@ class ChatActivity : AppCompatActivity() {
 
         showDataVet(userid)
         //showDataVet(userid)
+
+        checkStatus(idKonsul)
+    }
+
+    private fun checkStatus(id: String?) {
+        FirebaseDatabase.getInstance().getReference("konsultasi").child(id.toString())
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val data: konsultasi? = snapshot.getValue(konsultasi::class.java)
+                    if (data != null) {
+                        if (data.status === "4"){
+                            toRating()
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
+    }
+
+    private fun toRating() {
+        startActivity(Intent(this, RatingActivity::class.java))
+        finish()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
