@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback
 import com.midtrans.sdk.corekit.core.MidtransSDK
@@ -21,6 +21,7 @@ import com.midtrans.sdk.corekit.models.snap.TransactionResult
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import com.seaID.hivet.databinding.ActivityBookingPaymentBinding
 import com.seaID.hivet.databinding.ActivityKonsulPaymentBinding
+import com.seaID.hivet.models.Chat
 import com.seaID.hivet.models.konsultasi
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -70,14 +71,29 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
     private fun retriveData() {
         val id = intent.getStringExtra("id")
-        val db = mDbRef.collection("konsultasi").document(id.toString())
+        reference = FirebaseDatabase.getInstance().getReference("konsultasi").child(id.toString())
+        reference.addListenerForSingleValueEvent(object: ValueEventListener{
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val konsul: konsultasi? = snapshot.getValue(konsultasi::class.java)
+                kbinding.tanggalap.text = konsul!!.harga.toString()
+                kbinding.hargatot.text = konsul.harga.toString()
+            }
+
+
+            override fun onCancelled(error: DatabaseError) {
+                throw error.toException()
+            }
+
+        })
+        /**val db = mDbRef.collection("konsultasi").document(id.toString())
         db.get().addOnSuccessListener { doc ->
             if (doc != null){
                 val konsul = doc.toObject(konsultasi::class.java)
                 kbinding.tanggalap.text = konsul!!.harga.toString()
                 kbinding.hargatot.text = konsul.harga.toString()
             }
-        }
+        } **/
 
     }
 
