@@ -26,6 +26,7 @@ import com.seaID.hivet.models.konsultasi
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
+import java.util.HashMap
 
 class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
@@ -138,7 +139,12 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         val id_drh = intent.getStringExtra("Uid")
 
         reference = FirebaseDatabase.getInstance().getReference("konsultasi")
-        reference!!.child(id.toString()).child("id_transaction").setValue(transactionId)
+        val hm = HashMap<String, Any>()
+        hm["id_transaction"] = transactionId.toString()
+        hm["status"] = "3"
+
+
+        reference!!.child(id.toString()).updateChildren(hm)
             .addOnSuccessListener {
                 val intent = Intent(this, ChatActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
