@@ -18,6 +18,7 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
     private var formatDate = SimpleDateFormat("dd MMMM yyyy", Locale.US)
     var date : String ?= null
     var counter : Int = 0
+    val pets = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

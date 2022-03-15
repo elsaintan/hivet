@@ -16,6 +16,7 @@ import com.seaID.hivet.databinding.ActivityUserProfileBinding
 import com.seaID.hivet.models.peliharaan
 import android.app.Dialog
 import android.view.View
+import android.widget.Toast
 import com.seaID.hivet.adapters.drhBookingAdapter
 import com.seaID.hivet.models.drh
 
@@ -63,10 +64,15 @@ class UserProfileActivity : AppCompatActivity() {
 
         dataPeliharaan()
 
+        //Toast.makeText(this, photo, Toast.LENGTH_SHORT).show()
+
+
         mybinding.suntingTV.setOnClickListener {
+            val img = mybinding.profileIM.resources
             val intent = Intent(this, EditProfileActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("type", 2)
+            intent.putExtra("pho", img.toString())
             startActivity(intent)
         }
 
@@ -78,6 +84,8 @@ class UserProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
 
+
+        Toast.makeText(this, " "+ mybinding.profileIM.drawable , Toast.LENGTH_SHORT).show()
     }
 
     override fun onBackPressed() {
@@ -122,8 +130,10 @@ private fun loadProfile(id : String) {
                 val user = doc.toObject(User::class.java)
                 mybinding.namauTV.text = user!!.name
                 mybinding.emailTV.text = user!!.email
+
                 if (user!!.photoProfile == "" || user.photoProfile == null){
                     mybinding.profileIM.setImageResource(R.drawable.profile)
+
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(mybinding.profileIM)
                 }

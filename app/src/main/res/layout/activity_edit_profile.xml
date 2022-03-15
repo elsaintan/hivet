@@ -34,10 +34,10 @@
             android:id="@+id/emailTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:background="@drawable/background_input_field"
+            android:layout_below="@id/nameTV"
             android:layout_marginTop="15dp"
-            android:layout_below="@id/nameTV"/>
+            android:background="@drawable/background_input_field"
+            android:hint="Email" />
 
         <Button
             android:id="@+id/saveBTN"

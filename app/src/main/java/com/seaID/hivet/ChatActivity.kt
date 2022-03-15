@@ -68,9 +68,15 @@ class ChatActivity : AppCompatActivity() {
 
         val userid = intent.getStringExtra("Uid")
         val idKonsul = intent.getStringExtra("id")
+        val type = intent.getStringExtra("type")
 
         mAuth = FirebaseAuth.getInstance().currentUser
         reference = FirebaseDatabase.getInstance().getReference("drh").child(userid.toString())
+
+        if (type == "0"){
+            userMessageInput.visibility = View.GONE
+            sendMessage.visibility = View.GONE
+        }
 
         userMessageList.setHasFixedSize(true)
         val manager = LinearLayoutManager(this)

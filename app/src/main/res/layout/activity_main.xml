@@ -356,7 +356,7 @@
                         android:id="@+id/textViewHistory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Notification"
+                        android:text="Janji Temu"
                         android:textAlignment="center"
                         android:textColor="#676767"
                         android:textSize="12sp" />

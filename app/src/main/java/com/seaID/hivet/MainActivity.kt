@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.models.User
+import com.seaID.hivet.models.konsultasi
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bKonsul : ImageButton
     private lateinit var bBooking : ImageButton
     private lateinit var profile : ImageView
+    private lateinit var konsultasi : ImageView
+    private lateinit var janjitemu : ImageView
+    private lateinit var home : ImageView
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 100
@@ -49,6 +53,13 @@ class MainActivity : AppCompatActivity() {
         bKonsul = findViewById(R.id.bkonsultasi)
         bBooking = findViewById(R.id.bBooking)
         profile = findViewById(R.id.imageSetting)
+        konsultasi = findViewById(R.id.imageRiwayat)
+        janjitemu = findViewById(R.id.imageHistory)
+        home = findViewById(R.id.imageHome)
+
+        home.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
 
         bLogout.setOnClickListener {
             mAuth.signOut()
@@ -70,10 +81,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, FilterBookingActivity::class.java))
         }
 
-
         profile.setOnClickListener {
-            //startActivity(Intent(this, UserProfileActivity::class.java))
+            startActivity(Intent(this, UserProfileActivity::class.java))
+        }
+
+        konsultasi.setOnClickListener {
             startActivity(Intent(this, RiwayatLayoutActivity::class.java))
+        }
+
+        janjitemu.setOnClickListener {
+
         }
 
 

@@ -22,6 +22,12 @@
         android:theme="@style/Theme.Hivet"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".JanjiTemuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RincianJanjiTemuActivity"
+            android:exported="false" />
+        <activity
             android:name=".RatingActivity"
             android:exported="false" />
         <activity

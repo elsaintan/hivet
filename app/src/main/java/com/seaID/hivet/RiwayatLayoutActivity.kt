@@ -19,8 +19,8 @@ class RiwayatLayoutActivity : AppCompatActivity() {
         tabLayout = findViewById(R.id.tab_layout)
         viewPager = findViewById(R.id.viewPager)
 
-        tabLayout.addTab(tabLayout.newTab().setText("Sedang Berjalan"))
-        tabLayout.addTab(tabLayout.newTab().setText("Riwayat"))
+        tabLayout.addTab(tabLayout.newTab().setText("Konsultasi"))
+        tabLayout.addTab(tabLayout.newTab().setText("Janji Temu"))
 
         val adapter = ViewPagerAdapter(this,supportFragmentManager,tabLayout.tabCount)
         viewPager.adapter = adapter

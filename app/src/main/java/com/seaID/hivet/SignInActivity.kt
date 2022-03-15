@@ -130,6 +130,7 @@ class SignInActivity : AppCompatActivity() {
                     val intent = Intent(this, EditProfileActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     intent.putExtra("Uid", uid)
+                    intent.putExtra("email", email)
                     intent.putExtra("type", 1)
                     startActivity(intent)
                     finish()

@@ -51,6 +51,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
     var counter : Int = 0
     private var transactionResult = TransactionResult()
     private var totalProduct: Int = 123456;
+    val idpets = java.util.ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +76,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
             val intent = Intent(this, BookingPaymentActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("userid", mAuth.currentUser!!.uid)
-            intent.putExtra("pet", binding.mypetS.selectedItem.toString())
+            intent.putExtra("pet", idpets.get(binding.mypetS.selectedItemId.toInt()))
             intent.putExtra("drh", uId)
             intent.putExtra("name", nama)
             intent.putExtra("tanggal", binding.tanggalap.text)
@@ -183,6 +184,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
                     for (item in data){
                         if (item.pemilik == mAuth.uid){
                             pets.add(item.nama!!)
+                            idpets.add(item.id!!)
                         }
                     }
                 }

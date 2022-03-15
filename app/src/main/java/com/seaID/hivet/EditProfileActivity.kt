@@ -60,11 +60,16 @@ class EditProfileActivity : AppCompatActivity() {
         storage = FirebaseStorage.getInstance()
         storageRef = storage.reference
 
-        var type = intent.getIntExtra("type", 0)
-
+        val type = intent.getIntExtra("type", 0)
+        val email = intent.getStringExtra("email")
+        val uid = mAuth.uid
+        val foto = intent.getStringExtra("pho")
         if (type == 2){
             binding.saveBTN.visibility = View.VISIBLE
             showDataUser()
+        }else if (type == 1){
+            binding.saveBTN.visibility = View.VISIBLE
+            binding.emailTV.setText(email)
         }
 
 
@@ -74,7 +79,8 @@ class EditProfileActivity : AppCompatActivity() {
         }
 
         binding.saveBTN.setOnClickListener {
-            if (filePath.toString() == photo){
+
+            if (filePath.toString() == foto){
                 updateDataUser()
             }else{
                 uploadImage()
@@ -82,7 +88,10 @@ class EditProfileActivity : AppCompatActivity() {
             }
             binding.progressBar.visibility = View.VISIBLE
         }
+
+        Toast.makeText(this, "This " +photo, Toast.LENGTH_SHORT).show()
     }
+
 
     override fun onBackPressed() {
         counter ++
@@ -98,7 +107,7 @@ class EditProfileActivity : AppCompatActivity() {
             // Requesting the permission
             ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
         } else {
-            Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -111,17 +120,19 @@ class EditProfileActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == EditProfileActivity.CAMERA_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Camera Permission Granted", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Camera Permission Granted", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Camera Permission Denied", Toast.LENGTH_SHORT).show()
             }
         } else if (requestCode == EditProfileActivity.STORAGE_PERMISSION_CODE) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Storage Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
+
+
     }
 
     private fun showDataUser(){
@@ -142,7 +153,7 @@ class EditProfileActivity : AppCompatActivity() {
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(binding.userImage)
                 }
-                Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "No such document ", Toast.LENGTH_SHORT).show()
             }
@@ -178,7 +189,7 @@ class EditProfileActivity : AppCompatActivity() {
             ref.putFile(filePath!!)
                 .addOnSuccessListener {
                         binding.progressBar.visibility = View.GONE
-                        Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
                         binding.saveBTN.visibility = View.GONE
                 }
                 .addOnFailureListener {
@@ -193,7 +204,7 @@ class EditProfileActivity : AppCompatActivity() {
     private fun deleteImage(photo : String) {
         val photoRef: StorageReference = storageRef.child("Image/"+mAuth.uid)
         photoRef.delete().addOnSuccessListener {
-            Toast.makeText(this, "onSuccess: deleted file", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "onSuccess: deleted file", Toast.LENGTH_SHORT).show()
         }
             .addOnFailureListener {
                 Toast.makeText(this, "onFailure: did not delete file", Toast.LENGTH_SHORT).show()
@@ -203,7 +214,17 @@ class EditProfileActivity : AppCompatActivity() {
     private fun updateDataUser(){
         val name = binding.nameTV.text.toString()
         val email = binding.emailTV.text.toString()
-        val useredit = User(name, email, mAuth.uid, filePath.toString())
+        val foto : String
+
+        if (filePath != null){
+            foto = filePath.toString()
+        }else if (binding.userImage.resources != null){
+            foto = binding.userImage.resources.toString()
+        }else{
+            foto = ""
+        }
+
+        val useredit = User(name, email, mAuth.uid, foto)
 
         val user = mDbRef.collection("users")
         user.document(mAuth.uid).set(useredit)
