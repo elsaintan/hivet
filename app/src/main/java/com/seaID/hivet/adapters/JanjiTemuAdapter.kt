@@ -47,10 +47,10 @@ class JanjiTemuAdapter(private val janjitemuList: ArrayList<booking>) : Recycler
         val dateInString = data.tanggal
 
         if (isDateValid(dateInString.toString())){
-            holder.button.text = "Rincian"
+            holder.button.text = "Selesai"
             Toast.makeText(holder.itemView.context, "This is true", Toast.LENGTH_SHORT).show()
         }else{
-            holder.button.text = "Selesai"
+            holder.button.text = "Rincian"
             Toast.makeText(holder.itemView.context, "This is false", Toast.LENGTH_SHORT).show()
         }
 

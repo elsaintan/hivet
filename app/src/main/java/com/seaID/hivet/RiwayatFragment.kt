@@ -14,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.adapters.JanjiTemuAdapter
+import com.seaID.hivet.adapters.KonsultasiAdapter
 import com.seaID.hivet.models.booking
 import com.seaID.hivet.models.konsultasi
 
@@ -40,6 +41,7 @@ class RiwayatFragment : Fragment() {
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = LinearLayoutManager(context)
         konsultasiList = arrayListOf()
+        val adapter: KonsultasiAdapter = KonsultasiAdapter(konsultasiList)
 
         mAuth = FirebaseAuth.getInstance()
 
@@ -53,9 +55,9 @@ class RiwayatFragment : Fragment() {
                     if (data?.id_user == mAuth.currentUser?.uid) {
                         konsultasiList.add(data!!)
                     }
-                    //kBinding.recyclerView.adapter = kBerjalanAdapter
+                    mRecyclerView.adapter = adapter
                 }
-                //kBerjalanAdapter.notifyDataSetChanged()
+                adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
