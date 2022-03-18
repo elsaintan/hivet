@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/biru_lebih_keren"
+    android:paddingLeft="16dp"
     tools:context=".EditProfileActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -28,7 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_input_field"
-            android:hint="Nama" />
+            android:hint="Nama"
+            android:paddingLeft="16dp" />
 
         <EditText
             android:id="@+id/emailTV"
@@ -37,17 +39,18 @@
             android:layout_below="@id/nameTV"
             android:layout_marginTop="15dp"
             android:background="@drawable/background_input_field"
-            android:hint="Email" />
+            android:hint="Email"
+            android:paddingLeft="16dp" />
 
         <Button
             android:id="@+id/saveBTN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_below="@id/emailTV"
             android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
             android:text="Save"
-            android:visibility="gone"
-            android:layout_below="@id/emailTV"/>
+            android:visibility="gone" />
 
     </RelativeLayout>
 
@@ -57,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:visibility="gone"
-        android:indeterminateTint="@color/design_default_color_primary"/>
+        android:indeterminateTint="@color/design_default_color_primary"
+        android:visibility="gone" />
 
 </RelativeLayout>
