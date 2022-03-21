@@ -1,9 +1,11 @@
 package com.seaID.hivet
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.EventListener
@@ -22,6 +24,7 @@ import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import com.seaID.hivet.databinding.ActivityBookingPaymentBinding
 import com.seaID.hivet.databinding.ActivityKonsulPaymentBinding
 import com.seaID.hivet.models.Chat
+import com.seaID.hivet.models.Saldo
 import com.seaID.hivet.models.konsultasi
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -111,6 +114,7 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         sdkUIFlowBuilder.buildSDK()
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onTransactionFinished(result: TransactionResult) {
         if (result.response != null) {
             when (result.status) {
@@ -134,6 +138,7 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun saveKonusl(transactionId: String?){
         val id = intent.getStringExtra("id")
         val id_drh = intent.getStringExtra("Uid")
@@ -156,17 +161,32 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
                 throw it
             }
 
-        /**val konsultasi = konsultasi(id, id_drh, mAuth.uid, id_pet,tanggal,"3", transactionId, harga)
-        mDbRef.collection("konsultasi").document(id.toString()).set(konsultasi)
-            .addOnSuccessListener {
-                val intent = Intent(this, ChatActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                intent.putExtra("Uid", id_drh)
-                intent.putExtra("id", id)
-                startActivity(intent)
-            }.addOnFailureListener {
+        saveTransaction(transactionId)
+    }
 
-            } **/
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun saveTransaction(transactionId: String?) {
+        val length = 8
+        val id : String = getRandomString(length)
+        val id_drh = intent.getStringExtra("Uid")
+        val current = LocalDateTime.now()
+        val simpleDateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
+        val tanggal = current.format(simpleDateFormat)
+        val tariksaldo = Saldo(id, id_drh, kbinding.hargatot.text.toString(), "", "", "", tanggal, "Berhasil", "Pemasukan")
+        mDbRef.collection("saldo").document(id).set(tariksaldo)
+            .addOnSuccessListener {
+
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Error "+it.message, Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    fun getRandomString(length: Int) : String {
+        val charset = ('a'..'z') + ('A'..'Z') + ('0'..'9')
+        return (1..length)
+            .map { charset.random() }
+            .joinToString("")
     }
 
     private fun test(){

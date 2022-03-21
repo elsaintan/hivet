@@ -121,7 +121,7 @@ class ChatActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val data: konsultasi? = snapshot.getValue(konsultasi::class.java)
                     if (data != null) {
-                        if (data.status === "4"){
+                        if (data.status == "4"){
                             toRating()
                         }
                     }

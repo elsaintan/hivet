@@ -27,8 +27,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var bBooking : ImageButton
     private lateinit var profile : ImageView
     private lateinit var konsultasi : ImageView
-    private lateinit var janjitemu : ImageView
     private lateinit var home : ImageView
+
+    private var backPressedTime = 0L
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 100
@@ -54,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         bBooking = findViewById(R.id.bBooking)
         profile = findViewById(R.id.imageSetting)
         konsultasi = findViewById(R.id.imageRiwayat)
-        janjitemu = findViewById(R.id.imageHistory)
         home = findViewById(R.id.imageHome)
 
         home.setOnClickListener {
@@ -89,11 +89,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RiwayatLayoutActivity::class.java))
         }
 
-        janjitemu.setOnClickListener {
+    }
 
+    override fun onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()){
+            super.onBackPressed()
+        }else{
+            Toast.makeText(this, "Press back again to exit app", Toast.LENGTH_SHORT).show()
         }
 
-
+        backPressedTime = System.currentTimeMillis()
     }
 
     // Function to check and request permission.
