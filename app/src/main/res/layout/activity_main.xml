@@ -175,11 +175,13 @@
 
                     <ImageView
                         android:id="@+id/gambar_ibu_doctor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/kotak_artikel"
                         app:layout_constraintTop_toTopOf="@+id/kotak_artikel"
-                        app:srcCompat="@drawable/ibu_doctor" />
+                        app:srcCompat="@drawable/icon_medical" />
 
                     <TextView
                         android:id="@+id/text_artikel"
@@ -304,13 +306,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn1" />
+                        app:srcCompat="@drawable/icon_home" />
 
                     <TextView
                         android:id="@+id/textHome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Home"
+                        android:text="Beranda"
                         android:textAlignment="center"
                         android:textColor="#676767"
                         android:textSize="12sp" />
@@ -327,7 +329,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn2" />
+                        app:srcCompat="@drawable/icon_history" />
 
                     <TextView
                         android:id="@+id/textRiwayat"
@@ -350,13 +352,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn2" />
+                        app:srcCompat="@drawable/icon_username" />
 
                     <TextView
                         android:id="@+id/textSetting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Profile"
+                        android:text="Profil"
                         android:textAlignment="center"
                         android:textColor="#676767"
                         android:textSize="12sp" />
@@ -373,13 +375,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn4" />
+                        app:srcCompat="@drawable/icon_settings" />
 
                     <TextView
                         android:id="@+id/textLogout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Logout"
+                        android:text="Keluar"
                         android:textAlignment="center"
                         android:textColor="#676767"
                         android:textSize="12sp" />
