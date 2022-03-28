@@ -13,6 +13,7 @@ import com.google.firebase.database.DatabaseReference
 import com.seaID.hivet.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.ChatActivity
+import com.seaID.hivet.KonsulPaymentActivity
 import com.seaID.hivet.models.drh
 import com.seaID.hivet.models.konsultasi
 import com.seaID.hivet.models.peliharaan
@@ -71,7 +72,6 @@ class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : Re
                 val intent = Intent(holder.itemView.context, ChatActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("Uid", konsultasi.id_user)
-                //intent.putExtra("id", )
                 intent.putExtra("id", konsultasi.id)
                 intent.putExtra("idpet", konsultasi.id_pet)
                 intent.putExtra("tanggal", konsultasi.tanggal)
@@ -81,11 +81,20 @@ class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : Re
             }else if(holder.button.text == "Selesai"){
                 val intent = Intent(holder.itemView.context, ChatActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                intent.putExtra("Uid", konsultasi.id_user)
+                intent.putExtra("Uid", konsultasi.id_drh)
                 intent.putExtra("type", "0")
                 intent.putExtra("id", konsultasi.id)
                 intent.putExtra("idpet", konsultasi.id_pet)
                 intent.putExtra("tanggal", konsultasi.tanggal)
+                holder.itemView.context.startActivity(intent)
+            }else if (holder.button.text == "Bayar"){
+                val intent = Intent(holder.itemView.context, KonsulPaymentActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.putExtra("Uid", konsultasi.id_drh)
+                intent.putExtra("id", konsultasi.id_user)
+                intent.putExtra("id_pet", konsultasi.id_pet)
+                intent.putExtra("tanggal", konsultasi.tanggal)
+                intent.putExtra("harga", konsultasi.harga)
                 holder.itemView.context.startActivity(intent)
             }
 

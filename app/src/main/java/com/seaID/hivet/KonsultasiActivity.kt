@@ -230,8 +230,11 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             if (doc != null) {
                 val user = doc.toObject(drh::class.java)
                 binding.namadrhTV.text = user!!.Name
-                binding.workExpTV.text = user!!.WorkExp
+                binding.workExpTV.text = user!!.harga
                 binding.hargaTV.text = user!!.harga
+                binding.textView.text = "No STR "+ user!!.STR
+                binding.exp.text = "Pengalaman "+user.WorkExp+" tahun"
+
                 if (user!!.photoProfile == ""){
                     binding.profileIM.setImageResource(R.drawable.profile)
                 }else{
