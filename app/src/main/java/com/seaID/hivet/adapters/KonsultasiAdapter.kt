@@ -91,7 +91,7 @@ class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : Re
                 val intent = Intent(holder.itemView.context, KonsulPaymentActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("Uid", konsultasi.id_drh)
-                intent.putExtra("id", konsultasi.id_user)
+                intent.putExtra("id", konsultasi.id)
                 intent.putExtra("id_pet", konsultasi.id_pet)
                 intent.putExtra("tanggal", konsultasi.tanggal)
                 intent.putExtra("harga", konsultasi.harga)

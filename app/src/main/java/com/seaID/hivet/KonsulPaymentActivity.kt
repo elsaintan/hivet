@@ -65,10 +65,7 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
             MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.SHOPEEPAY)
         }
-        kbinding.akulakuBt.setOnClickListener {
-            MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
-            MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.AKULAKU)
-        }
+
 
 
     }
