@@ -76,6 +76,8 @@ class ChatActivity : AppCompatActivity() {
         if (type == "0"){
             userMessageInput.visibility = View.GONE
             sendMessage.visibility = View.GONE
+        }else{
+            checkStatus(idKonsul)
         }
 
         userMessageList.setHasFixedSize(true)
@@ -109,10 +111,12 @@ class ChatActivity : AppCompatActivity() {
 
         SeenMessage(userid.toString())
 
-        showDataVet(userid)
-        //showDataVet(userid)
+        //Toast.makeText(this, userid, Toast.LENGTH_SHORT).show()
 
-        checkStatus(idKonsul)
+        showDataVet(userid)
+
+
+        //checkStatus(idKonsul)
     }
 
     private fun checkStatus(id: String?) {
@@ -148,19 +152,21 @@ class ChatActivity : AppCompatActivity() {
         tanggal.text = formatted
         konsul.text = intent.getStringExtra("id")
 
+        Toast.makeText(this, userid, Toast.LENGTH_SHORT).show()
+
         mDbRef = FirebaseFirestore.getInstance()
         val uidRef  = mDbRef.collection("drh").document(userid.toString())
 
-        uidRef.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val drh = doc.toObject(drh::class.java)
+        uidRef.get().addOnSuccessListener {
+            if (it != null) {
+                val drh = it.toObject(drh::class.java)
                 textName.text = drh!!.Name
                 if (drh!!.photoProfile == ""){
                     fotoProfile.setImageResource(R.drawable.profile)
                 }else{
                     Glide.with(this).load(drh!!.photoProfile).into(fotoProfile)
                 }
-                //Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
+
             } else {
                 Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
             }

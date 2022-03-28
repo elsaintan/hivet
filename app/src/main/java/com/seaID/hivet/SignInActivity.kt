@@ -47,7 +47,7 @@ class SignInActivity : AppCompatActivity() {
         eEmail = findViewById(R.id.emialET)
         ePassword = findViewById(R.id.passwordET)
         bLogin = findViewById(R.id.loginBt)
-        bLoginGoogle = findViewById(R.id.loginwGoogleBt)
+        //bLoginGoogle = findViewById(R.id.loginwGoogleBt)
         tvRegister = findViewById(R.id.registerTv)
         tvFPassword = findViewById(R.id.fpasswordTv)
 
@@ -57,14 +57,8 @@ class SignInActivity : AppCompatActivity() {
             .requestEmail() //only need email from google account
             .build()
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        // Google SignIn button, click to begin
-        bLoginGoogle.setOnClickListener {
-            Log.d(TAG, "onCreate: Begin Google Sign In")
-            val intent = googleSignInClient.signInIntent
-            startActivityForResult(intent, RC_SIGN_IN)
-        }
+
 
         mAuth = FirebaseAuth.getInstance()
 
@@ -95,56 +89,12 @@ class SignInActivity : AppCompatActivity() {
             try {
                 //Google SignIn success, now auth with firebase
                 val account = accountTask.getResult(ApiException::class.java)
-                mAuthWithGoogleAccount(account)
+                //mAuthWithGoogleAccount(account)
             }catch (e: Exception){
                 //failed Google SignIn
                 Log.d(TAG, "onActivityResult: ${e.message}" )
             }
         }
-    }
-
-    private fun mAuthWithGoogleAccount(account: GoogleSignInAccount?) {
-        Log.d(TAG, "mAuthWithGoogleAccount: begin firebase auth with google account")
-        val credential = GoogleAuthProvider.getCredential(account!!.idToken, null)
-        mAuth.signInWithCredential(credential)
-            .addOnSuccessListener { authResult ->
-                //login success
-                Log.d(TAG, "mAuthWuthFoogleAccount: LoggedIm")
-
-                //get logged In User
-                val firebaseUser = mAuth.currentUser
-
-                //get user info
-                val uid = firebaseUser!!.uid
-                val email = firebaseUser.email
-
-                Log.d(TAG, "Id: $uid")
-                Log.d(TAG, "Email: $email")
-
-                //check if user is new or existing
-                if (authResult.additionalUserInfo!!.isNewUser){
-                    //user is new -- Account created
-                    Log.d(TAG, "Account created")
-                    Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
-                    //start prifle activity
-                    val intent = Intent(this, EditProfileActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    intent.putExtra("Uid", uid)
-                    intent.putExtra("email", email)
-                    intent.putExtra("type", 1)
-                    startActivity(intent)
-                    finish()
-                }else{
-                    //existing iser -- Logged In
-                    Log.d(TAG, "Existing user... \n$email")
-                    Toast.makeText(this, "Logged In... \n$email", Toast.LENGTH_SHORT).show()
-                    toHome(uid)
-                }
-            }
-            .addOnFailureListener { e ->
-                Log.d(TAG, "mAuthWithGoogleAccount: Login Failed due to ${e.message}")
-            }
-
     }
 
     private fun validateData() {
