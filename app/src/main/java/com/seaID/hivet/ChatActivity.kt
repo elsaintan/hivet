@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
@@ -120,8 +121,9 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun checkStatus(id: String?) {
+
         FirebaseDatabase.getInstance().getReference("konsultasi").child(id.toString())
-            .addListenerForSingleValueEvent(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val data: konsultasi? = snapshot.getValue(konsultasi::class.java)
                     if (data != null) {
