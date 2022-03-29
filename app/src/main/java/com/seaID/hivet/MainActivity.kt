@@ -59,6 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         home.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
         bLogout.setOnClickListener {

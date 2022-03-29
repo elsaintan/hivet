@@ -42,6 +42,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var fotoProfile: ImageView
     private lateinit var tanggal: TextView
     private lateinit var konsul: TextView
+    private lateinit var back : ImageView
 
     private lateinit var mDbRef: FirebaseFirestore
 
@@ -65,6 +66,7 @@ class ChatActivity : AppCompatActivity() {
         fotoProfile = findViewById(R.id.fotoProfile)
         tanggal = findViewById(R.id.tanggal)
         konsul = findViewById(R.id.konsul)
+        back = findViewById(R.id.imageBack)
 
 
         val userid = intent.getStringExtra("Uid")
@@ -110,14 +112,20 @@ class ChatActivity : AppCompatActivity() {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        SeenMessage(userid.toString())
+        back.setOnClickListener {
+            startActivity(Intent(this, RiwayatLayoutActivity::class.java))
+            finish()
+        }
 
-        //Toast.makeText(this, userid, Toast.LENGTH_SHORT).show()
+        SeenMessage(userid.toString())
 
         showDataVet(userid)
 
+    }
 
-        //checkStatus(idKonsul)
+    override fun onBackPressed() {
+        startActivity(Intent(this, RiwayatLayoutActivity::class.java))
+        finish()
     }
 
     private fun checkStatus(id: String?) {
@@ -141,7 +149,13 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun toRating() {
-        startActivity(Intent(this, RatingActivity::class.java))
+        val userid = intent.getStringExtra("Uid")
+        val idKonsul = intent.getStringExtra("id")
+        val intent = Intent(this, RatingActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra("drh_id", userid)
+        intent.putExtra("konsul_id", idKonsul)
+        startActivity(intent)
         finish()
     }
 

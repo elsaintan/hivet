@@ -40,16 +40,6 @@
                 android:fontFamily="@font/roboto_bold"
                 android:text="Name" />
 
-            <TextView
-                android:id="@+id/tempat_praktik"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/namadrhTV"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="15dp"
-                android:layout_toRightOf="@id/profileIM"
-                android:text="Tempat Praktik" />
-
         </RelativeLayout>
 
         <RelativeLayout

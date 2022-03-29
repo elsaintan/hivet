@@ -86,6 +86,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         hashMap["status"] = "1"
         hashMap["id_transaction"] = ""
         hashMap["harga"] = harga
+        hashMap["rating"] = ""
         reference.child("konsultasi").child(id).setValue(hashMap)
             .addOnSuccessListener {
                 startTimer(120000, id)

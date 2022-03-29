@@ -1,21 +1,26 @@
 package com.seaID.hivet
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.databinding.ActivityRatingBinding
 import com.seaID.hivet.models.Rating
 import com.seaID.hivet.models.drh
 import com.seaID.hivet.models.konsultasi
+import java.util.HashMap
 
 class RatingActivity : AppCompatActivity() {
     
     private lateinit var rBinding: ActivityRatingBinding
     private lateinit var mAuth : FirebaseAuth
     private lateinit var mDbRef : FirebaseFirestore
+    var reference: DatabaseReference? = null
     private var rate : Float = 0.0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,24 +42,28 @@ class RatingActivity : AppCompatActivity() {
         addRating(rate)
     }
 
-    private fun addRating(rate: Float) {
-        val user_id = mAuth.currentUser?.uid
-        val drh_id = intent.getStringExtra("drh_id")
-        val konsul_id = intent.getStringExtra("id_konsul")
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
 
-        val rating = Rating(konsul_id, drh_id, user_id, rate)
-        mDbRef.collection("rating").document(konsul_id.toString()).set(rating)
-            .addOnCompleteListener {
+    private fun addRating(rate: Float) {
+
+        val id = intent.getStringExtra("konsul_id")
+        val reference = FirebaseDatabase.getInstance().getReference("konsultasi")
+        reference.child(id.toString()).child("rating").setValue(rate.toString())
+            .addOnSuccessListener {
                 toHistory()
             }
-            .addOnFailureListener { e ->
-                //stored data failed
-                Toast.makeText(this, "Action failed due to " + e.message, Toast.LENGTH_SHORT).show()
+            .addOnFailureListener {
+                throw it
             }
+
     }
 
     private fun toHistory() {
-
+        startActivity(Intent(this, RiwayatLayoutActivity::class.java))
+        finish()
     }
 
 
