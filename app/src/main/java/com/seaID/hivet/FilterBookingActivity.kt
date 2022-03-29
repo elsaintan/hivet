@@ -28,6 +28,13 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         tanggal = findViewById(R.id.tanggal)
         ok = findViewById(R.id.button2)
 
+        val type = intent.getIntExtra("type", 0)
+        if (type == 2){
+            val tanggall = intent.getStringExtra("tanggal")
+            tanggal.setText(tanggall)
+
+        }
+
 
         val adapter = ArrayAdapter.createFromResource(
             this, R.array.daerah, android.R.layout.simple_spinner_item
@@ -71,6 +78,7 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         counter++
         if (counter == 1){
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 

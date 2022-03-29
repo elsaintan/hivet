@@ -69,8 +69,15 @@ class ListDokterActivity : AppCompatActivity() {
         if (counter == 1){
             if(type == 1){
                 startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }else if (type == 2){
-                startActivity(Intent(this, FilterBookingActivity::class.java))
+                val intent = Intent(this, FilterBookingActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                intent.putExtra("type", 2)
+                intent.putExtra("tanggal", tanggal)
+                intent.putExtra("daerah", daerah)
+                startActivity(intent)
+                finish()
             }
         }
     }

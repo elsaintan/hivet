@@ -47,6 +47,11 @@ class PeliharaanActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this, UserProfileActivity::class.java))
+        finish()
+    }
+
     private fun saveData(idp : String, name : String, jenis : String, keterangan : String) {
 
         var id = intent.getStringExtra("petid")
