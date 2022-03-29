@@ -70,6 +70,15 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
     }
 
+    override fun onBackPressed() {
+        val intent = Intent(this, ListDokterActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra("type", 1)
+
+        startActivity(intent)
+        finish()
+    }
+
     private fun retriveData() {
         val id = intent.getStringExtra("id")
         reference = FirebaseDatabase.getInstance().getReference("konsultasi").child(id.toString())
