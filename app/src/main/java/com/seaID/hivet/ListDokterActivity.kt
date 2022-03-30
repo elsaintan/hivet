@@ -118,7 +118,7 @@ class ListDokterActivity : AppCompatActivity() {
                     val items = data.size
                     if (items > 0){
                         for (item in data){
-                            if (item.booking.equals(intent.getStringExtra("tanggal")) && item.alamat.equals(intent.getStringExtra("daerah"))){
+                            if (item.booking.equals(intent.getStringExtra("tanggal")) && item.alamat.equals(intent.getStringExtra("daerah")) && item.status.equals("1")){
                                 drhArrayList.add(item)
                             }
                         }

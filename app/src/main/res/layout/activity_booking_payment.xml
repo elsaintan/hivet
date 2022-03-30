@@ -73,6 +73,14 @@
                 android:text="Nama Dokter"
                 android:textSize="26sp" />
 
+            <TextView
+                android:id="@+id/newTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:visibility="invisible"/>
+
         </RelativeLayout>
 
         <RelativeLayout

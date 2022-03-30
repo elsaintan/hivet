@@ -90,6 +90,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         reference.child("konsultasi").child(id).setValue(hashMap)
             .addOnSuccessListener {
                 startTimer(120000, id)
+                showDialog()
             }
             .addOnFailureListener {
                 Toast.makeText(this, " "+it, Toast.LENGTH_SHORT).show()
@@ -110,7 +111,6 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         countdown_timer = object: CountDownTimer(time_in_seconds, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 cekStatus(id)
-                showDialog()
             }
 
             override fun onFinish() {

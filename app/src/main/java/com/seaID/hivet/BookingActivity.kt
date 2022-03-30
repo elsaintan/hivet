@@ -35,13 +35,13 @@ import com.seaID.hivet.models.peliharaan
 import com.midtrans.sdk.corekit.BuildConfig.BASE_URL
 
 import com.google.android.gms.common.internal.service.Common.CLIENT_KEY
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.seaID.hivet.models.jadwal
 
-
-
-
-
-class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
-    TransactionFinishedCallback {
+class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
     private lateinit var mAuth : FirebaseAuth
     private lateinit var binding: ActivityBookingBinding
@@ -65,6 +65,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         mAuth = FirebaseAuth.getInstance()
         myPets()
         showdetailData(uId.toString())
+        showJadwal(uId.toString())
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -85,62 +86,22 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
         }
     }
 
-    private fun initMidtransSdk() {
-        val sdkUIFlowBuilder: SdkUIFlowBuilder = SdkUIFlowBuilder.init()
-            .setClientKey(Constant.CLIENT_KEY_MIDTRANS) // client_key is mandatory
-            .setContext(this) // context is mandatory
-            .setTransactionFinishedCallback(this) // set transaction finish callback (sdk callback)
-            .setMerchantBaseUrl(Constant.BASE_URL_MIDTRANS) //set merchant url
-            .setUIkitCustomSetting(uiKitCustomSetting())
-            .enableLog(true) // enable sdk log
-            .setColorTheme(CustomColorTheme("#FFE51255", "#B61548", "#FFE51255")) // will replace theme on snap theme on MAP
-            .setLanguage("id")
-        sdkUIFlowBuilder.buildSDK()
-    }
+    private fun showJadwal(uid: String) {
 
-     override fun onTransactionFinished(result: TransactionResult) {
-        if (result.response != null) {
-            when (result.status) {
-                TransactionResult.STATUS_SUCCESS -> Toast.makeText(this, "Transaction Finished. ID: " + result.response.transactionId, Toast.LENGTH_LONG).show()
-                TransactionResult.STATUS_PENDING -> Toast.makeText(this, "Transaction Pending. ID: " + result.response.transactionId, Toast.LENGTH_LONG).show()
-                TransactionResult.STATUS_FAILED -> Toast.makeText(this, "Transaction Failed. ID: " + result.response.transactionId.toString() + ". Message: " + result.response.statusMessage, Toast.LENGTH_LONG).show()
-            }
-            result.response.validationMessages
-        } else if (result.isTransactionCanceled) {
-            Toast.makeText(this, "Transaction Canceled", Toast.LENGTH_LONG).show()
-        } else {
-            if (result.status.equals(TransactionResult.STATUS_INVALID, true)) {
-                Toast.makeText(this, "Transaction Invalid", Toast.LENGTH_LONG).show()
-            } else {
-                Toast.makeText(this, "Transaction Finished with failure.", Toast.LENGTH_LONG).show()
-            }
-        }
-    }
+        val reference = FirebaseDatabase.getInstance().getReference()
+        reference.child("janjiTemu").child(uid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val data= snapshot.getValue(jadwal::class.java)
+                    if (data != null){
+                        binding.startTV.setText(data.start+"-"+data.end)
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
 
-    private fun uiKitCustomSetting(): UIKitCustomSetting {
-        val uIKitCustomSetting = UIKitCustomSetting()
-        uIKitCustomSetting.isSkipCustomerDetailsPages = true
-        uIKitCustomSetting.isShowPaymentStatus = true
-        return uIKitCustomSetting
-    }
-
-    private fun initTransactionRequest(): TransactionRequest {
-        // Create new Transaction Request
-        val transactionRequestNew = TransactionRequest(System.currentTimeMillis().toString() + "", 5000.0)
-        transactionRequestNew.customerDetails = initCustomerDetails()
-        transactionRequestNew.gopay = Gopay("mysamplesdk:://midtrans")
-        transactionRequestNew.shopeepay = Shopeepay("mysamplesdk:://midtrans")
-        return transactionRequestNew
-    }
-
-    private fun initCustomerDetails(): CustomerDetails {
-        //define customer detail (mandatory for coreflow)
-        val mCustomerDetails = CustomerDetails()
-        mCustomerDetails.phone = "085310102020"
-        mCustomerDetails.firstName = "user fullname"
-        mCustomerDetails.email = "mail@mail.com"
-        mCustomerDetails.customerIdentifier = "mail@mail.com"
-        return mCustomerDetails
+            })
     }
 
     override fun onBackPressed() {

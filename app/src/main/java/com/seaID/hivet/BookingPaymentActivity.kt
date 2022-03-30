@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback
 import com.midtrans.sdk.corekit.core.MidtransSDK
@@ -20,7 +24,10 @@ import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.databinding.ActivityBookingPaymentBinding
 import com.seaID.hivet.models.booking
+import com.seaID.hivet.models.jadwal
 import com.seaID.hivet.models.peliharaan
+import java.text.SimpleDateFormat
+import java.util.*
 
 class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
@@ -92,13 +99,71 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         }
     }
 
+    private fun waktu(){
+        var waktu = ""
+        var duration = 0
+        var slot = 0
+        val id_drh = intent.getStringExtra("drh")
+
+        val reference = FirebaseDatabase.getInstance().getReference()
+        reference.child("janjiTemu").child(id_drh.toString())
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val data= snapshot.getValue(jadwal::class.java)
+                    if (data != null){
+                        waktu = data.start.toString()
+                        duration = data.duration!!.toInt()
+                        slot = data.slot!!.toInt()
+                        setTime(waktu, duration, slot)
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
+    }
+
+    private fun setTime(waktu: String, duration: Int, slot: Int){
+        val df = SimpleDateFormat("HH:mm")
+        val d: Date = df.parse(waktu)
+        val cal: Calendar = Calendar.getInstance()
+        cal.setTime(d)
+        cal.add(Calendar.MINUTE, duration)
+        val newTime = df.format(cal.getTime())
+        bbinding.newTime.setText(newTime)
+        val slot = slot - 1
+
+        updateJadwal(newTime,slot)
+
+    }
+
+    private fun updateJadwal(newTime: String, slot: Int) {
+        val id = intent.getStringExtra("drh")
+        val reference = FirebaseDatabase.getInstance().getReference("janjiTemu")
+        reference!!.child(id.toString())
+            .get()
+            .addOnSuccessListener {
+                val hm = HashMap<String, Any>()
+                hm["start"] = newTime
+                hm["slot"] = slot
+                reference.updateChildren(hm)
+            }
+            .addOnFailureListener {
+                throw it
+            }
+    }
+
     private fun saveAppointment(transaction_id : String) {
 
-        //val id: String = mDbRef.collection("booking_appointments").document().getId()
+        waktu()
+
         val length = 8
         val id : String = getRandomString(length)
+        val time = bbinding.newTime.text
 
-        val booking = booking(id, transaction_id, mAuth.currentUser!!.uid, intent.getStringExtra("pet"), intent.getStringExtra("drh"), intent.getStringExtra("slot"),intent.getStringExtra("tanggal"),"Berhasil Reservasi")
+        val booking = booking(id, transaction_id, mAuth.currentUser!!.uid, intent.getStringExtra("pet"),
+            intent.getStringExtra("drh"), time.toString(), intent.getStringExtra("tanggal"),"Berhasil Reservasi")
 
         mDbRef.collection("booking_appointments").document(id).set(booking)
             .addOnCompleteListener {

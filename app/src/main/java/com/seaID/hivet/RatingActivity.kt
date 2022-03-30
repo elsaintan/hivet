@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -32,20 +33,48 @@ class RatingActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
         mDbRef = FirebaseFirestore.getInstance()
         
-        rBinding.ratingBar.rating = 2.5f
+        rBinding.ratingBar.rating = 0.0f
         rBinding.ratingBar.stepSize = .5f
         
         rBinding.ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
             rate = rating
+            addRating(rate)
+
         }
-        
-        addRating(rate)
+
+        showData()
+
+    }
+
+    private fun showData() {
+        val userid = intent.getStringExtra("drh_id")
+        mDbRef = FirebaseFirestore.getInstance()
+        val uidRef  = mDbRef.collection("drh").document(userid.toString())
+
+        uidRef.get().addOnSuccessListener {
+            if (it != null) {
+                val drh = it.toObject(drh::class.java)
+                rBinding.labelNama.text = drh!!.Name
+                if (drh!!.photoProfile == ""){
+                    rBinding.foto.setImageResource(R.drawable.profile)
+                }else{
+                    Glide.with(this).load(drh!!.photoProfile).into(rBinding.foto)
+                }
+
+            } else {
+                Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
+            }
+        }.addOnFailureListener { exception ->
+            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onBackPressed() {
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
+
+
 
     private fun addRating(rate: Float) {
 
