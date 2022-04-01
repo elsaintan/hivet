@@ -101,7 +101,7 @@
         <RelativeLayout
             android:id="@+id/mypetsRL"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
@@ -113,6 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/roboto_bold"
                 android:text="Total Biaya" />
 
             <View
@@ -128,19 +129,39 @@
                 android:backgroundTintMode="src_over" />
 
             <TextView
+                android:id="@+id/text_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider3"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Harga :" />
+
+            <TextView
                 android:id="@+id/hargaTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/divider3"
+                android:layout_below="@id/text_harga"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Total Biaya" />
 
             <TextView
-                android:id="@+id/workExpTV"
+                android:id="@+id/text_total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hargaTV"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Total Harga :" />
+
+            <TextView
+                android:id="@+id/workExpTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_total"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Harga Total" />
