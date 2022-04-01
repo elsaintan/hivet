@@ -29,9 +29,6 @@ import com.midtrans.sdk.corekit.models.snap.Shopeepay
 import com.midtrans.sdk.corekit.models.snap.TransactionResult
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import com.seaID.hivet.databinding.ActivityBookingBinding
-import com.seaID.hivet.models.User
-import com.seaID.hivet.models.drh
-import com.seaID.hivet.models.peliharaan
 import com.midtrans.sdk.corekit.BuildConfig.BASE_URL
 
 import com.google.android.gms.common.internal.service.Common.CLIENT_KEY
@@ -39,7 +36,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.seaID.hivet.models.jadwal
+import com.seaID.hivet.models.*
 
 class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
@@ -103,6 +100,8 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
             })
     }
+
+
 
     override fun onBackPressed() {
         //super.onBackPressed()

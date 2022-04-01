@@ -46,6 +46,9 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         initMidtransSdk()
 
         bbinding.namedrhTV.text = intent.getStringExtra("name")
+
+        cekSlot()
+
         //bbinding.tanggalap.text = intent.getStringExtra("name")
 
         bbinding.gopayBt.setOnClickListener {
@@ -56,10 +59,7 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
             MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
             MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.SHOPEEPAY)
         }
-        bbinding.akulakuBt.setOnClickListener {
-            MidtransSDK.getInstance().transactionRequest = initTransactionRequest()
-            MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.AKULAKU)
-        }
+
 
     }
 
@@ -99,6 +99,30 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         }
     }
 
+    private fun cekSlot() {
+
+        val id = intent.getStringExtra("drh")
+
+        FirebaseDatabase.getInstance().getReference("konsultasi").child(id.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val data: jadwal? = snapshot.getValue(jadwal::class.java)
+                    if (data != null) {
+                        if (data.slot == "0"){
+                            bbinding.gopayBt.isEnabled = false
+                            bbinding.spayBt.isEnabled = false
+                            Toast.makeText(applicationContext, "Slot Telah Habis", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
+    }
+
     private fun waktu(){
         var waktu = ""
         var duration = 0
@@ -114,6 +138,7 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
                         waktu = data.start.toString()
                         duration = data.duration!!.toInt()
                         slot = data.slot!!.toInt()
+                        bbinding.newTime.setText(waktu)
                         setTime(waktu, duration, slot)
                     }
                 }
@@ -131,7 +156,6 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         cal.setTime(d)
         cal.add(Calendar.MINUTE, duration)
         val newTime = df.format(cal.getTime())
-        bbinding.newTime.setText(newTime)
         val slot = slot - 1
 
         updateJadwal(newTime,slot)
@@ -161,6 +185,7 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         val length = 8
         val id : String = getRandomString(length)
         val time = bbinding.newTime.text
+
 
         val booking = booking(id, transaction_id, mAuth.currentUser!!.uid, intent.getStringExtra("pet"),
             intent.getStringExtra("drh"), time.toString(), intent.getStringExtra("tanggal"),"Berhasil Reservasi")

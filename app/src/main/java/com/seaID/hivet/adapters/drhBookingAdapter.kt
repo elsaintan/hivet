@@ -12,6 +12,9 @@ import com.bumptech.glide.Glide
 import com.seaID.hivet.BookingActivity
 import com.seaID.hivet.R
 import com.seaID.hivet.models.drh
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class drhBookingAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Adapter<drhBookingAdapter.MyViewHolder>() {
@@ -29,6 +32,12 @@ class drhBookingAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Ada
                 Glide.with(holder.itemView.context).load(drh!!.photoProfile).into(holder.profileIM)
             }
 
+            val dateInString = drh.booking
+
+            if (isDateValid(dateInString.toString())){
+                holder.button.isEnabled = false
+            }
+
             holder.name.text = drh.Name
             holder.workexp.text = drh.tempat
             holder.price.text = drh.alamat
@@ -41,6 +50,15 @@ class drhBookingAdapter(private val drhList : ArrayList<drh>) : RecyclerView.Ada
             intent.putExtra("Name", drh.Name)
             intent.putExtra("ProfilePic", drh.photoProfile)
             holder.itemView.context.startActivity(intent)
+        }
+    }
+
+    fun isDateValid(myDate: String) : Boolean {
+        try {
+            val date = SimpleDateFormat("yyyy-MM-dd").parse(myDate)
+            return !date.before(Date())
+        } catch(ignored: java.text.ParseException) {
+            return false
         }
     }
 
