@@ -43,7 +43,7 @@ class RincianJanjiTemuActivity : AppCompatActivity() {
                     val janjitemu = it.toObject(booking::class.java)
                     rjbinding.tanggalap.text = janjitemu!!.tanggal
                     rjbinding.status.text = janjitemu!!.status
-                    rjbinding.waktuTV.text = janjitemu!!.waktu
+                    rjbinding.waktu.text = janjitemu!!.waktu
                     showdrhdata(janjitemu.drh_id)
                     //showpetdata(janjitemu.pet_id)
                 }

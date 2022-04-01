@@ -34,6 +34,9 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
     private lateinit var bbinding: ActivityBookingPaymentBinding
     private lateinit var mAuth : FirebaseAuth
     private lateinit var mDbRef: FirebaseFirestore
+    private lateinit var slot: String
+    private lateinit var start: String
+    private lateinit var duration : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +50,9 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
 
         bbinding.namedrhTV.text = intent.getStringExtra("name")
 
+        waktu()
         cekSlot()
+
 
         //bbinding.tanggalap.text = intent.getStringExtra("name")
 
@@ -124,9 +129,6 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
     }
 
     private fun waktu(){
-        var waktu = ""
-        var duration = 0
-        var slot = 0
         val id_drh = intent.getStringExtra("drh")
 
         val reference = FirebaseDatabase.getInstance().getReference()
@@ -135,11 +137,10 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val data= snapshot.getValue(jadwal::class.java)
                     if (data != null){
-                        waktu = data.start.toString()
-                        duration = data.duration!!.toInt()
-                        slot = data.slot!!.toInt()
-                        bbinding.newTime.setText(waktu)
-                        setTime(waktu, duration, slot)
+                        start = data.start.toString()
+                        duration = data.duration!!
+                        slot = data.slot!!
+                        bbinding.newTime.text = data.start
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
@@ -165,13 +166,12 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
     private fun updateJadwal(newTime: String, slot: Int) {
         val id = intent.getStringExtra("drh")
         val reference = FirebaseDatabase.getInstance().getReference("janjiTemu")
-        reference!!.child(id.toString())
-            .get()
+        val hm = HashMap<String, Any>()
+        hm["start"] = newTime
+        hm["slot"] = slot
+        reference.child(id.toString()).updateChildren(hm)
             .addOnSuccessListener {
-                val hm = HashMap<String, Any>()
-                hm["start"] = newTime
-                hm["slot"] = slot
-                reference.updateChildren(hm)
+
             }
             .addOnFailureListener {
                 throw it
@@ -180,7 +180,7 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
 
     private fun saveAppointment(transaction_id : String) {
 
-        waktu()
+        setTime(start, duration.toInt(), slot.toInt())
 
         val length = 8
         val id : String = getRandomString(length)

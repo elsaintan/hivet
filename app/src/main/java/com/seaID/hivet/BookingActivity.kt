@@ -61,8 +61,9 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
         db = FirebaseFirestore.getInstance()
         mAuth = FirebaseAuth.getInstance()
         myPets()
-        showdetailData(uId.toString())
         showJadwal(uId.toString())
+        showdetailData(uId.toString())
+
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -100,8 +101,6 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
             })
     }
-
-
 
     override fun onBackPressed() {
         //super.onBackPressed()
