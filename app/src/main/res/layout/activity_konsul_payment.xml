@@ -107,6 +107,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:text=":" />
 
                 <TextView
@@ -122,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tnggalll"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -133,6 +136,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:text=":" />
 
                 <TextView
