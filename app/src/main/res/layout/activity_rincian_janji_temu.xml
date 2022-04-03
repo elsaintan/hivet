@@ -49,15 +49,6 @@
                 android:text="Tempat"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/waktuTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tempatTV"
-                android:layout_toRightOf="@id/photodrh"
-                android:text="Waktu"
-                android:textSize="20sp" />
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,7 +138,7 @@
                 android:id="@+id/statusll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tnggalll"
+                android:layout_below="@id/waktull"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -171,9 +162,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/waktull"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/statusll"
+                android:layout_below="@id/tnggalll"
                 android:layout_gravity="center_vertical"
                 android:orientation="horizontal">
 

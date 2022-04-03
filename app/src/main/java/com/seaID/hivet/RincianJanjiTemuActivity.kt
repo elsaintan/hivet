@@ -30,7 +30,7 @@ class RincianJanjiTemuActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, RiwayatFragment2::class.java))
+        startActivity(Intent(this, RiwayatLayoutActivity::class.java))
         finish()
     }
 
