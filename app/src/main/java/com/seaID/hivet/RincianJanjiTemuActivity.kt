@@ -44,6 +44,7 @@ class RincianJanjiTemuActivity : AppCompatActivity() {
                     rjbinding.tanggalap.text = janjitemu!!.tanggal
                     rjbinding.status.text = janjitemu!!.status
                     rjbinding.waktu.text = janjitemu!!.waktu
+                    rjbinding.buttonKode.text = janjitemu.kode_booking
                     showdrhdata(janjitemu.drh_id)
                     //showpetdata(janjitemu.pet_id)
                 }

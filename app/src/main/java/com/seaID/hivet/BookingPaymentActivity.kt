@@ -168,7 +168,7 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         val reference = FirebaseDatabase.getInstance().getReference("janjiTemu")
         val hm = HashMap<String, Any>()
         hm["start"] = newTime
-        hm["slot"] = slot
+        hm["slot"] = slot.toString()
         reference.child(id.toString()).updateChildren(hm)
             .addOnSuccessListener {
 

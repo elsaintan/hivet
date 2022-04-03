@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var profile : ImageView
     private lateinit var konsultasi : ImageView
     private lateinit var home : ImageView
+    private lateinit var artikel : Button
 
     private var backPressedTime = 0L
 
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         profile = findViewById(R.id.imageSetting)
         konsultasi = findViewById(R.id.imageRiwayat)
         home = findViewById(R.id.imageHome)
+        artikel = findViewById(R.id.tombol_selengkapnya)
 
         home.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
@@ -90,6 +92,10 @@ class MainActivity : AppCompatActivity() {
 
         konsultasi.setOnClickListener {
             startActivity(Intent(this, RiwayatLayoutActivity::class.java))
+        }
+
+        artikel.setOnClickListener {
+            startActivity(Intent(this, ArtikelActivity::class.java))
         }
 
     }
