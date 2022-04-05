@@ -51,21 +51,44 @@
             android:background="@drawable/kotak_profil_kecil">
 
             <TextView
+                android:id="@+id/label_pengalaman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Pengalaman : "
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/exp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@id/label_pengalaman"
+                android:text=" Pengalaman : "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/label_str"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_pengalaman"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="15dp"
-                android:text="Pengalaman" />
+                android:layout_marginTop="16dp"
+                android:text="No STR : "
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/exp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="15dp"
-                android:text="No STR" />
+                android:layout_marginTop="16dp"
+                android:layout_toRightOf="@id/label_str"
+                android:text="No STR : "
+                android:textSize="16sp" />
 
 
         </RelativeLayout>
@@ -84,7 +107,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="15dp"
-                android:text="Peliharaan" />
+                android:text="Peliharaan"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/peliharaanSP"

@@ -233,8 +233,8 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
                 binding.namadrhTV.text = user!!.Name
                 binding.workExpTV.text = user!!.harga
                 binding.hargaTV.text = user!!.harga
-                binding.textView.text = "No STR "+ user!!.STR
-                binding.exp.text = "Pengalaman "+user.WorkExp+" tahun"
+                binding.textView.text =  user!!.STR
+                binding.exp.text = user.WorkExp+" tahun"
 
                 if (user!!.photoProfile == ""){
                     binding.profileIM.setImageResource(R.drawable.profile)
