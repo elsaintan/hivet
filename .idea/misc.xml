@@ -83,21 +83,35 @@
         <entry key="..\:/backup/hivet/app/src/main/res/layout/update_pw_layout.xml" value="0.23229166666666667" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.23229166666666667" />
         <entry key="app/src/main/res/layout/activity_booking.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/activity_booking_berhasil.xml" value="0.4547639193181285" />
+        <entry key="app/src/main/res/layout/activity_booking_payment.xml" value="0.16530797101449277" />
         <entry key="app/src/main/res/layout/activity_change_passworb.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_filter_booking.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_janji_temu.xml" value="0.2821557971014493" />
+        <entry key="app/src/main/res/layout/activity_konsul_payment.xml" value="0.2821557971014493" />
         <entry key="app/src/main/res/layout/activity_konsultasi.xml" value="0.15520833333333334" />
-        <entry key="app/src/main/res/layout/activity_list_dokter.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21208801269531258" />
+        <entry key="app/src/main/res/layout/activity_list_dokter.xml" value="0.19234924316406246" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24067230224609382" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_payments_midtrans.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_peliharaan.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_rating.xml" value="0.16530797101449277" />
+        <entry key="app/src/main/res/layout/activity_rincian_janji_temu.xml" value="0.2821557971014493" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.2253143310546875" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/chat_item_left.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/chat_item_right.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_container_received_message.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_container_sent_message.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_text_message.xml" value="0.16530797101449277" />
         <entry key="app/src/main/res/layout/peliharaan_layout.xml" value="0.15520833333333334" />
+        <entry key="app/src/main/res/layout/popup_notif_konsul.xml" value="0.16530797101449277" />
+        <entry key="app/src/main/res/layout/riwayat_fragment2.xml" value="0.16530797101449277" />
+        <entry key="app/src/main/res/layout/riwayat_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/update_pw_layout.xml" value="0.2926208651399491" />
         <entry key="app/src/main/res/layout/user_dokter_layout.xml" value="0.15520833333333334" />
       </map>

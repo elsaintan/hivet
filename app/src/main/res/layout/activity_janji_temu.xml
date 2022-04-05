@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Kemudahan berkonsultasi dengan dokter\nkapan saja dan dimana saja"
+                android:text="Hemat waktu dengan membuat janji temu \ndengan dokter hewan terdekat!"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="@+id/text_title_info_board"

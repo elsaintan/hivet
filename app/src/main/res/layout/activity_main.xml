@@ -53,12 +53,12 @@
 
                 <TextView
                     android:id="@+id/textView5"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="237dp"
+                    android:layout_height="51dp"
                     android:layout_marginTop="10dp"
                     android:text="Dapatkan kemudahan berkonsultasi dengan ahlinya"
                     android:textColor="#FFFFFF"
-                    android:textSize="10sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/userName"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/userName"
@@ -86,7 +86,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/foto"
-                    app:layout_constraintVertical_bias="0.014">
+                    app:layout_constraintVertical_bias="1.0">
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -187,9 +187,10 @@
                         android:id="@+id/text_artikel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="8dp"
-                        android:text="Kucingmu muntah bulu?\nMari kita simak dulu"
+                        android:textAlignment="center"
+                        android:text="Ketahui lebih lanjut \ntentang hewan peliharaanmu!"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -242,9 +243,9 @@
                         android:id="@+id/text_penawaran_terbaik"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:text="Pawstations\nDiskon sampai dengan 50%"
+                        android:text="Dapatkan penawaran menarik \nuntuk peliharaanmu hanya disini!"
                         android:textColor="#FFFFFF"
                         android:textSize="18sp"
                         android:textStyle="bold"
