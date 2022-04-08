@@ -1,5 +1,6 @@
 package com.seaID.hivet
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -27,6 +28,11 @@ class BookingBerhasilActivity : AppCompatActivity() {
         loadData(intent.getStringExtra("kode_booking"))
 
 
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     private fun loadData(kode_booking: String?) {

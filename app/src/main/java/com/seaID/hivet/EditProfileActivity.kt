@@ -89,69 +89,31 @@ class EditProfileActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.VISIBLE
         }
 
-        Toast.makeText(this, "This " +photo, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "This " +photo, Toast.LENGTH_SHORT).show()
+
     }
+
+
 
 
     override fun onBackPressed() {
-        counter ++
-        if (counter == 1){
-            startActivity(Intent(this, UserProfileActivity::class.java))
-        }
-    }
-
-    // Function to check and request permission.
-    private fun checkPermission(permission: String, requestCode: Int) {
-        if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
-
-            // Requesting the permission
-            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
-        } else {
-            //Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    // This function is called when the user accepts or decline the permission.
-    // Request Code is used to check which permission called this function.
-    // This request code is provided when the user is prompt for permission.
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>,
-                                            grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == EditProfileActivity.CAMERA_PERMISSION_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Toast.makeText(this, "Camera Permission Granted", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Camera Permission Denied", Toast.LENGTH_SHORT).show()
-            }
-        } else if (requestCode == EditProfileActivity.STORAGE_PERMISSION_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Storage Permission Denied", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-
+        startActivity(Intent(this, UserProfileActivity::class.java))
+        finish()
     }
 
     private fun showDataUser(){
-        checkPermission(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            EditProfileActivity.STORAGE_PERMISSION_CODE
-        )
 
         val uidRef  = mDbRef.collection("users").document(mAuth.uid)
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
                 val user = doc.toObject(User::class.java)
                 binding.nameTV.setText(user!!.name)
-                binding.emailTV.setText(user!!.email)
-                photo = user!!.photoProfile
-                if (user!!.photoProfile == "" || user!!.photoProfile == null){
+                binding.emailTV.setText(user.email)
+                photo = user.photoProfile
+                if (user.photoProfile == "" || user.photoProfile == null){
                     binding.userImage.setImageResource(R.drawable.profile)
                 }else{
-                    Glide.with(this).load(user!!.photoProfile).into(binding.userImage)
+                    Glide.with(this).load(user.photoProfile).into(binding.userImage)
                 }
                 //Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
             } else {

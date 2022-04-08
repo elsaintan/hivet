@@ -37,7 +37,7 @@
         android:layout_marginLeft="16dp"
         android:text="Jenis Hewan Peliharaan" />
 
-    <EditText
+    <Spinner
         android:id="@+id/jenisET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -35,13 +35,18 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
 
         }
 
-
         val adapter = ArrayAdapter.createFromResource(
             this, R.array.daerah, android.R.layout.simple_spinner_item
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
         spinner.onItemSelectedListener = this
+
+        val daerah = intent.getStringExtra("daerah")
+        if (daerah != null){
+            val spinnerPosition : Int = adapter.getPosition(daerah)
+            spinner.setSelection(spinnerPosition)
+        }
 
         tanggal.setOnClickListener {
             val getData : Calendar = Calendar.getInstance()
@@ -58,8 +63,6 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
             datePicker.show()
 
         }
-
-
 
         ok.setOnClickListener {
             val intent = Intent(this, ListDokterActivity::class.java)

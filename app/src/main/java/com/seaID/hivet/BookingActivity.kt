@@ -103,11 +103,13 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     }
 
     override fun onBackPressed() {
-        //super.onBackPressed()
-        counter++
-        if (counter == 1){
-            super.onBackPressed()
-        }
+        val intent = Intent(this, ListDokterActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra("type", 2)
+        intent.putExtra("tanggal", binding.tanggalap.text)
+        intent.putExtra("daerah", binding.workexpTV.text)
+        startActivity(intent)
+        finish()
     }
 
     private fun showdetailData(id : String) {

@@ -12,10 +12,9 @@
     <string-array name="jenis_hewan">
         <item>Kucing</item>
         <item>Anjing</item>
-        <item>Jawa Barat</item>
-        <item>DI Yogyakarta</item>
-        <item>Jawa Tengah</item>
-        <item>Jawa Timur</item>
+        <item>Ikan</item>
+        <item>Kura-kura</item>
+        <item>Lainnya</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

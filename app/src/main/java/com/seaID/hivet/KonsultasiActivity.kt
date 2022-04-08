@@ -62,6 +62,15 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
     }
 
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        val intent = Intent(this, ListDokterActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        intent.putExtra("type", 1)
+        startActivity(intent)
+        finish()
+    }
+
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveData() {
         val id_drh = intent.getStringExtra("Uid")
@@ -191,14 +200,6 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         return (1..length)
             .map { charset.random() }
             .joinToString("")
-    }
-
-    override fun onBackPressed() {
-        //super.onBackPressed()
-        counter++
-        if (counter == 1){
-            super.onBackPressed()
-        }
     }
 
     private fun dataPeliharaan() {

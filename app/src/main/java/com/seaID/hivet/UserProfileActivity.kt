@@ -85,16 +85,14 @@ class UserProfileActivity : AppCompatActivity() {
         }
 
 
-        Toast.makeText(this, " "+ mybinding.profileIM.drawable , Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, " "+ mybinding.profileIM.drawable , Toast.LENGTH_SHORT).show()
     }
 
     override fun onBackPressed() {
         //super.onBackPressed()
-        counter++
-        if (counter == 1){
-            super.onBackPressed()
-            startActivity(Intent(this, MainActivity::class.java))
-        }
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+
     }
 
     private fun dataPeliharaan() {
@@ -137,7 +135,7 @@ private fun loadProfile(id : String) {
                 }else{
                     Glide.with(this).load(user!!.photoProfile).into(mybinding.profileIM)
                 }
-                Log.d(TAG, "{$user.name}")
+                //Log.d(TAG, "{$user.name}")
             } else {
                 Log.d(TAG, "No such document")
             }
