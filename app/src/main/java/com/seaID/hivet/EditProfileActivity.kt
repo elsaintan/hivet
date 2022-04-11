@@ -31,11 +31,6 @@ class EditProfileActivity : AppCompatActivity() {
     private var filePath : Uri? = null
     private final val PICK_IMAGE_REQUEST : Int = 2020
 
-    companion object {
-        private const val CAMERA_PERMISSION_CODE = 100
-        private const val STORAGE_PERMISSION_CODE = 101
-    }
-
     private lateinit var binding: ActivityEditProfileBinding
 
     private lateinit var mAuth: FirebaseUser
@@ -47,11 +42,20 @@ class EditProfileActivity : AppCompatActivity() {
     var counter : Int = 0
     var type : Int ?= null
 
+    companion object {
+        private const val STORAGE_PERMISSION_CODE = 100
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        checkPermission(
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            STORAGE_PERMISSION_CODE
+        )
 
         mAuth = FirebaseAuth.getInstance().currentUser!!
         mDbRef = FirebaseFirestore.getInstance()
@@ -63,7 +67,7 @@ class EditProfileActivity : AppCompatActivity() {
         val type = intent.getIntExtra("type", 0)
         val email = intent.getStringExtra("email")
         val uid = mAuth.uid
-        val foto = intent.getStringExtra("pho")
+
         if (type == 2){
             binding.saveBTN.visibility = View.VISIBLE
             showDataUser()
@@ -80,7 +84,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         binding.saveBTN.setOnClickListener {
 
-            if (filePath.toString() == foto){
+            if (filePath.toString() == null){
                 updateDataUser()
             }else{
                 uploadImage()
@@ -89,20 +93,36 @@ class EditProfileActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.VISIBLE
         }
 
-        //Toast.makeText(this, "This " +photo, Toast.LENGTH_SHORT).show()
-
     }
-
-
-
 
     override fun onBackPressed() {
         startActivity(Intent(this, UserProfileActivity::class.java))
         finish()
     }
 
-    private fun showDataUser(){
+    // Function to check and request permission.
+    private fun checkPermission(permission: String, requestCode: Int) {
+        if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+        } else {
+            Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show()
+        }
+    }
 
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>,
+                                            grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "Storage Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Storage Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun showDataUser(){
         val uidRef  = mDbRef.collection("users").document(mAuth.uid)
         uidRef.get().addOnSuccessListener { doc ->
             if (doc != null) {
@@ -113,9 +133,8 @@ class EditProfileActivity : AppCompatActivity() {
                 if (user.photoProfile == "" || user.photoProfile == null){
                     binding.userImage.setImageResource(R.drawable.profile)
                 }else{
-                    Glide.with(this).load(user.photoProfile).into(binding.userImage)
+                    Glide.with(this).load(user!!.photoProfile).into(binding.userImage)
                 }
-                //Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "No such document ", Toast.LENGTH_SHORT).show()
             }
@@ -146,13 +165,13 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun uploadImage(){
         if(filePath != null){
-
             var ref:StorageReference = storageRef.child("Image/"+mAuth.uid)
             ref.putFile(filePath!!)
                 .addOnSuccessListener {
                         binding.progressBar.visibility = View.GONE
-                        //Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
                         binding.saveBTN.visibility = View.GONE
+                        photo = filePath.toString()
+                        updateFoto(photo.toString())
                 }
                 .addOnFailureListener {
                     OnFailureListener{
@@ -160,7 +179,13 @@ class EditProfileActivity : AppCompatActivity() {
                         Toast.makeText(this, "Failed "+it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
+            //photo = ref.downloadUrl.toString()
+            Toast.makeText(this, "Gambar "+ ref.downloadUrl, Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun updateFoto(photo: String) {
+        mDbRef.collection("users").document(mAuth.uid).update("photoProfile", photo)
     }
 
     private fun deleteImage(photo : String) {
@@ -176,20 +201,12 @@ class EditProfileActivity : AppCompatActivity() {
     private fun updateDataUser(){
         val name = binding.nameTV.text.toString()
         val email = binding.emailTV.text.toString()
-        val foto : String
+        //val useredit = User(name, email, mAuth.uid, photo)
 
-        if (filePath != null){
-            foto = filePath.toString()
-        }else if (binding.userImage.resources != null){
-            foto = binding.userImage.resources.toString()
-        }else{
-            foto = ""
-        }
-
-        val useredit = User(name, email, mAuth.uid, foto)
+        Toast.makeText(this, "Gambar "+ photo, Toast.LENGTH_SHORT).show()
 
         val user = mDbRef.collection("users")
-        user.document(mAuth.uid).set(useredit)
+        user.document(mAuth.uid).update("name", name, "email", email)
         startActivity(Intent(this, MainActivity::class.java))
     }
 }

@@ -38,8 +38,12 @@ class RatingActivity : AppCompatActivity() {
         
         rBinding.ratingBar.setOnRatingBarChangeListener { ratingBar, rating, fromUser ->
             rate = rating
-            addRating(rate)
 
+        }
+
+        rBinding.button6.setOnClickListener {
+            addRating(rate)
+            //Toast.makeText(this, "Rate "+rate, Toast.LENGTH_SHORT).show()
         }
 
         showData()
