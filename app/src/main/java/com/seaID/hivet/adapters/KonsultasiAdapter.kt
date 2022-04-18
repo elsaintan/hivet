@@ -88,6 +88,7 @@ class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : Re
                 intent.putExtra("tanggal", konsultasi.tanggal)
                 holder.itemView.context.startActivity(intent)
             }else if (holder.button.text == "Bayar"){
+                val namaa = holder.nama.text
                 val intent = Intent(holder.itemView.context, KonsulPaymentActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("Uid", konsultasi.id_drh)
@@ -95,6 +96,8 @@ class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : Re
                 intent.putExtra("id_pet", konsultasi.id_pet)
                 intent.putExtra("tanggal", konsultasi.tanggal)
                 intent.putExtra("harga", konsultasi.harga)
+                intent.putExtra("type", "2")
+                intent.putExtra("namedrh", namaa)
                 holder.itemView.context.startActivity(intent)
             }
 

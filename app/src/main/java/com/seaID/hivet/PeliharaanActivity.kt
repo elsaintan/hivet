@@ -2,6 +2,7 @@ package com.seaID.hivet
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -56,10 +57,19 @@ class PeliharaanActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
 
         petbinding.saveBT.setOnClickListener {
-            saveData(mAuth.currentUser!!.uid, name.toString(), jenis.toString(), keterangan.toString())
+            validation(name.toString(), keterangan.toString())
+
         }
     }
 
+    private fun validation(name: String?, keterangan: String?) {
+        if (name != "" && keterangan != ""){
+            saveData(mAuth.currentUser!!.uid, name!!, jenis.toString(), keterangan!!)
+        }else{
+            Toast.makeText(this, "Data tidak boleh kosong", Toast.LENGTH_SHORT).show()
+        }
+
+    }
 
 
     override fun onBackPressed() {

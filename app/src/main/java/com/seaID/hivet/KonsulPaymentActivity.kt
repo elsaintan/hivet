@@ -49,10 +49,6 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
         retriveData()
 
-        //kbinding.namedrhTV.text = intent.getStringExtra("nama_drh")
-        //kbinding.tanggalap.text = intent.getStringExtra("harga")
-        //kbinding.hargatot.text = intent.getStringExtra("harga")
-
 
         initMidtransSdk()
 
@@ -81,9 +77,10 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
     private fun retriveData() {
         val id = intent.getStringExtra("id")
+        val name = intent.getStringExtra("namedrh")
+        kbinding.namedrhTV.setText(name)
         reference = FirebaseDatabase.getInstance().getReference("konsultasi").child(id.toString())
         reference.addListenerForSingleValueEvent(object: ValueEventListener{
-
             override fun onDataChange(snapshot: DataSnapshot) {
                 val konsul: konsultasi? = snapshot.getValue(konsultasi::class.java)
                 kbinding.tanggalap.text = konsul!!.harga.toString()
@@ -96,14 +93,8 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
             }
 
         })
-        /**val db = mDbRef.collection("konsultasi").document(id.toString())
-        db.get().addOnSuccessListener { doc ->
-            if (doc != null){
-                val konsul = doc.toObject(konsultasi::class.java)
-                kbinding.tanggalap.text = konsul!!.harga.toString()
-                kbinding.hargatot.text = konsul.harga.toString()
-            }
-        } **/
+
+
 
     }
 
@@ -193,11 +184,6 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         return (1..length)
             .map { charset.random() }
             .joinToString("")
-    }
-
-    private fun test(){
-        val id = intent.getStringExtra("id")
-        Toast.makeText(this, "Ini " +id, Toast.LENGTH_SHORT).show()
     }
 
     private fun uiKitCustomSetting(): UIKitCustomSetting {

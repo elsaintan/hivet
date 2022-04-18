@@ -42,9 +42,9 @@ class FilterBookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedLis
         spinner.adapter = adapter
         spinner.onItemSelectedListener = this
 
-        val daerah = intent.getStringExtra("daerah")
-        if (daerah != null){
-            val spinnerPosition : Int = adapter.getPosition(daerah)
+        val daerahh = intent.getStringExtra("daerah")
+        if (daerahh != null){
+            val spinnerPosition : Int = adapter.getPosition(daerahh)
             spinner.setSelection(spinnerPosition)
         }
 
