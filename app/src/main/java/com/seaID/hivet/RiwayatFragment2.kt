@@ -40,7 +40,7 @@ class RiwayatFragment2 : Fragment() {
 
         db = FirebaseFirestore.getInstance()
         mAuth = FirebaseAuth.getInstance()
-        db.collection("booking_appointments")
+        db.collection("booking_appointments").orderBy("id").limitToLast(100)
             .get()
             .addOnSuccessListener {
                 val data = it.toObjects(booking::class.java)
