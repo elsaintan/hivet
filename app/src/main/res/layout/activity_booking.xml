@@ -27,12 +27,11 @@
                 android:id="@+id/photodrh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="30dp"
-                android:src="@drawable/profile" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                 />
 
             <TextView
                 android:id="@+id/namedrhTV"
@@ -40,7 +39,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_toRightOf="@id/photodrh"
-                android:text="Nama Dokter"
                 android:textSize="26sp" />
 
             <TextView
@@ -49,7 +47,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/namedrhTV"
                 android:layout_toRightOf="@id/photodrh"
-                android:text="Pengalaman"
                 android:textSize="20sp" />
 
         </RelativeLayout>
@@ -94,7 +91,7 @@
                     android:id="@+id/tanggalap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="22 Oktober 2020" />
+                     />
 
             </LinearLayout>
 
@@ -179,7 +176,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lunar Vet and Pertshop" />
+                     />
 
             </LinearLayout>
 
@@ -208,7 +205,7 @@
                     android:id="@+id/tempatklinik"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Yogyakarta" />
+                     />
 
             </LinearLayout>
 
@@ -300,7 +297,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/divider4"
-                android:text="Rp. 5000" />
+                 />
 
             <LinearLayout
                 android:id="@+id/rincian"

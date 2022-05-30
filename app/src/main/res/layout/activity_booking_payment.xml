@@ -40,7 +40,7 @@
                         android:id="@+id/photodrh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/profile" />
+                         />
 
                 </LinearLayout>
 
@@ -70,7 +70,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="60dp"
                 android:layout_marginBottom="145dp"
-                android:text="Nama Dokter"
+
                 android:textSize="26sp" />
 
         </RelativeLayout>
