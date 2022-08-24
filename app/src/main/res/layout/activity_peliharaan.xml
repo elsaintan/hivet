@@ -51,10 +51,32 @@
         android:padding="16dp" />
 
     <TextView
-        android:id="@+id/ketTV"
+        android:id="@+id/beratbadanTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/jenisET"
+        android:layout_marginLeft="16dp"
+        android:text="Berat Badan (kg)" />
+
+    <EditText
+        android:id="@+id/beratbadanET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/beratbadanTV"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_input_field"
+        android:hint="Berat Badan"
+        android:inputType="number"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/ketTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/beratbadanET"
         android:layout_marginLeft="16dp"
         android:text="Keterangan tambahan" />
 

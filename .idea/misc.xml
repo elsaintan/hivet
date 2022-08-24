@@ -58,7 +58,7 @@
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_booking_berhasil.xml" value="0.23229166666666667" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_booking_payment.xml" value="0.2" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_change_passworb.xml" value="0.21822916666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_chat.xml" value="0.1" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_chat.xml" value="0.2" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_edit_profile.xml" value="0.121875" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_filter_booking.xml" value="0.11614583333333334" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_forgot_password.xml" value="0.23229166666666667" />
@@ -68,7 +68,7 @@
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_payment.xml" value="0.1" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_payments_midtrans.xml" value="0.23229166666666667" />
-        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_peliharaan.xml" value="0.121875" />
+        <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_peliharaan.xml" value="0.2" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_rating.xml" value="0.264" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_rincian_janji_temu.xml" value="0.23229166666666667" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/activity_user_profile.xml" value="0.23229166666666667" />
@@ -82,6 +82,7 @@
         <entry key="..\:/backup/hivet/app/src/main/res/layout/riwayat_layout.xml" value="0.23229166666666667" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/update_pw_layout.xml" value="0.23229166666666667" />
         <entry key="..\:/backup/hivet/app/src/main/res/layout/user_dokter_layout.xml" value="0.23229166666666667" />
+        <entry key="..\:/backup/hivet/app/src/main/res/mipmap-anydpi-v26/icon_logout_round.xml" value="0.15260416666666668" />
         <entry key="app/src/main/res/layout/activity_booking.xml" value="0.15520833333333334" />
         <entry key="app/src/main/res/layout/activity_booking_berhasil.xml" value="0.4547639193181285" />
         <entry key="app/src/main/res/layout/activity_booking_payment.xml" value="0.16530797101449277" />

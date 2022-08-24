@@ -225,22 +225,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/gopay"
-                android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/akulakuBt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/green_lumut"
-                    android:text="Akulaku" />
-
-            </LinearLayout>
-
         </RelativeLayout>
 
 

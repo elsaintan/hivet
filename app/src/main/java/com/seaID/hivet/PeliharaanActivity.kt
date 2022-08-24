@@ -43,6 +43,7 @@ class PeliharaanActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         var name = petbinding.namaHET.text
         var keterangan = petbinding.ketET.text
+        var beratbadan = petbinding.beratbadanET.text
 
         val adapter = ArrayAdapter.createFromResource(
             this, R.array.jenis_hewan, android.R.layout.simple_spinner_dropdown_item
@@ -57,14 +58,14 @@ class PeliharaanActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         }
 
         petbinding.saveBT.setOnClickListener {
-            validation(name.toString(), keterangan.toString())
+            validation(name.toString(), keterangan.toString(), beratbadan.toString())
 
         }
     }
 
-    private fun validation(name: String?, keterangan: String?) {
+    private fun validation(name: String?, keterangan: String?, beratbadan: String?) {
         if (name != "" && keterangan != ""){
-            saveData(mAuth.currentUser!!.uid, name!!, jenis.toString(), keterangan!!)
+            saveData(mAuth.currentUser!!.uid, name!!, jenis.toString(), beratbadan.toString(),keterangan!!)
         }else{
             Toast.makeText(this, "Data tidak boleh kosong", Toast.LENGTH_SHORT).show()
         }
@@ -77,7 +78,7 @@ class PeliharaanActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         finish()
     }
 
-    private fun saveData(idp : String, name : String, jenis : String, keterangan : String) {
+    private fun saveData(idp : String, name : String, jenis : String, beratbadan: String?, keterangan : String) {
         val type = intent.getIntExtra("type", 0)
         val idd = intent.getStringExtra("petid")
         var id = ""

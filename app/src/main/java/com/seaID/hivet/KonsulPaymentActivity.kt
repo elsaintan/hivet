@@ -77,7 +77,7 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
 
     private fun retriveData() {
         val id = intent.getStringExtra("id")
-        val name = intent.getStringExtra("namedrh")
+        val name = intent.getStringExtra("nama_drh")
         kbinding.namedrhTV.setText(name)
         reference = FirebaseDatabase.getInstance().getReference("konsultasi").child(id.toString())
         reference.addListenerForSingleValueEvent(object: ValueEventListener{

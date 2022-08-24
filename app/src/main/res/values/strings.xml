@@ -14,7 +14,17 @@
         <item>Anjing</item>
         <item>Ikan</item>
         <item>Kura-kura</item>
-        <item>Lainnya</item>
+        <item>Kelinci</item>
+        <item>Hamster</item>
+        <item>Ternak</item>
+        <item>Unggas</item>
+        <item>Reptil</item>
+        <item>Musang</item>
+        <item>Kuda</item>
+    </string-array>
+    <string-array name="jenis_kelamin">
+        <item>Jantan</item>
+        <item>Betina</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
