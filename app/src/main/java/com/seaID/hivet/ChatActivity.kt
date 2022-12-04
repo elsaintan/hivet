@@ -74,7 +74,7 @@ class ChatActivity : AppCompatActivity() {
         val type = intent.getStringExtra("type")
 
         mAuth = FirebaseAuth.getInstance().currentUser
-        reference = FirebaseDatabase.getInstance().getReference("drh").child(userid.toString())
+        //reference = FirebaseDatabase.getInstance().getReference("drh").child(userid.toString())
 
         if (type == "0"){
             userMessageInput.visibility = View.GONE
@@ -103,14 +103,8 @@ class ChatActivity : AppCompatActivity() {
             userMessageInput.setText("")
         }
 
-        reference!!.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val user: drh? = dataSnapshot.getValue(drh::class.java)
-                ReadMessage(mAuth!!.uid, userid, idKonsul.toString())
-            }
 
-            override fun onCancelled(databaseError: DatabaseError) {}
-        })
+        ReadMessage(mAuth!!.uid, userid, idKonsul.toString())
 
         back.setOnClickListener {
             startActivity(Intent(this, RiwayatLayoutActivity::class.java))
@@ -168,27 +162,27 @@ class ChatActivity : AppCompatActivity() {
         tanggal.text = formatted
         konsul.text = intent.getStringExtra("id")
 
-        Toast.makeText(this, userid, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, userid, Toast.LENGTH_SHORT).show()
 
-        mDbRef = FirebaseFirestore.getInstance()
-        val uidRef  = mDbRef.collection("drh").document(userid.toString())
-
-        uidRef.get().addOnSuccessListener {
-            if (it != null) {
-                val drh = it.toObject(drh::class.java)
-                textName.text = drh!!.Name
-                if (drh!!.photoProfile == ""){
-                    fotoProfile.setImageResource(R.drawable.profile)
-                }else{
-                    Glide.with(this).load(drh!!.photoProfile).into(fotoProfile)
+        FirebaseDatabase.getInstance().getReference("drh").child(userid.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val drh: drh? = snapshot.getValue(drh::class.java)
+                    if (drh != null) {
+                        textName.text = drh!!.Name
+                        if (drh!!.photoProfile == ""){
+                            fotoProfile.setImageResource(R.drawable.profile)
+                        }else{
+                            Glide.with(this@ChatActivity).load(drh!!.photoProfile).into(fotoProfile)
+                        }
+                    }
                 }
 
-            } else {
-                Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
-        }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
     }
 
     private fun SeenMessage(userid: String) {
@@ -211,13 +205,11 @@ class ChatActivity : AppCompatActivity() {
 
     private fun SendMessage(sender: String, receiver: String, message: String, id_konsul: String) {
         val reference = FirebaseDatabase.getInstance().reference
-        val hashMap = HashMap<String, Any>()
-        hashMap["sender"] = sender
-        hashMap["receiver"] = receiver
-        hashMap["message"] = message
-        hashMap["isseen"] = false
-        hashMap["idkonsul"] = id_konsul
-        reference.child("Chats").push().setValue(hashMap)
+        val chat = Chat(sender, receiver, message, false, id_konsul)
+        reference.child("Chats").push().setValue(chat)
+            .addOnFailureListener {
+                throw it
+            }
     }
 
     fun ReadMessage(myid: String?, userid: String?, id_konsul: String) {
@@ -245,21 +237,4 @@ class ChatActivity : AppCompatActivity() {
         })
     }
 
-    /**private fun Status(status: String) {
-        reference = FirebaseDatabase.getInstance().getReference("users").child(mAuth!!.uid)
-        val hashMap = HashMap<String, Any>()
-        hashMap["status"] = status
-        reference!!.updateChildren(hashMap)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Status("online")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        reference!!.removeEventListener(seenEventListener!!)
-        Status("offline")
-    }**/
 }

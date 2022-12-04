@@ -16,6 +16,14 @@ class Chat {
     }
     constructor()
 
+    constructor(sender: String?, receiver: String?, message: String?, isseen: Boolean, idkonsul: String?){
+        this.sender = sender
+        this.receiver = receiver
+        this.message = message
+        this.isseen = isseen
+        this.idkonsul = idkonsul
+    }
+
     fun getSender(): String? {
         return sender
     }

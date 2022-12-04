@@ -9,8 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.models.User
+import java.util.*
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -70,19 +72,13 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun addUserToDatabase(name: String, email: String, uid: String) {
 
-        mDbRef = FirebaseFirestore.getInstance()
+        val reference = FirebaseDatabase.getInstance().getReference("users")
 
-        val user = User(name, email, uid, "")
+        val user = User(email, name, "", uid)
 
-
-        val usersRef = mDbRef.collection("users")
-        usersRef.document(uid).set(user)
-            .addOnCompleteListener {
-                Toast.makeText(this, "OKE", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener { e ->
-                //stored data failed
-                Toast.makeText(this, "SignUp failed due to " + e.message, Toast.LENGTH_SHORT).show()
+        reference.child(uid).setValue(user)
+            .addOnFailureListener {
+                Toast.makeText(this, "SignUp failed due to "+it, Toast.LENGTH_SHORT).show()
             }
 
     }

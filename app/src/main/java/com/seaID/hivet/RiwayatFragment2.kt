@@ -8,16 +8,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.adapters.JanjiTemuAdapter
 import com.seaID.hivet.models.booking
+import com.seaID.hivet.models.peliharaan
+import java.util.*
 
 
 class RiwayatFragment2 : Fragment() {
 
     private lateinit var janjiTemuList: ArrayList<booking>
     private lateinit var mAuth : FirebaseAuth
-    private lateinit var db : FirebaseFirestore
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,23 +43,25 @@ class RiwayatFragment2 : Fragment() {
         janjiTemuList = arrayListOf()
         val adapter : JanjiTemuAdapter = JanjiTemuAdapter(janjiTemuList)
 
-        db = FirebaseFirestore.getInstance()
+        val db = FirebaseDatabase.getInstance().getReference("booking_appointments")
         mAuth = FirebaseAuth.getInstance()
-        db.collection("booking_appointments").orderBy("id").limitToLast(100)
-            .get()
-            .addOnSuccessListener {
-                val data = it.toObjects(booking::class.java)
-                val items = data.size
-                if (items > 0){
-                    for (item in data){
-                        if(item.user_id == mAuth.currentUser!!.uid){
-                            janjiTemuList.add(item)
-                        }
+
+        db.orderByChild("user_id")
+            .equalTo(mAuth.currentUser!!.uid)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (snapshot in snapshot.children) {
+                        val item : booking? = snapshot.getValue(booking::class.java)
+                        janjiTemuList.add(item!!)
                     }
                     mRecyclerView.adapter = adapter
                     adapter.notifyDataSetChanged()
                 }
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
 
         return fragmentView
     }

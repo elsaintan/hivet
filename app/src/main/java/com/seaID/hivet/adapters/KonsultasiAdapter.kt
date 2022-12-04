@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.*
 import com.seaID.hivet.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.ChatActivity
@@ -17,6 +17,7 @@ import com.seaID.hivet.KonsulPaymentActivity
 import com.seaID.hivet.models.drh
 import com.seaID.hivet.models.konsultasi
 import com.seaID.hivet.models.peliharaan
+import java.util.*
 
 class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : RecyclerView.Adapter<KonsultasiAdapter.MyViewHolder>(){
 
@@ -35,28 +36,39 @@ class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : Re
     override fun onBindViewHolder(holder: KonsultasiAdapter.MyViewHolder, position: Int) {
         val konsultasi : konsultasi = konsultasiList[position]
 
-        mDbRef = FirebaseFirestore.getInstance()
-        val data1 = mDbRef.collection("drh").document(konsultasi.id_drh.toString())
-        data1.get().addOnSuccessListener {
-            val user = it.toObject(drh::class.java)
-            if (user != null){
-                holder.nama.text = user.Name
-                if (user.photoProfile != null){
-                    holder.foto.setImageResource(R.drawable.profile)
-                }else{
-                    Glide.with(holder.itemView.context).load(user.photoProfile).into(holder.foto)
+        val ref = FirebaseDatabase.getInstance().getReference("drh").child(konsultasi.id_drh.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val user: drh? = snapshot.getValue(drh::class.java)
+                    if (user != null){
+                        holder.nama.text = user.Name
+                        if (user.photoProfile != null){
+                            holder.foto.setImageResource(R.drawable.profildrh)
+                        }else{
+                            Glide.with(holder.itemView.context).load(user.photoProfile).into(holder.foto)
+                        }
+                    }
                 }
-            }
-        }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+            })
 
-        val data2 = mDbRef.collection("peliharaan").document(konsultasi.id_pet.toString())
-        data2.get().addOnSuccessListener {
-            val pet = it.toObject(peliharaan::class.java)
-            if (pet != null){
-                holder.tanggal.text = pet.jenis
-                holder.namah.text = pet.nama
-            }
-        }
+        val peliharaan = FirebaseDatabase.getInstance().getReference("peliharaan").child(konsultasi.id_pet.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val pet: peliharaan? = snapshot.getValue(peliharaan::class.java)
+                    if (pet != null){
+                        holder.tanggal.text = pet.jenis
+                        holder.namah.text = pet.nama
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
+
 
         when(konsultasi.status){
             "1" -> holder.button.text = "Menunggu"
@@ -71,7 +83,7 @@ class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : Re
             if (holder.button.text == "Chat"){
                 val intent = Intent(holder.itemView.context, ChatActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                intent.putExtra("Uid", konsultasi.id_user)
+                intent.putExtra("Uid", konsultasi.id_drh)
                 intent.putExtra("id", konsultasi.id)
                 intent.putExtra("idpet", konsultasi.id_pet)
                 intent.putExtra("tanggal", konsultasi.tanggal)
@@ -97,7 +109,7 @@ class KonsultasiAdapter(private val konsultasiList : ArrayList<konsultasi>) : Re
                 intent.putExtra("tanggal", konsultasi.tanggal)
                 intent.putExtra("harga", konsultasi.harga)
                 intent.putExtra("type", "2")
-                intent.putExtra("namedrh", namaa)
+                intent.putExtra("nama_drh", namaa)
                 holder.itemView.context.startActivity(intent)
             }
 

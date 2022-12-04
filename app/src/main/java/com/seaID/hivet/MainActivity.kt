@@ -10,7 +10,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.protobuf.Value
 import com.seaID.hivet.models.User
 import com.seaID.hivet.models.konsultasi
 import de.hdodenhof.circleimageview.CircleImageView
@@ -84,18 +89,22 @@ class MainActivity : AppCompatActivity() {
 
         bBooking.setOnClickListener{
             startActivity(Intent(this, FilterBookingActivity::class.java))
+            finish()
         }
 
         profile.setOnClickListener {
             startActivity(Intent(this, UserProfileActivity::class.java))
+            finish()
         }
 
         konsultasi.setOnClickListener {
             startActivity(Intent(this, RiwayatLayoutActivity::class.java))
+            finish()
         }
 
         artikel.setOnClickListener {
             startActivity(Intent(this, ArtikelActivity::class.java))
+            finish()
         }
 
     }
@@ -115,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
         } else {
-            Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Permission already granted", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -144,24 +153,27 @@ class MainActivity : AppCompatActivity() {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             STORAGE_PERMISSION_CODE)
 
-        val uidRef  = mDbRef.collection("users").document(id)
-
-        uidRef.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val user = doc.toObject(User::class.java)
-                uName.text = "Hai "+user!!.name+"!"
-                if (user!!.photoProfile == "" || user.photoProfile == null){
-                    uPhoto.setImageResource(R.drawable.profile)
-                }else{
-                    Glide.with(this).load(user!!.photoProfile).into(uPhoto)
+        val reference = FirebaseDatabase.getInstance().getReference()
+        reference.child("users").child(id)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val data = snapshot.getValue(User::class.java)
+                    if (data != null) {
+                        uName.text = "Hai "+data.name+"!"
+                        if (data!!.photoProfile == "" || data.photoProfile == null){
+                            uPhoto.setImageResource(R.drawable.profile)
+                        }else{
+                            Glide.with(this@MainActivity).load(data!!.photoProfile).into(uPhoto)
+                        }
+                    }else{
+                        Toast.makeText(this@MainActivity, "No such document", Toast.LENGTH_SHORT).show()
+                    }
                 }
-                //Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
-        }
+
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+            })
     }
 
 

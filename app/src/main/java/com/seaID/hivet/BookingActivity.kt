@@ -13,6 +13,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.google.android.gms.common.internal.service.Common
 import com.google.firebase.auth.FirebaseAuth
@@ -37,6 +38,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.seaID.hivet.models.*
+import java.util.*
 
 class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
@@ -58,6 +60,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
 
         val uId = intent.getStringExtra("Uid")
         val nama = intent.getStringExtra("Name")
+        binding.tempatklinik.isVisible = false
         db = FirebaseFirestore.getInstance()
         mAuth = FirebaseAuth.getInstance()
         myPets()
@@ -93,6 +96,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
                     val data= snapshot.getValue(jadwal::class.java)
                     if (data != null){
                         binding.startTV.setText(data.start+"-"+data.end)
+                        binding.tanggalap.text = data.tanggal
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {
@@ -113,47 +117,52 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     }
 
     private fun showdetailData(id : String) {
-        val uidRef  = db.collection("drh").document(id)
 
-        uidRef.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val user = doc.toObject(drh::class.java)
-                binding.namedrhTV.setText(user!!.Name)
-                binding.workexpTV.text = user!!.alamat
-                binding.tanggalap.text = user!!.booking
-                binding.tempatklinik.text = user!!.alamat
-                if (user!!.photoProfile == ""){
-                    binding.photodrh.setImageResource(R.drawable.profile)
-                }else{
-                    Glide.with(this).load(user!!.photoProfile).into(binding.photodrh)
-                }
-            } else {
-                Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun myPets(){
-        db.collection("peliharaan")
-            .get()
-            .addOnSuccessListener {
-                val data = it.toObjects(peliharaan::class.java)
-                val items = data.size
-                if (items > 0){
-                    for (item in data){
-                        if (item.pemilik == mAuth.uid){
-                            pets.add(item.nama!!)
-                            idpets.add(item.id!!)
+        val reference = FirebaseDatabase.getInstance().getReference("drh")
+        reference.child(id)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val user: drh? = snapshot.getValue(drh::class.java)
+                    if (user != null) {
+                        binding.namedrhTV.setText(user!!.Name)
+                        binding.workexpTV.text = user!!.alamat
+                        binding.tempatklinik.text = user!!.alamat
+                        binding.tempattv.text = user!!.tempat
+                        if (user!!.photoProfile == ""){
+                            binding.photodrh.setImageResource(R.drawable.profile)
+                        }else{
+                            Glide.with(this@BookingActivity).load(user!!.photoProfile).into(binding.photodrh)
                         }
                     }
                 }
-                val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pets)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                binding.mypetS.adapter = adapter
-                binding.mypetS.onItemSelectedListener = this
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
+    }
+
+    private fun myPets(){
+        val ref = FirebaseDatabase.getInstance().getReference("peliharaan")
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pets)
+        ref.orderByChild("pemilik")
+            .equalTo(mAuth.uid)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (snapshot in snapshot.children) {
+                        val item = snapshot.getValue(peliharaan::class.java)
+                        pets.add(item?.nama.toString())
+                        idpets.add(item?.id.toString())
+                    }
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    binding.mypetS.adapter = adapter
+                    binding.mypetS.onItemSelectedListener = this@BookingActivity
+                }
+                    override fun onCancelled(error: DatabaseError) {
+                        throw error.toException()
+                    }
+
+                })
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -161,7 +170,7 @@ class BookingActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener{
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
-        TODO("Not yet implemented")
+
     }
 
 }

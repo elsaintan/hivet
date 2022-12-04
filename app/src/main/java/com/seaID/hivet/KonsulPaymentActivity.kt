@@ -170,10 +170,8 @@ class KonsulPaymentActivity : AppCompatActivity(), TransactionFinishedCallback {
         val simpleDateFormat = DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM)
         val tanggal = current.format(simpleDateFormat)
         val tariksaldo = Saldo(id, id_drh, kbinding.hargatot.text.toString(), "", "", "", tanggal, "Berhasil", "Pemasukan")
-        mDbRef.collection("saldo").document(id).set(tariksaldo)
-            .addOnSuccessListener {
-
-            }
+        val ref = FirebaseDatabase.getInstance().getReference("saldo")
+        ref.child(id).setValue(tariksaldo)
             .addOnFailureListener {
                 Toast.makeText(this, "Error "+it.message, Toast.LENGTH_SHORT).show()
             }

@@ -12,13 +12,14 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.R
 import com.seaID.hivet.RincianJanjiTemuActivity
-import com.seaID.hivet.models.User
-import com.seaID.hivet.models.booking
-import com.seaID.hivet.models.drh
-import com.seaID.hivet.models.peliharaan
+import com.seaID.hivet.models.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -54,27 +55,37 @@ class JanjiTemuAdapter(private val janjitemuList: ArrayList<booking>) : Recycler
             //Toast.makeText(holder.itemView.context, "This is false", Toast.LENGTH_SHORT).show()
         }
 
-        mDbRef = FirebaseFirestore.getInstance()
-        val data1 = mDbRef.collection("drh").document(data.drh_id.toString())
-        data1.get().addOnSuccessListener {
-            val user = it.toObject(drh::class.java)
-            if (user != null){
-                holder.nama.text = user.Name
-                if (user.photoProfile != null){
-                    holder.foto.setImageResource(R.drawable.profile)
-                }else{
-                    Glide.with(holder.itemView.context).load(user.photoProfile).into(holder.foto)
+        val ref = FirebaseDatabase.getInstance().getReference("drh").child(data.drh_id.toString())
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val user: drh? = snapshot.getValue(drh::class.java)
+                    if (user != null){
+                        holder.nama.text = user.Name
+                        if (user.photoProfile != null){
+                            holder.foto.setImageResource(R.drawable.profildrh)
+                        }else{
+                            Glide.with(holder.itemView.context).load(user.photoProfile).into(holder.foto)
+                        }
+                    }
                 }
-            }
-        }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+            })
 
-        val data2 = mDbRef.collection("peliharaan").document(data.pet_id.toString())
-        data2.get().addOnSuccessListener {
-            val pet = it.toObject(peliharaan::class.java)
-            if (pet != null){
-                holder.namah.text = pet.jenis
-            }
-        }
+        val peliharaan = FirebaseDatabase.getInstance().getReference("peliharaan").child(data.pet_id.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val pet: peliharaan? = snapshot.getValue(peliharaan::class.java)
+                    if (pet != null){
+                        holder.namah.text = pet.jenis
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
 
         holder.button.setOnClickListener {
             val intent = Intent(holder.itemView.context, RincianJanjiTemuActivity::class.java)

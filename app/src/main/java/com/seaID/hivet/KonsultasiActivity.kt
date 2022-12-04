@@ -8,17 +8,20 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
+import android.os.Handler
 import android.view.View
 import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.view.get
+import androidx.core.view.isNotEmpty
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
+import com.seaID.hivet.adapters.drhAdapter
 import com.seaID.hivet.adapters.peliharaanAdapter
 import com.seaID.hivet.databinding.ActivityBookingBinding
 import com.seaID.hivet.databinding.ActivityKonsultasiBinding
@@ -56,8 +59,12 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         dataPeliharaan()
 
         binding.konsulBT.setOnClickListener {
-            //startActivity(Intent(this, ChatActivity::class.java))
-            saveData()
+
+            if (binding.peliharaanSP.isNotEmpty()){
+                saveData()
+            }else{
+                addPets()
+            }
 
         }
     }
@@ -85,18 +92,9 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         //Toast.makeText(this, "Ini " +idpet, Toast.LENGTH_SHORT).show()
 
         val reference = FirebaseDatabase.getInstance().getReference()
-        //val konsultasi = konsultasi(id, id_drh, id_user, idpet, formatted, "1", "", harga.toDouble())
-        val hashMap = HashMap<String, Any>()
-        hashMap["id"] = id
-        hashMap["id_drh"] = id_drh.toString()
-        hashMap["id_user"] = id_user
-        hashMap["id_pet"] = idpet
-        hashMap["tanggal"] = formatted
-        hashMap["status"] = "1"
-        hashMap["id_transaction"] = ""
-        hashMap["harga"] = harga
-        hashMap["rating"] = ""
-        reference.child("konsultasi").child(id).setValue(hashMap)
+        val konsultasi = konsultasi(id, id_drh, id_user, idpet, formatted, "1", "", harga, "")
+
+        reference.child("konsultasi").child(id).setValue(konsultasi)
             .addOnSuccessListener {
                 startTimer(120000, id)
                 showDialog()
@@ -104,16 +102,14 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
             .addOnFailureListener {
                 Toast.makeText(this, " "+it, Toast.LENGTH_SHORT).show()
             }
+    }
 
-        /**val konsultasi = konsultasi(id, id_drh, id_user, idpet, formatted, "1", "", harga.toDouble())
-        mDbRef.collection("konsultasi").document(id).set(konsultasi)
-            .addOnCompleteListener {
-                startTimer(120000, id)
-            }
-            .addOnFailureListener { e ->
-                //stored data failed
-                Toast.makeText(this, "Action failed due to " + e.message, Toast.LENGTH_SHORT).show()
-            } **/
+    private fun addPets(){
+        val handler = Handler()
+        handler.postDelayed({
+            startActivity(Intent(this, UserProfileActivity::class.java))
+            finish()
+        }, 2000)
     }
 
     private fun startTimer(time_in_seconds: Long, id : String) {
@@ -147,7 +143,7 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     private fun changeStatus(id : String) {
         //val id = intent.getStringExtra("Uid")
         val reference = FirebaseDatabase.getInstance().getReference("konsultasi")
-            reference.child(id).child("status").setValue("6")
+        reference.child(id).child("status").setValue("6")
     }
 
     private fun cekStatus(id: String) {
@@ -203,24 +199,28 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     private fun dataPeliharaan() {
-        mDbRef.collection("peliharaan")
-            .get()
-            .addOnSuccessListener {
-                val data = it.toObjects(peliharaan::class.java)
-                val items = data.size
-                if (items > 0){
-                    for (item in data){
-                        if (item.pemilik == mAuth.uid){
-                            idpets.add(item.id!!)
-                            pets.add(item.nama!!)
-                        }
+        val ref = FirebaseDatabase.getInstance().getReference("peliharaan")
+        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pets)
+        ref.orderByChild("pemilik")
+            .equalTo(mAuth.uid)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (snapshot in snapshot.children) {
+                        val item = snapshot.getValue(peliharaan::class.java)
+                            idpets.add(item?.id.toString())
+                            pets.add(item?.nama.toString())
                     }
+
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                    binding.peliharaanSP.adapter = adapter
+                    binding.peliharaanSP.onItemSelectedListener = this@KonsultasiActivity
                 }
-                val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, pets)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                binding.peliharaanSP.adapter = adapter
-                binding.peliharaanSP.onItemSelectedListener = this
-            }
+
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
     }
 
 
@@ -228,27 +228,31 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
         mDbRef = FirebaseFirestore.getInstance()
         val uidRef  = mDbRef.collection("drh").document(id)
 
-        uidRef.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val user = doc.toObject(drh::class.java)
-                binding.namadrhTV.text = user!!.Name
-                binding.workExpTV.text = user!!.harga
-                binding.hargaTV.text = user!!.harga
-                binding.textView.text =  user!!.STR
-                binding.exp.text = user.WorkExp+" tahun"
+        val ref = FirebaseDatabase.getInstance().getReference("drh")
+        ref.child(id)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val user: drh? = snapshot.getValue(drh::class.java)
+                    if (user != null) {
+                        binding.namadrhTV.text = user!!.Name
+                        binding.workExpTV.text = user!!.harga
+                        binding.hargaTV.text = user!!.harga
+                        binding.textView.text =  user!!.STR
+                        binding.exp.text = user.WorkExp+" tahun"
 
-                if (user!!.photoProfile == ""){
-                    binding.profileIM.setImageResource(R.drawable.profile)
-                }else{
-                    Glide.with(this).load(user!!.photoProfile).into(binding.profileIM)
+                        if (user!!.photoProfile == ""){
+                            binding.profileIM.setImageResource(R.drawable.profile)
+                        }else{
+                            Glide.with(this@KonsultasiActivity).load(user!!.photoProfile).into(binding.profileIM)
+                        }
+                    }
                 }
-                Toast.makeText(this, "{$user.name}", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
-        }
+
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -257,6 +261,6 @@ class KonsultasiActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
     }
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("Not yet implemented")
+
     }
 }

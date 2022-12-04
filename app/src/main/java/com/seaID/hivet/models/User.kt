@@ -8,7 +8,7 @@ class User {
 
     constructor(){}
 
-    constructor(name: String?, email: String?, uid: String?, photoProfile: String?) {
+    constructor(email: String?, name: String?, photoProfile: String?, uid: String?) {
         this.name = name
         this.email = email
         this.uid = uid

@@ -18,6 +18,7 @@ class drh{
     var alamat : String ?= null
     var harga: String ?= null
     var status: String ?=null
+    var tanggal: String ?=null
 
     constructor()
 

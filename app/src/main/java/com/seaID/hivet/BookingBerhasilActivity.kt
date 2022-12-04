@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.databinding.ActivityBookingBerhasilBinding
 import com.seaID.hivet.databinding.ActivityUserProfileBinding
@@ -37,46 +41,42 @@ class BookingBerhasilActivity : AppCompatActivity() {
 
     private fun loadData(kode_booking: String?) {
 
-        val app  = mDbRef.collection("booking_appointments").document(kode_booking.toString())
+        val db = FirebaseDatabase.getInstance().getReference("booking_appointments")
+        db.child(kode_booking.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val data : booking? = snapshot.getValue(booking::class.java)
+                    if (data != null) {
+                        showdrh(data.drh_id)
+                        bBinding.kodeBooking.text = data.kode_booking
+                        bBinding.waktukonsul.text = data.waktu
+                        bBinding.tanggalap.text = data.tanggal
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
 
-        app.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val data = doc.toObject(booking::class.java)
-                //mybinding.namauTV.text = user!!.name
-                //mybinding.emailTV.text = user!!.email
-                showdrh(data!!.drh_id)
-                bBinding.kodeBooking.text = data!!.kode_booking
-                bBinding.waktukonsul.text = data!!.waktu
-                bBinding.tanggalap.text = data!!.tanggal
-                //Log.d(UserProfileActivity.TAG, "{$user.name}")
-            } else {
-                Toast.makeText(this,"No such document",  Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(this,"get failed with "+ exception,  Toast.LENGTH_SHORT).show()
-            //Log.d(UserProfileActivity.TAG, "get failed with " +exception,)
-        }
+            })
 
     }
 
     private fun showdrh(drhId: String?) {
-        val appp  = mDbRef.collection("drh").document(drhId.toString())
 
-        appp.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val data = doc.toObject(drh::class.java)
+        val db = FirebaseDatabase.getInstance().getReference("drh")
+        db.child(drhId.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val data : drh? = snapshot.getValue(drh::class.java)
+                    if (data != null) {
+                        bBinding.namedrhTV.text = data.Name
+                        bBinding.tempatPraktikTV.text = data.tempat
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@BookingBerhasilActivity,"get failed with "+ error,  Toast.LENGTH_SHORT).show()
+                }
 
-                bBinding.namedrhTV.text = data!!.Name
-                bBinding.tempatPraktikTV.text = data!!.tempat
-
-                //Log.d(UserProfileActivity.TAG, "{$user.name}")
-            } else {
-                //Log.d(UserProfileActivity.TAG, "No such document")
-                Toast.makeText(this,"No such document",  Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(this,"get failed with "+ exception,  Toast.LENGTH_SHORT).show()
-            //Log.d(UserProfileActivity.TAG, "get failed with " +exception,)
-        }
+            })
     }
 }

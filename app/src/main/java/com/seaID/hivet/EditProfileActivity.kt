@@ -17,6 +17,10 @@ import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -123,24 +127,30 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun showDataUser(){
-        val uidRef  = mDbRef.collection("users").document(mAuth.uid)
-        uidRef.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val user = doc.toObject(User::class.java)
-                binding.nameTV.setText(user!!.name)
-                binding.emailTV.setText(user.email)
-                photo = user.photoProfile
-                if (user.photoProfile == "" || user.photoProfile == null){
-                    binding.userImage.setImageResource(R.drawable.profile)
-                }else{
-                    Glide.with(this).load(user!!.photoProfile).into(binding.userImage)
+
+        val reference = FirebaseDatabase.getInstance().getReference()
+        reference.child("users").child(mAuth.uid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val user = snapshot.getValue(User::class.java)
+                    if (user != null) {
+                        binding.nameTV.setText(user!!.name)
+                        binding.emailTV.setText(user.email)
+                        photo = user.photoProfile
+                        if (user.photoProfile == "" || user.photoProfile == null){
+                            binding.userImage.setImageResource(R.drawable.profile)
+                        }else{
+                            Glide.with(this@EditProfileActivity).load(user!!.photoProfile).into(binding.userImage)
+                        }
+                    }else{
+                        Toast.makeText(this@EditProfileActivity, "No such document", Toast.LENGTH_SHORT).show()
+                    }
                 }
-            } else {
-                Toast.makeText(this, "No such document ", Toast.LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(this, "get failed with "+exception, Toast.LENGTH_SHORT).show()
-        }
+
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+            })
     }
 
     private fun chooseImage(){
@@ -203,10 +213,14 @@ class EditProfileActivity : AppCompatActivity() {
         val email = binding.emailTV.text.toString()
         //val useredit = User(name, email, mAuth.uid, photo)
 
-        Toast.makeText(this, "Gambar "+ photo, Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "Gambar "+ photo, Toast.LENGTH_SHORT).show()
 
-        val user = mDbRef.collection("users")
-        user.document(mAuth.uid).update("name", name, "email", email)
+        val data = FirebaseDatabase.getInstance().getReference("users")
+        val hm = HashMap<String, Any>()
+        hm["name"] = name
+        hm["email"] = email
+        data.child(mAuth.uid).updateChildren(hm)
+
         startActivity(Intent(this, MainActivity::class.java))
     }
 }

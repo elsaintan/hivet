@@ -190,17 +190,16 @@ class BookingPaymentActivity : AppCompatActivity(), TransactionFinishedCallback 
         val booking = booking(id, transaction_id, mAuth.currentUser!!.uid, intent.getStringExtra("pet"),
             intent.getStringExtra("drh"), time.toString(), intent.getStringExtra("tanggal"),"Berhasil Reservasi")
 
-        mDbRef.collection("booking_appointments").document(id).set(booking)
-            .addOnCompleteListener {
-                Toast.makeText(this, "OKE", Toast.LENGTH_SHORT).show()
+        val ref = FirebaseDatabase.getInstance().getReference("booking_appointments")
+        ref.child(id).setValue(booking)
+            .addOnSuccessListener{
+                //Toast.makeText(this, "OKE", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, BookingBerhasilActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("kode_booking", id)
                 startActivity(intent)
-            }
-            .addOnFailureListener { e ->
-                //stored data failed
-                Toast.makeText(this, "Action failed due to " + e.message, Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener {
+                Toast.makeText(this, "Action failed due to " + it.message, Toast.LENGTH_SHORT).show()
             }
     }
 

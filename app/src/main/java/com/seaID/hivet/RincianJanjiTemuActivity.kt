@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.databinding.ActivityRincianJanjiTemuBinding
 import com.seaID.hivet.models.User
@@ -35,39 +39,44 @@ class RincianJanjiTemuActivity : AppCompatActivity() {
     }
 
     private fun showData(id: String?) {
-        db = FirebaseFirestore.getInstance()
-        db.collection("booking_appointments").document(id.toString())
-            .get()
-            .addOnSuccessListener {
-                if(it != null){
-                    val janjitemu = it.toObject(booking::class.java)
+        val ref = FirebaseDatabase.getInstance().getReference("booking_appointments")
+        ref.child(id.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val janjitemu: booking? = snapshot.getValue(booking::class.java)
                     rjbinding.tanggalap.text = janjitemu!!.tanggal
                     rjbinding.status.text = janjitemu!!.status
                     rjbinding.waktu.text = janjitemu!!.waktu
                     rjbinding.buttonKode.text = janjitemu.kode_booking
                     showdrhdata(janjitemu.drh_id)
-                    //showpetdata(janjitemu.pet_id)
                 }
-            }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
     }
 
     private fun showdrhdata(userId: String?){
-        val data1 = db.collection("drh").document(userId.toString())
-        data1.get().addOnSuccessListener {
-            val drh = it.toObject(drh::class.java)
-            if (drh != null){
-                rjbinding.nameTV.text = drh.Name
-                rjbinding.tempatTV.text = drh.alamat
-                rjbinding.tempatpraktik.text = drh.tempat
-                rjbinding.tempatklinik.text = drh.alamat
-                if (drh.photoProfile != null) {
-                    rjbinding.photodrh.setImageResource(R.drawable.profile)
-                } else {
-                    Glide.with(this).load(drh.photoProfile).into(rjbinding.photodrh)
+        val data1 = FirebaseDatabase.getInstance().getReference("drh")
+        data1.child(userId.toString())
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val drh: drh? = snapshot.getValue(drh::class.java)
+                    rjbinding.nameTV.text = drh!!.Name
+                    rjbinding.tempatTV.text = drh.alamat
+                    rjbinding.tempatpraktik.text = drh.tempat
+                    rjbinding.tempatklinik.text = drh.alamat
+                    if (drh.photoProfile != null) {
+                        rjbinding.photodrh.setImageResource(R.drawable.profile)
+                    } else {
+                        Glide.with(this@RincianJanjiTemuActivity).load(drh.photoProfile).into(rjbinding.photodrh)
+                    }
                 }
-
-            }
-        }
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+            })
     }
 
 }

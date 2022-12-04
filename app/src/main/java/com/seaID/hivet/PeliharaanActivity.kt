@@ -10,9 +10,11 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.seaID.hivet.adapters.peliharaanAdapter
 import com.seaID.hivet.databinding.ActivityPeliharaanBinding
+import com.seaID.hivet.models.Chat
 import com.seaID.hivet.models.peliharaan
 
 class PeliharaanActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -90,17 +92,16 @@ class PeliharaanActivity : AppCompatActivity(), AdapterView.OnItemSelectedListen
 
         //Toast.makeText(this, id, Toast.LENGTH_SHORT).show()
 
-        val peliharaan = peliharaan(id, idp, name, jenis, keterangan)
-        mDbRef.collection("peliharaan").document(id).set(peliharaan)
-            .addOnCompleteListener {
+        val peliharaan = peliharaan(id, jenis, keterangan, name, mAuth.currentUser!!.uid)
+        val reference = FirebaseDatabase.getInstance().reference
+        reference.child("peliharaan").child(id).setValue(peliharaan)
+            .addOnFailureListener {
+                throw it
+            }.addOnSuccessListener{
                 Toast.makeText(this, "Data berhasil disimpan", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, UserProfileActivity::class.java))
+                finish()
             }
-            .addOnFailureListener { e ->
-                //stored data failed
-                Toast.makeText(this, "Action failed due to " + e.message, Toast.LENGTH_SHORT).show()
-            }
-
 
     }
 

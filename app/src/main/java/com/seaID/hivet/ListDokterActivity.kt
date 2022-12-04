@@ -8,13 +8,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.*
 import com.google.firebase.firestore.EventListener
 import com.seaID.hivet.adapters.drhAdapter
 import com.seaID.hivet.adapters.drhBookingAdapter
 import com.seaID.hivet.models.drh
+import com.seaID.hivet.models.konsultasi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.coroutines.CoroutineContext
 
@@ -84,47 +90,48 @@ class ListDokterActivity : AppCompatActivity() {
 
 
     private fun EventChangeListener() {
-        db = FirebaseFirestore.getInstance()
-        db.collection("drh")
-            .addSnapshotListener(object : EventListener<QuerySnapshot>{
-                override fun onEvent(
-                    value: QuerySnapshot?,
-                    error: FirebaseFirestoreException?
-                ){
-                    if (error != null){
-                        Log.e("Error: ", error.message.toString())
-                        return
-                    }
-
-                    var listdrh = ArrayList<drh>()
-                    for (dc : DocumentChange in value?.documentChanges!!){
-                        if (dc.type == DocumentChange.Type.ADDED){
-                            val vet: drh = dc.document.toObject(drh::class.java)
-                            drhArrayList.add(dc.document.toObject(drh::class.java))
-                        }
-                    }
+        val reference = FirebaseDatabase.getInstance().getReference("drh").orderByKey().limitToLast(100)
+        reference.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                drhArrayList.clear()
+                for (snapshot in snapshot.children) {
+                    val data : drh? = snapshot.getValue(drh::class.java)
+                    drhArrayList.add(data!!)
                     recyclerView.adapter = drhAdapter
-                    drhAdapter.notifyDataSetChanged()
                 }
-            })
+                drhAdapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                throw error.toException()
+            }
+
+        })
     }
 
     private fun doctorRetrieveData() {
-        db = FirebaseFirestore.getInstance()
-            db.collection("drh")
-                .get()
-                .addOnSuccessListener {
-                    val data = it.toObjects(drh::class.java)
-                    val items = data.size
-                    if (items > 0){
-                        for (item in data){
-                            if (item.booking.equals(intent.getStringExtra("tanggal")) && item.alamat.equals(intent.getStringExtra("daerah")) && item.status.equals("1")){
-                                drhArrayList.add(item)
-                            }
+        val tgl = intent.getStringExtra("tanggal")
+        val dom = intent.getStringExtra("daerah")
+        val reference = FirebaseDatabase.getInstance().getReference("drh")
+        reference.orderByChild("booking")
+            .equalTo(dom+"_"+tgl)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    drhArrayList.clear()
+                    for (snapshot in snapshot.children) {
+                        val data: drh? = snapshot.getValue(drh::class.java)
+                        if (data?.status == "1") {
+                            drhArrayList.add(data!!)
                         }
                         recyclerView.adapter = drhBookingAdapter
-                        drhBookingAdapter.notifyDataSetChanged()
                     }
+                    drhBookingAdapter.notifyDataSetChanged()
                 }
+
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+
+            })
+        //Toast.makeText(this, dom+"_"+tgl, Toast.LENGTH_SHORT).show()
     }
 }

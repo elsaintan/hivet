@@ -16,9 +16,15 @@ import com.seaID.hivet.databinding.ActivityUserProfileBinding
 import com.seaID.hivet.models.peliharaan
 import android.app.Dialog
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.seaID.hivet.adapters.drhBookingAdapter
 import com.seaID.hivet.models.drh
+import java.util.*
 
 
 class UserProfileActivity : AppCompatActivity() {
@@ -94,22 +100,26 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
     private fun dataPeliharaan() {
-        mDbRef = FirebaseFirestore.getInstance()
-        mDbRef.collection("peliharaan")
-            .get()
-            .addOnSuccessListener {
-                val data = it.toObjects(peliharaan::class.java)
-                val items = data.size
-                if (items > 0){
-                    for (item in data){
-                        if (item.pemilik.equals(mAuth.currentUser!!.uid)){
-                            petArrayList.add(item)
-                        }
+
+        val ref = FirebaseDatabase.getInstance().getReference("peliharaan")
+        ref.orderByChild("pemilik")
+            .equalTo(mAuth.currentUser!!.uid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    petArrayList.clear()
+                    for (snapshot in snapshot.children) {
+                        val item : peliharaan? = snapshot.getValue(peliharaan::class.java)
+                        petArrayList.add(item!!)
                     }
+
                     recyclerView.adapter = peliharaanAdapter
                     peliharaanAdapter.notifyDataSetChanged()
                 }
-            }
+
+                override fun onCancelled(error: DatabaseError) {
+                    throw error.toException()
+                }
+            })
     }
 
     private fun showChangePasswordDialog(view : View){
@@ -119,27 +129,30 @@ class UserProfileActivity : AppCompatActivity() {
     }
 
 private fun loadProfile(id : String) {
-        val uidRef  = mDbRef.collection("users").document(id)
+    val reference = FirebaseDatabase.getInstance().getReference()
+    reference.child("users").child(id)
+        .addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val data : User? = snapshot.getValue(User::class.java)
+                if (data != null) {
+                    mybinding.namauTV.text = data.name
+                    mybinding.emailTV.text = data.email
 
-        uidRef.get().addOnSuccessListener { doc ->
-            if (doc != null) {
-                val user = doc.toObject(User::class.java)
-                mybinding.namauTV.text = user!!.name
-                mybinding.emailTV.text = user!!.email
+                    if (data.photoProfile == "" || data.photoProfile == null){
+                        mybinding.profileIM.setImageResource(R.drawable.profile)
 
-                if (user!!.photoProfile == "" || user.photoProfile == null){
-                    mybinding.profileIM.setImageResource(R.drawable.profile)
-
+                    }else{
+                        Glide.with(this@UserProfileActivity).load(data.photoProfile).into(mybinding.profileIM)
+                    }
                 }else{
-                    Glide.with(this).load(user!!.photoProfile).into(mybinding.profileIM)
+                    Toast.makeText(this@UserProfileActivity, "No such document", Toast.LENGTH_SHORT).show()
                 }
-                //Log.d(TAG, "{$user.name}")
-            } else {
-                Log.d(TAG, "No such document")
             }
-        }.addOnFailureListener { exception ->
-            Log.d(TAG, "get failed with ", exception)
-        }
+
+            override fun onCancelled(error: DatabaseError) {
+                throw error.toException()
+            }
+        })
 
     }
 
